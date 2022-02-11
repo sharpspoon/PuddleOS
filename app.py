@@ -1,7 +1,6 @@
 import json
 
-from flask import Flask, render_template, request, redirect, url_for
-
+from flask import Flask, render_template, request, redirect, url_for, send_file
 
 app = Flask(__name__)
 
@@ -10,6 +9,11 @@ app = Flask(__name__)
 def index():
     return render_template('index.html',
                            title='Home Page')
+
+
+@app.route("/d3json", methods=["GET"])
+def d3json():
+    return send_file('d3.json')
 
 
 @app.route("/createjson", methods=["POST"])
