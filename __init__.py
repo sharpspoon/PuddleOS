@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request
-
-import main
+from flask import Flask
 
 app = Flask(__name__)
+
+import views
 
 print('''
 .-,--.       .   . .      ,,--. .---. 
@@ -11,14 +11,4 @@ print('''
  `'    `-^ `-^ `-^ `' `-' `---' `---' 
  ''')
 
-
-@app.route("/")
-def _index():
-    return render_template('index.html',
-                           title='Home Page')
-
-
-@app.route("/createjson", methods=["POST"])
-def _createjson():
-    layer1nodes = request.form.get("layer1")
-    return main.createjson(layer1nodes)
+views._index()
