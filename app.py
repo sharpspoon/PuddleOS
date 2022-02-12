@@ -5,10 +5,25 @@ from flask import Flask, render_template, request, redirect, url_for, send_file
 app = Flask(__name__)
 
 
+def load_form(layer):
+    try:
+        with open("d3.json", 'r') as d3json:
+            parsed = json.loads("d3.json".read())
+            return parsed
+    finally:
+        return 0
+
+
 @app.route("/", methods=["GET"])
 def index():
     return render_template('index.html',
-                           title='Home Page')
+                           x=500,
+                           y=500,
+                           layer1=load_form(1),
+                           layer2=1,
+                           layer3=1,
+                           layer4=1,
+                           layer5=1, )
 
 
 @app.route("/d3json", methods=["GET"])
