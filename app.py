@@ -2,28 +2,22 @@ import json
 
 from flask import Flask, render_template, request, redirect, url_for, send_file
 
+
 app = Flask(__name__)
-
-
-def load_form(layer):
-    try:
-        with open("d3.json", 'r') as d3json:
-            parsed = json.loads("d3.json".read())
-            return parsed
-    finally:
-        return 0
 
 
 @app.route("/", methods=["GET"])
 def index():
+    db = open("d3.json")
+    data = json.load(db)
     return render_template('index.html',
-                           x=500,
-                           y=500,
-                           layer1=load_form(1),
-                           layer2=1,
-                           layer3=1,
-                           layer4=1,
-                           layer5=1, )
+                           x=data['x'],
+                           y=data['y'],
+                           layer1=data['layer1'],
+                           layer2=data['layer2'],
+                           layer3=data['layer3'],
+                           layer4=data['layer4'],
+                           layer5=data['layer5'], )
 
 
 @app.route("/d3json", methods=["GET"])
@@ -38,21 +32,23 @@ def createjson():
     layer3nodes = request.form.get("layer3")
     layer4nodes = request.form.get("layer4")
     layer5nodes = request.form.get("layer5")
+    x = request.form.get("x")
+    y = request.form.get("y")
     layer1nodesint = int(layer1nodes)
     layer2nodesint = int(layer2nodes)
     layer3nodesint = int(layer3nodes)
     layer4nodesint = int(layer4nodes)
     layer5nodesint = int(layer5nodes)
-    # if layer1nodesint < 1:
-    #    pass
+    xint = int(x)
+    yint = int(y)
+
     json_file = "d3.json"
-    # Create an empty new dict
-    d = {'layer1': [layer1nodesint], 'layer2': [layer2nodesint], 'layer3': [layer3nodesint],
-         'layer4': [layer4nodesint], 'layer5': [layer5nodesint]}
+    d = {'x': xint, 'y': yint, 'layer1': layer1nodesint, 'layer2': layer2nodesint, 'layer3': layer3nodesint,
+         'layer4': layer4nodesint, 'layer5': layer5nodesint}
     try:
         with open(json_file, "w") as d3_json_out:
             json.dump(d, d3_json_out, indent=4, sort_keys=False)
         return redirect(url_for('index'))
     except Exception as e:
         print(e)
-        return "Failed to open network.json file. Are you sure it is named correctly?"
+        return "Failed to open d3.json file."
