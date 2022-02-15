@@ -10,19 +10,28 @@ app = Flask(__name__)
 def index():
     db = open("d3.json")
     data = json.load(db)
-    return render_template('index.html',
-                           x=data['x'],
-                           y=data['y'],
-                           layer1=data['layer1'],
-                           layer2=data['layer2'],
-                           layer3=data['layer3'],
-                           layer4=data['layer4'],
-                           layer5=data['layer5'], )
+    try:
+        return render_template('index.html',
+                               x=data['x'],
+                               y=data['y'],
+                               layer1=data['layer1'],
+                               layer2=data['layer2'],
+                               layer3=data['layer3'],
+                               layer4=data['layer4'],
+                               layer5=data['layer5'], )
+    except Exception as e:
+        print(e)
+        return render_template('index.html')
 
 
 @app.route("/d3json", methods=["GET"])
 def d3json():
     return send_file('d3.json')
+
+
+@app.route("/graphjs", methods=["GET"])
+def graphjs():
+    return send_file('graph.js')
 
 
 @app.route("/createjson", methods=["POST"])
