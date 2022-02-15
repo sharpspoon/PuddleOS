@@ -14,11 +14,11 @@ def index():
         return render_template('index.html',
                                x=data['x'],
                                y=data['y'],
-                               layer1=data['layer1'],
-                               layer2=data['layer2'],
-                               layer3=data['layer3'],
-                               layer4=data['layer4'],
-                               layer5=data['layer5'], )
+                               layer1=data['layer1total'],
+                               layer2=data['layer2total'],
+                               layer3=data['layer3total'],
+                               layer4=data['layer4total'],
+                               layer5=data['layer5total'], )
     except Exception as e:
         print(e)
         return render_template('index.html')
@@ -51,9 +51,21 @@ def createjson():
     xint = int(x)
     yint = int(y)
 
+    d = {'nodes': [],
+         'links': [],
+         'x': xint,
+         'y': yint,
+         'layer1total': layer1nodesint,
+         'layer2total': layer2nodesint,
+         'layer3total': layer3nodesint,
+         'layer4total': layer4nodesint,
+         'layer5total': layer5nodesint}
+
+    for i in range(layer1nodesint):
+        d['nodes'].append({'id': i, 'group': 1})
+
     json_file = "d3.json"
-    d = {'x': xint, 'y': yint, 'layer1': layer1nodesint, 'layer2': layer2nodesint, 'layer3': layer3nodesint,
-         'layer4': layer4nodesint, 'layer5': layer5nodesint}
+
     try:
         with open(json_file, "w") as d3_json_out:
             json.dump(d, d3_json_out, indent=4, sort_keys=False)
