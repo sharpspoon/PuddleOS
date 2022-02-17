@@ -63,6 +63,14 @@ def createjson():
 
     for i in range(layer1nodesint):
         d['nodes'].append({'id': i, 'group': 1})
+    for i in range(layer2nodesint):
+        d['nodes'].append({'id': i, 'group': 2})
+    for i in range(layer3nodesint):
+        d['nodes'].append({'id': i, 'group': 3})
+    for i in range(layer4nodesint):
+        d['nodes'].append({'id': i, 'group': 4})
+    for i in range(layer5nodesint):
+        d['nodes'].append({'id': i, 'group': 5})
 
     json_file = "d3.json"
 
