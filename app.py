@@ -29,9 +29,9 @@ def d3json():
     return send_file('d3.json')
 
 
-@app.route("/graphjs", methods=["GET"])
+@app.route("/d3js", methods=["GET"])
 def graphjs():
-    return send_file('graph.js')
+    return send_file('d3.js')
 
 
 @app.route("/createjson", methods=["POST"])
@@ -62,15 +62,17 @@ def createjson():
          'layer5total': layer5nodesint}
 
     for i in range(layer1nodesint):
-        d['nodes'].append({'id': i, 'group': 1})
+        d['nodes'].append({'id': i, 'group': 1, 'size': 6})
     for i in range(layer2nodesint):
-        d['nodes'].append({'id': i, 'group': 2})
+        d['nodes'].append({'id': i, 'group': 2, 'size': 8})
     for i in range(layer3nodesint):
-        d['nodes'].append({'id': i, 'group': 3})
+        d['nodes'].append({'id': i, 'group': 3, 'size': 10})
     for i in range(layer4nodesint):
-        d['nodes'].append({'id': i, 'group': 4})
+        d['nodes'].append({'id': i, 'group': 4, 'size': 12})
     for i in range(layer5nodesint):
-        d['nodes'].append({'id': i, 'group': 5})
+        d['nodes'].append({'id': i, 'group': 5, 'size': 14})
+
+    print(d)
 
     json_file = "d3.json"
 
