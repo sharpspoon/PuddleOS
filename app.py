@@ -77,8 +77,6 @@ def createjson():
         d['nodes'].append({'id': i, 'group': 5, 'size': 14, 'fixed': True,
                            'x': random.randrange(0, xint), 'y': random.randrange(0, yint)})
 
-    print(d)
-
     json_file = "d3.json"
 
     try:
