@@ -6,6 +6,7 @@ var svg = d3.select("svg"),
 
     var simulation = d3.forceSimulation()
         .force("link", d3.forceLink().id(function (d) { return d.id; }))
+        //.force('x', d3.forceX((d) => xScale()).strength(20))
         //.force("charge", d3.forceManyBody())
         //.force("x", d3.forceX())
         //.force("y", d3.forceY())
@@ -28,6 +29,7 @@ var svg = d3.select("svg"),
             .enter().append("circle")
             .attr("r", function (d) { return d.size; })
             .attr("fill", function (d) { return color(d.group); })
+            .attr("opacity", 0.7);
             //.call(d3.drag()
             //    .on("start", dragstarted)
             //    .on("drag", dragged)

@@ -1,7 +1,7 @@
 import json
+import random
 
 from flask import Flask, render_template, request, redirect, url_for, send_file
-
 
 app = Flask(__name__)
 
@@ -51,26 +51,31 @@ def createjson():
     xint = int(x)
     yint = int(y)
 
-    d = {'nodes': [],
-         'links': [],
-         'x': xint,
+    d = {'x': xint,
          'y': yint,
          'layer1total': layer1nodesint,
          'layer2total': layer2nodesint,
          'layer3total': layer3nodesint,
          'layer4total': layer4nodesint,
-         'layer5total': layer5nodesint}
+         'layer5total': layer5nodesint,
+         'nodes': [],
+         'links': []}
 
     for i in range(layer1nodesint):
-        d['nodes'].append({'id': i, 'group': 1, 'size': 6})
+        d['nodes'].append({'id': i, 'group': 1, 'size': 6, 'fixed': True,
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint)})
     for i in range(layer2nodesint):
-        d['nodes'].append({'id': i, 'group': 2, 'size': 8})
+        d['nodes'].append({'id': i, 'group': 2, 'size': 8, 'fixed': True,
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint)})
     for i in range(layer3nodesint):
-        d['nodes'].append({'id': i, 'group': 3, 'size': 10})
+        d['nodes'].append({'id': i, 'group': 3, 'size': 10, 'fixed': True,
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint)})
     for i in range(layer4nodesint):
-        d['nodes'].append({'id': i, 'group': 4, 'size': 12})
+        d['nodes'].append({'id': i, 'group': 4, 'size': 12, 'fixed': True,
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint)})
     for i in range(layer5nodesint):
-        d['nodes'].append({'id': i, 'group': 5, 'size': 14})
+        d['nodes'].append({'id': i, 'group': 5, 'size': 14, 'fixed': True,
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint)})
 
     print(d)
 
