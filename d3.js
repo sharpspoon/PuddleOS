@@ -36,7 +36,7 @@ var svg = d3.select("svg"),
             //    .on("end", dragended));
 
         node.append("title")
-            .text(function (d) { return d.id; });
+            .text(function (d) { return "id:"+d.id+", layer:"+d.group+", x:"+d.x+", y:"+d.y; });
 
         simulation
             .nodes(graph.nodes)

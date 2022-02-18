@@ -94,6 +94,8 @@
         </div>
         <div class="col">
             <svg width="{{x}}" height="{{y}}"></svg>
+            <svg id="my_dataviz" width="500" height="500"></svg>
+
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -102,5 +104,17 @@
 </div>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="d3js"></script>
+<script>
+
+// select the svg area
+var svg2 = d3.select("#my_dataviz")
+
+// Handmade legend
+svg2.append("circle").attr("cx",700).attr("cy",130).attr("r", 6).style("fill", "#69b3a2")
+svg2.append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "#404080")
+svg2.append("text").attr("x", 220).attr("y", 130).text("variable A").style("font-size", "15px").attr("alignment-baseline","middle")
+svg2.append("text").attr("x", 220).attr("y", 160).text("variable B").style("font-size", "15px").attr("alignment-baseline","middle")
+
+</script>
 </body>
 </html>
