@@ -62,7 +62,7 @@ def createjson():
          'links': []}
 
     for i in range(layer1nodesint):
-        d['nodes'].append({'id': i, 'group': 1, 'size': 6, 'fixed': True,
+        d['nodes'].append({'id': i, 'group': 1, 'size': 4, 'fixed': True,
                            'x': random.randrange(0, xint), 'y': random.randrange(0, yint)})
     for i in range(layer2nodesint):
         d['nodes'].append({'id': i, 'group': 2, 'size': 8, 'fixed': True,
@@ -74,7 +74,7 @@ def createjson():
         d['nodes'].append({'id': i, 'group': 4, 'size': 12, 'fixed': True,
                            'x': random.randrange(0, xint), 'y': random.randrange(0, yint)})
     for i in range(layer5nodesint):
-        d['nodes'].append({'id': i, 'group': 5, 'size': 14, 'fixed': True,
+        d['nodes'].append({'id': i, 'group': 5, 'size': 20, 'fixed': True,
                            'x': random.randrange(0, xint), 'y': random.randrange(0, yint)})
 
     json_file = "d3.json"
