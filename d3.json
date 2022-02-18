@@ -3,7 +3,7 @@
     "y": 700,
     "layer1total": 1,
     "layer2total": 1,
-    "layer3total": 0,
+    "layer3total": 5,
     "layer4total": 0,
     "layer5total": 0,
     "nodes": [
@@ -12,16 +12,56 @@
             "group": 1,
             "size": 6,
             "fixed": true,
-            "x": 106,
-            "y": 394
+            "x": 634,
+            "y": 454
         },
         {
             "id": 0,
             "group": 2,
             "size": 8,
             "fixed": true,
-            "x": 72,
-            "y": 451
+            "x": 239,
+            "y": 69
+        },
+        {
+            "id": 0,
+            "group": 3,
+            "size": 10,
+            "fixed": true,
+            "x": 678,
+            "y": 94
+        },
+        {
+            "id": 1,
+            "group": 3,
+            "size": 10,
+            "fixed": true,
+            "x": 486,
+            "y": 588
+        },
+        {
+            "id": 2,
+            "group": 3,
+            "size": 10,
+            "fixed": true,
+            "x": 619,
+            "y": 653
+        },
+        {
+            "id": 3,
+            "group": 3,
+            "size": 10,
+            "fixed": true,
+            "x": 177,
+            "y": 88
+        },
+        {
+            "id": 4,
+            "group": 3,
+            "size": 10,
+            "fixed": true,
+            "x": 666,
+            "y": 483
         }
     ],
     "links": []

@@ -93,8 +93,7 @@
             </form>
         </div>
         <div class="col">
-            <svg width="{{x}}" height="{{y}}"></svg>
-            <svg id="my_dataviz" width="500" height="500"></svg>
+            <svg id="my_dataviz" width="{{x}}" height="{{y}}"></svg>
 
         </div>
     </div>
@@ -107,13 +106,10 @@
 <script>
 
 // select the svg area
-var svg2 = d3.select("#my_dataviz")
+var svg = d3.select("#my_dataviz")
 
 // Handmade legend
-svg2.append("circle").attr("cx",700).attr("cy",130).attr("r", 6).style("fill", "#69b3a2")
-svg2.append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "#404080")
-svg2.append("text").attr("x", 220).attr("y", 130).text("variable A").style("font-size", "15px").attr("alignment-baseline","middle")
-svg2.append("text").attr("x", 220).attr("y", 160).text("variable B").style("font-size", "15px").attr("alignment-baseline","middle")
+svg.append("text").attr("x", 15).attr("y", 15).text("(0,0)").style("font-size", "15px").attr("alignment-baseline","middle")
 
 </script>
 </body>
