@@ -33,7 +33,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
+  <div class="modal-dialog modal-dialog-scrollable modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
@@ -54,7 +54,6 @@
                            value={{y}} required>
                     <div id="yHelp" class="form-text">Enter the number of units for y</div>
                 </div>
-
                 <div class="mb-2">
                     <label for="layer1id" class="form-label">layer-1 nodes</label>
                     <input type="number" class="form-control" id="layer1id" name="layer1" aria-describedby="layer1Help"
@@ -91,20 +90,18 @@
                            required>
                     <div id="layer5Help" class="form-text">Enter the number of nodes for layer-5</div>
                 </div>
-
-      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
-          </form>
+      </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
-<div class="container">
     <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+        <div class="container">
+            <a class="navbar-brand" href="index">
                 PuddleOS
             </a>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -112,17 +109,18 @@
 </button>
         </div>
     </nav>
-    <div class="row">
+<div class="container">
+        <div class="row">
         <div class="col">
-            <div class="shadow-lg p-3 mb-5 bg-body rounded"><svg id="my_dataviz" width="{{x}}" height="{{y}}"></svg></div>
-
-
+            <div class="shadow-lg p-3 mb-5 bg-body rounded"><svg id="my_dataviz" width="{{x}}" height="{{y}}"></svg>
+            </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
-</div>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="d3js"></script>
 <script>
@@ -134,10 +132,12 @@ var svg = d3.select("#my_dataviz")
 svg.append("text").attr("x", 15).attr("y", 15).text("(0,0)").style("font-size", "15px").attr("alignment-baseline","middle")
 
 </script>
+
 <footer class="footer mt-auto py-3 bg-light">
   <div class="container">
     <span class="text-muted">Robin Ward</span>
   </div>
 </footer>
+
 </body>
 </html>
