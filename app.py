@@ -15,10 +15,15 @@ def index():
                                x=data['x'],
                                y=data['y'],
                                layer1=data['layer1total'],
+                               layer1color=data['layer1color'],
                                layer2=data['layer2total'],
+                               layer2color=data['layer2color'],
                                layer3=data['layer3total'],
+                               layer3color=data['layer3color'],
                                layer4=data['layer4total'],
-                               layer5=data['layer5total'], )
+                               layer4color=data['layer4color'],
+                               layer5=data['layer5total'],
+                               layer5color=data['layer5color'])
     except Exception as e:
         print(e)
         return render_template('index.html')
@@ -41,8 +46,16 @@ def createjson():
     layer3nodes = request.form.get("layer3")
     layer4nodes = request.form.get("layer4")
     layer5nodes = request.form.get("layer5")
+
+    layer1color = request.form.get("colorInput1")
+    layer2color = request.form.get("colorInput2")
+    layer3color = request.form.get("colorInput3")
+    layer4color = request.form.get("colorInput4")
+    layer5color = request.form.get("colorInput5")
+
     x = request.form.get("x")
     y = request.form.get("y")
+
     layer1nodesint = int(layer1nodes)
     layer2nodesint = int(layer2nodes)
     layer3nodesint = int(layer3nodes)
@@ -54,10 +67,15 @@ def createjson():
     d = {'x': xint,
          'y': yint,
          'layer1total': layer1nodesint,
+         'layer1color': layer1color,
          'layer2total': layer2nodesint,
+         'layer2color': layer2color,
          'layer3total': layer3nodesint,
+         'layer3color': layer3color,
          'layer4total': layer4nodesint,
+         'layer4color': layer4color,
          'layer5total': layer5nodesint,
+         'layer5color': layer5color,
          'nodes': [],
          'links': []}
 

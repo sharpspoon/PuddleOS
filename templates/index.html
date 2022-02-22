@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
     <style>
-
     .links line {
         stroke: #999;
         stroke-opacity: 0.6;
@@ -16,13 +15,6 @@
     svg {
   border:1px solid black;
 }
-
-
-
-
-
-
-
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -61,8 +53,8 @@
                                        aria-describedby="layer1Help"
                                        value={{layer1}}
                                        required></td>
-                            <td><input type="color" class="form-control form-control-color" id="exampleColorInput"
-                                       value="#563d7c" title="Choose your color"></td>
+                            <td><input type="color" class="form-control form-control-color" id="layer1colorid" name="colorInput1"
+                                       value={{layer1color}} title="Choose your color"></td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
@@ -70,16 +62,16 @@
                                        aria-describedby="layer2Help"
                                        value={{layer2}}
                                        required></td>
-                            <td><input type="color" class="form-control form-control-color" id="exampleColorInput2"
-                                       value="#563d7c" title="Choose your color"></td>
+                            <td><input type="color" class="form-control form-control-color" id="layer2colorid" name="colorInput2"
+                                       value={{layer2color}} title="Choose your color"></td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
                             <td><input type="number" class="form-control" id="layer3id" name="layer3"
                                        aria-describedby="layer3Help"
                                        value={{layer3}} required></td>
-                            <td><input type="color" class="form-control form-control-color" id="exampleColorInput3"
-                                       value="#563d7c" title="Choose your color"></td>
+                            <td><input type="color" class="form-control form-control-color" id="layer3colorid" name="colorInput3"
+                                       value={{layer3color}} title="Choose your color"></td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
@@ -87,8 +79,8 @@
                                        aria-describedby="layer4Help"
                                        value={{layer4}}
                                        required></td>
-                            <td><input type="color" class="form-control form-control-color" id="exampleColorInput4"
-                                       value="#563d7c" title="Choose your color"></td>
+                            <td><input type="color" class="form-control form-control-color" id="layer4colorid" name="colorInput4"
+                                       value={{layer4color}} title="Choose your color"></td>
                         </tr>
                         <tr>
                             <th scope="row">5</th>
@@ -96,8 +88,8 @@
                                        aria-describedby="layer5Help"
                                        value={{layer5}}
                                        required></td>
-                            <td><input type="color" class="form-control form-control-color" id="exampleColorInput5"
-                                       value="#563d7c" title="Choose your color"></td>
+                            <td><input type="color" class="form-control form-control-color" id="layer5colorid" name="colorInput5"
+                                       value={{layer5color}} title="Choose your color"></td>
                         </tr>
                         </tbody>
                     </table>
