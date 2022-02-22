@@ -81,19 +81,19 @@ def createjson():
 
     for i in range(layer1nodesint):
         d['nodes'].append({'id': i, 'group': 1, 'size': 4, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint)})
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer1color})
     for i in range(layer2nodesint):
         d['nodes'].append({'id': i, 'group': 2, 'size': 8, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint)})
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer2color})
     for i in range(layer3nodesint):
         d['nodes'].append({'id': i, 'group': 3, 'size': 10, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint)})
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer3color})
     for i in range(layer4nodesint):
         d['nodes'].append({'id': i, 'group': 4, 'size': 12, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint)})
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer4color})
     for i in range(layer5nodesint):
         d['nodes'].append({'id': i, 'group': 5, 'size': 20, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint)})
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer5color})
 
     json_file = "d3.json"
 

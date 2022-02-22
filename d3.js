@@ -28,7 +28,8 @@ var svg = d3.select("svg"),
             .data(graph.nodes)
             .enter().append("circle")
             .attr("r", function (d) { return d.size; })
-            .attr("fill", function (d) { return color(d.group); })
+            .attr("fill", function (d) { return d.color; })
+            //.attr("fill", function (d) { return color(d.group); })
             .attr("opacity", 0.7);
             //.call(d3.drag()
             //    .on("start", dragstarted)
