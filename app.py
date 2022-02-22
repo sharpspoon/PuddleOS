@@ -10,20 +10,55 @@ app = Flask(__name__)
 def index():
     db = open("d3.json")
     data = json.load(db)
+
+    if data['layer1visible'] == "on":
+        layer1display = "checked"
+    else:
+        layer1display = ""
+
+    if data['layer2visible'] == "on":
+        layer2display = "checked"
+    else:
+        layer2display = ""
+
+    if data['layer3visible'] == "on":
+        layer3display = "checked"
+    else:
+        layer3display = ""
+
+    if data['layer4visible'] == "on":
+        layer4display = "checked"
+    else:
+        layer4display = ""
+
+    if data['layer5visible'] == "on":
+        layer5display = "checked"
+    else:
+        layer5display = ""
     try:
         return render_template('index.html',
                                x=data['x'],
                                y=data['y'],
+
                                layer1=data['layer1total'],
                                layer1color=data['layer1color'],
+                               layer1visible=layer1display,
+
                                layer2=data['layer2total'],
                                layer2color=data['layer2color'],
+                               layer2visible=layer2display,
+
                                layer3=data['layer3total'],
                                layer3color=data['layer3color'],
+                               layer3visible=layer3display,
+
                                layer4=data['layer4total'],
                                layer4color=data['layer4color'],
+                               layer4visible=layer4display,
+
                                layer5=data['layer5total'],
-                               layer5color=data['layer5color'])
+                               layer5color=data['layer5color'],
+                               layer5visible=layer5display,)
     except Exception as e:
         print(e)
         return render_template('index.html')
@@ -53,6 +88,37 @@ def createjson():
     layer4color = request.form.get("colorInput4")
     layer5color = request.form.get("colorInput5")
 
+    layer1visibled3 = request.form.get("nodeDisplay1")
+    layer2visibled3 = request.form.get("nodeDisplay2")
+    layer3visibled3 = request.form.get("nodeDisplay3")
+    layer4visibled3 = request.form.get("nodeDisplay4")
+    layer5visibled3 = request.form.get("nodeDisplay5")
+
+    if layer1visibled3 == "on":
+        layer1visible = "visible"
+    else:
+        layer1visible = "hidden"
+
+    if layer2visibled3 == "on":
+        layer2visible = "visible"
+    else:
+        layer2visible = "hidden"
+
+    if layer3visibled3 == "on":
+        layer3visible = "visible"
+    else:
+        layer3visible = "hidden"
+
+    if layer4visibled3 == "on":
+        layer4visible = "visible"
+    else:
+        layer4visible = "hidden"
+
+    if layer5visibled3 == "on":
+        layer5visible = "visible"
+    else:
+        layer5visible = "hidden"
+
     x = request.form.get("x")
     y = request.form.get("y")
 
@@ -61,6 +127,7 @@ def createjson():
     layer3nodesint = int(layer3nodes)
     layer4nodesint = int(layer4nodes)
     layer5nodesint = int(layer5nodes)
+
     xint = int(x)
     yint = int(y)
 
@@ -68,32 +135,42 @@ def createjson():
          'y': yint,
          'layer1total': layer1nodesint,
          'layer1color': layer1color,
+         'layer1visible': layer1visibled3,
          'layer2total': layer2nodesint,
          'layer2color': layer2color,
+         'layer2visible': layer2visibled3,
          'layer3total': layer3nodesint,
          'layer3color': layer3color,
+         'layer3visible': layer3visibled3,
          'layer4total': layer4nodesint,
          'layer4color': layer4color,
+         'layer4visible': layer4visibled3,
          'layer5total': layer5nodesint,
          'layer5color': layer5color,
+         'layer5visible': layer5visibled3,
          'nodes': [],
          'links': []}
 
     for i in range(layer1nodesint):
         d['nodes'].append({'id': i, 'group': 1, 'size': 4, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer1color})
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer1color,
+                           'visibility': layer1visible})
     for i in range(layer2nodesint):
         d['nodes'].append({'id': i, 'group': 2, 'size': 8, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer2color})
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer2color,
+                           'visibility': layer2visible})
     for i in range(layer3nodesint):
         d['nodes'].append({'id': i, 'group': 3, 'size': 10, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer3color})
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer3color,
+                           'visibility': layer3visible})
     for i in range(layer4nodesint):
         d['nodes'].append({'id': i, 'group': 4, 'size': 12, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer4color})
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer4color,
+                           'visibility': layer4visible})
     for i in range(layer5nodesint):
         d['nodes'].append({'id': i, 'group': 5, 'size': 20, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer5color})
+                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer5color,
+                           'visibility': layer5visible})
 
     json_file = "d3.json"
 
