@@ -197,15 +197,22 @@ var svg = d3.select("#my_dataviz")
 var yminus = {{y}}-10
 
 // variable for x minus 10 in order to display the 0,0
-var xminus = {{x}}-15
+var xminus = {{x}}-65
+
+// variable for x minus 10 in order to display the 0,0
+var xyminus = {{x}}-90
+
+// Handmade legend for the 0,y display
+svg.append("text").attr("x", 0).attr("y", 10).text("(0,{{y}})").style("font-size", "15px").attr("alignment-baseline","middle")
 
 // Handmade legend for the 0,0 display
 svg.append("text").attr("x", 0).attr("y", yminus).text("(0,0)").style("font-size", "15px").attr("alignment-baseline","middle")
 
+// Handmade legend for the x,0 display
+svg.append("text").attr("x", xminus).attr("y", yminus).text("({{x}},0)").style("font-size", "15px").attr("alignment-baseline","middle")
 
-
-
-
+// Handmade legend for the x,y display
+svg.append("text").attr("x", xyminus).attr("y", 10).text("({{x}},{{y}})").style("font-size", "15px").attr("alignment-baseline","middle")
 </script>
 
 <footer class="footer mt-auto py-3 bg-light">
