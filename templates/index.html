@@ -193,8 +193,17 @@ background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'
 // select the svg area
 var svg = d3.select("#my_dataviz")
 
-// Handmade legend
-svg.append("text").attr("x", 15).attr("y", 15).text("(0,0)").style("font-size", "15px").attr("alignment-baseline","middle")
+// variable for y minus 10 in order to display the 0,0
+var yminus = {{y}}-10
+
+// variable for x minus 10 in order to display the 0,0
+var xminus = {{x}}-15
+
+// Handmade legend for the 0,0 display
+svg.append("text").attr("x", 0).attr("y", yminus).text("(0,0)").style("font-size", "15px").attr("alignment-baseline","middle")
+
+
+
 
 
 </script>

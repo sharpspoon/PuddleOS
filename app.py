@@ -59,7 +59,7 @@ def index():
 
                                layer5=data['layer5total'],
                                layer5color=data['layer5color'],
-                               layer5visible=layer5display,)
+                               layer5visible=layer5display, )
     except Exception as e:
         print(e)
         return render_template('index.html')
