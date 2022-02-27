@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=["GET"])
+@app.route("/index", methods=["GET"])
 def index():
     db = open("d3.json")
     data = json.load(db)
