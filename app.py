@@ -39,6 +39,7 @@ def index():
         return render_template('index.html',
                                x=data['x'],
                                y=data['y'],
+                               z=data['z'],
 
                                layer1=data['layer1total'],
                                layer1color=data['layer1color'],
@@ -121,6 +122,7 @@ def createjson():
 
     x = request.form.get("x")
     y = request.form.get("y")
+    z = request.form.get("z")
 
     layer1nodesint = int(layer1nodes)
     layer2nodesint = int(layer2nodes)
@@ -130,9 +132,11 @@ def createjson():
 
     xint = int(x)
     yint = int(y)
+    zint = int(z)
 
     d = {'x': xint,
          'y': yint,
+         'z': zint,
          'layer1total': layer1nodesint,
          'layer1color': layer1color,
          'layer1visible': layer1visibled3,
@@ -153,23 +157,38 @@ def createjson():
 
     for i in range(layer1nodesint):
         d['nodes'].append({'id': i, 'group': 1, 'size': 4, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer1color,
+                           'x': random.randrange(0, xint),
+                           'y': random.randrange(0, yint),
+                           'z': random.randrange(0, zint),
+                           'color': layer1color,
                            'visibility': layer1visible})
     for i in range(layer2nodesint):
         d['nodes'].append({'id': i, 'group': 2, 'size': 8, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer2color,
+                           'x': random.randrange(0, xint),
+                           'y': random.randrange(0, yint),
+                           'z': random.randrange(0, zint),
+                           'color': layer2color,
                            'visibility': layer2visible})
     for i in range(layer3nodesint):
         d['nodes'].append({'id': i, 'group': 3, 'size': 10, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer3color,
+                           'x': random.randrange(0, xint),
+                           'y': random.randrange(0, yint),
+                           'z': random.randrange(0, zint),
+                           'color': layer3color,
                            'visibility': layer3visible})
     for i in range(layer4nodesint):
         d['nodes'].append({'id': i, 'group': 4, 'size': 12, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer4color,
+                           'x': random.randrange(0, xint),
+                           'y': random.randrange(0, yint),
+                           'z': random.randrange(0, zint),
+                           'color': layer4color,
                            'visibility': layer4visible})
     for i in range(layer5nodesint):
         d['nodes'].append({'id': i, 'group': 5, 'size': 20, 'fixed': True,
-                           'x': random.randrange(0, xint), 'y': random.randrange(0, yint), 'color': layer5color,
+                           'x': random.randrange(0, xint),
+                           'y': random.randrange(0, yint),
+                           'z': random.randrange(0, zint),
+                           'color': layer5color,
                            'visibility': layer5visible})
 
     json_file = "d3.json"
