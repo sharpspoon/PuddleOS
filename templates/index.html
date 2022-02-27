@@ -15,7 +15,8 @@
     svg {
   border:1px solid black;
 }
-background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='10' ><path fill='%23FFFFFF' d='M 0,10 H 20 L 10,0 Z' /></svg>")  repeat-x;
+
+
 
 
     </style>
@@ -48,6 +49,7 @@ background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'
                             <th scope="col">Display</th>
                             <th scope="col"># of Nodes</th>
                             <th scope="col">Color</th>
+                            <th scope="col">Size</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -66,6 +68,10 @@ background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'
                             <td><input type="color" class="form-control form-control-color" id="layer1colorid"
                                        name="colorInput1"
                                        value={{layer1color}} title="Choose your color"></td>
+                            <td><input type="number" class="form-control" id="layer1sizeid" name="layer1size"
+                                       aria-describedby="layer1sizeHelp"
+                                       value={{layer1size}}
+                                       required></td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
@@ -82,6 +88,10 @@ background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'
                             <td><input type="color" class="form-control form-control-color" id="layer2colorid"
                                        name="colorInput2"
                                        value={{layer2color}} title="Choose your color"></td>
+                            <td><input type="number" class="form-control" id="layer2sizeid" name="layer2size"
+                                       aria-describedby="layer2sizeHelp"
+                                       value={{layer2size}}
+                                       required></td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
@@ -97,6 +107,10 @@ background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'
                             <td><input type="color" class="form-control form-control-color" id="layer3colorid"
                                        name="colorInput3"
                                        value={{layer3color}} title="Choose your color"></td>
+                            <td><input type="number" class="form-control" id="layer3sizeid" name="layer3size"
+                                       aria-describedby="layer3sizeHelp"
+                                       value={{layer3size}}
+                                       required></td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
@@ -113,6 +127,10 @@ background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'
                             <td><input type="color" class="form-control form-control-color" id="layer4colorid"
                                        name="colorInput4"
                                        value={{layer4color}} title="Choose your color"></td>
+                            <td><input type="number" class="form-control" id="layer4sizeid" name="layer4size"
+                                       aria-describedby="layer4sizeHelp"
+                                       value={{layer4size}}
+                                       required></td>
                         </tr>
                         <tr>
                             <th scope="row">5</th>
@@ -129,6 +147,10 @@ background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'
                             <td><input type="color" class="form-control form-control-color" id="layer5colorid"
                                        name="colorInput5"
                                        value={{layer5color}} title="Choose your color"></td>
+                            <td><input type="number" class="form-control" id="layer5sizeid" name="layer5size"
+                                       aria-describedby="layer5sizeHelp"
+                                       value={{layer5size}}
+                                       required></td>
                         </tr>
                         </tbody>
                     </table>
@@ -213,6 +235,8 @@ svg.append("text").attr("x", xminus).attr("y", yminus).text("({{x}},0)").style("
 
 // Handmade legend for the x,y display
 svg.append("text").attr("x", xyminus).attr("y", 10).text("({{x}},{{y}})").style("font-size", "15px").attr("alignment-baseline","middle")
+
+
 </script>
 
 <footer class="footer mt-auto py-3 bg-light">
