@@ -16,3 +16,11 @@
 7. The application should now be running under 127.0.0.1:5000
 
 ## User Guide
+Coming soon.
+
+## To-Do
+*not listed in any order of importance*
+1. Add clustering selection to modal (Needs to read and save cluster selection)
+2. Add node data to each layer accordian tab
+3. Add flag to display the Puddles or not
+4. Add logic to create Puddles on screen

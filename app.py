@@ -2,6 +2,7 @@ import json
 import random
 
 from flask import Flask, render_template, request, redirect, url_for, send_file
+from datetime import date
 
 app = Flask(__name__)
 
@@ -38,6 +39,7 @@ def index():
         layer5display = ""
     try:
         return render_template('index.html',
+                               year=date.today().year,
                                x=data['x'],
                                y=data['y'],
                                z=data['z'],
