@@ -16,6 +16,8 @@
   border:1px solid black;
 }
 
+
+
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -45,6 +47,7 @@
                         <tr>
                             <th scope="col">Layer #</th>
                             <th scope="col">Display</th>
+                            <th scope="col">Clustering Method</th>
                             <th scope="col"># of Nodes</th>
                             <th scope="col">Color</th>
                             <th scope="col">Size</th>
@@ -57,6 +60,17 @@
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch"
                                            id="nodeDisplay1id" name="nodeDisplay1" {{layer1visible}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group mb-3">
+                                    <select class="form-select" id="layer1ClusteringMethodId"
+                                            name="layer1ClusteringMethod">
+                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
+                                            Clustering
+                                        </option>
+                                        <option value="2">K-Means</option>
+                                    </select>
                                 </div>
                             </td>
                             <td><input type="number" class="form-control" id="layer1id" name="layer1"
@@ -79,6 +93,17 @@
                                            id="nodeDisplay2id" name="nodeDisplay2" {{layer2visible}}>
                                 </div>
                             </td>
+                            <td>
+                                <div class="input-group mb-3">
+                                    <select class="form-select" id="layer2ClusteringMethodId"
+                                            name="layer2ClusteringMethod">
+                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
+                                            Clustering
+                                        </option>
+                                        <option value="2">K-Means</option>
+                                    </select>
+                                </div>
+                            </td>
                             <td><input type="number" class="form-control" id="layer2id" name="layer2"
                                        aria-describedby="layer2Help"
                                        value={{layer2}}
@@ -97,6 +122,17 @@
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch"
                                            id="nodeDisplay3id" name="nodeDisplay3" {{layer3visible}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group mb-3">
+                                    <select class="form-select" id="layer3ClusteringMethodId"
+                                            name="layer3ClusteringMethod">
+                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
+                                            Clustering
+                                        </option>
+                                        <option value="2">K-Means</option>
+                                    </select>
                                 </div>
                             </td>
                             <td><input type="number" class="form-control" id="layer3id" name="layer3"
@@ -118,6 +154,17 @@
                                            id="nodeDisplay4id" name="nodeDisplay4" {{layer4visible}}>
                                 </div>
                             </td>
+                            <td>
+                                <div class="input-group mb-3">
+                                    <select class="form-select" id="layer4ClusteringMethodId"
+                                            name="layer4ClusteringMethod">
+                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
+                                            Clustering
+                                        </option>
+                                        <option value="2">K-Means</option>
+                                    </select>
+                                </div>
+                            </td>
                             <td><input type="number" class="form-control" id="layer4id" name="layer4"
                                        aria-describedby="layer4Help"
                                        value={{layer4}}
@@ -136,6 +183,17 @@
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch"
                                            id="nodeDisplay5id" name="nodeDisplay5" {{layer5visible}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group mb-3">
+                                    <select class="form-select" id="layer5ClusteringMethodId"
+                                            name="layer5ClusteringMethod">
+                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
+                                            Clustering
+                                        </option>
+                                        <option value="2">K-Means</option>
+                                    </select>
                                 </div>
                             </td>
                             <td><input type="number" class="form-control" id="layer5id" name="layer5"
@@ -205,6 +263,8 @@
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
+                                Randomly distributed fog nodes.
+                                <br>
                                 <svg id="my_dataviz" width="{{x}}" height="{{y}}"></svg>
                             </div>
                         </div>
@@ -340,6 +400,8 @@ svg.append("text").attr("x", xminus).attr("y", yminus).text("({{x}},0)").style("
 
 // Handmade legend for the x,y display
 svg.append("text").attr("x", xyminus).attr("y", 10).text("({{x}},{{y}})").style("font-size", "15px").attr("alignment-baseline","middle")
+
+
 
 
 
