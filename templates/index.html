@@ -18,6 +18,9 @@
 
 
 
+
+
+
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -48,6 +51,7 @@
                             <th scope="col">Layer #</th>
                             <th scope="col">Display</th>
                             <th scope="col">Clustering Method</th>
+                            <th scope="col">Puddles</th>
                             <th scope="col"># of Nodes</th>
                             <th scope="col">Color</th>
                             <th scope="col">Size</th>
@@ -69,8 +73,13 @@
                                         <option value="1" selected>Agglomerative Complete Linkage Hierarchical
                                             Clustering
                                         </option>
-                                        <option value="2">K-Means</option>
                                     </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch"
+                                           id="puddleDisplay1id" name="puddleDisplay1" {{layer1puddlevisible}}>
                                 </div>
                             </td>
                             <td><input type="number" class="form-control" id="layer1id" name="layer1"
@@ -100,8 +109,13 @@
                                         <option value="1" selected>Agglomerative Complete Linkage Hierarchical
                                             Clustering
                                         </option>
-                                        <option value="2">K-Means</option>
                                     </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch"
+                                           id="puddleDisplay2id" name="puddleDisplay2" {{layer2puddlevisible}}>
                                 </div>
                             </td>
                             <td><input type="number" class="form-control" id="layer2id" name="layer2"
@@ -131,8 +145,13 @@
                                         <option value="1" selected>Agglomerative Complete Linkage Hierarchical
                                             Clustering
                                         </option>
-                                        <option value="2">K-Means</option>
                                     </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch"
+                                           id="puddleDisplay3id" name="puddleDisplay3" {{layer3puddlevisible}}>
                                 </div>
                             </td>
                             <td><input type="number" class="form-control" id="layer3id" name="layer3"
@@ -161,8 +180,13 @@
                                         <option value="1" selected>Agglomerative Complete Linkage Hierarchical
                                             Clustering
                                         </option>
-                                        <option value="2">K-Means</option>
                                     </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch"
+                                           id="puddleDisplay4id" name="puddleDisplay4" {{layer4puddlevisible}}>
                                 </div>
                             </td>
                             <td><input type="number" class="form-control" id="layer4id" name="layer4"
@@ -192,8 +216,13 @@
                                         <option value="1" selected>Agglomerative Complete Linkage Hierarchical
                                             Clustering
                                         </option>
-                                        <option value="2">K-Means</option>
                                     </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch"
+                                           id="puddleDisplay5id" name="puddleDisplay5" {{layer5puddlevisible}}>
                                 </div>
                             </td>
                             <td><input type="number" class="form-control" id="layer5id" name="layer5"
@@ -400,6 +429,9 @@ svg.append("text").attr("x", xminus).attr("y", yminus).text("({{x}},0)").style("
 
 // Handmade legend for the x,y display
 svg.append("text").attr("x", xyminus).attr("y", 10).text("({{x}},{{y}})").style("font-size", "15px").attr("alignment-baseline","middle")
+
+
+
 
 
 
