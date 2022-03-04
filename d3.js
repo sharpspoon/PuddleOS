@@ -60,6 +60,7 @@ var svg = d3.select("svg"),
         }
     });
 
+/*
     function dragstarted(d) {
         if (!d3.event.active) simulation.alphaTarget(0.3).restart();
         d.fx = d.x;
@@ -75,4 +76,4 @@ var svg = d3.select("svg"),
         if (!d3.event.active) simulation.alphaTarget(0);
         d.fx = null;
         d.fy = null;
-    }
+    }*/

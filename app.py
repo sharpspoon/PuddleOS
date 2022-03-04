@@ -92,7 +92,7 @@ def index():
                                layer5color=data['layer5color'],
                                layer5visible=layer5display,
                                layer5size=data['layer5size'],
-                               layer5puddlevisible=layer5puddledisplay,)
+                               layer5puddlevisible=layer5puddledisplay, )
     except Exception as e:
         print(e)
         return render_template('index.html')
@@ -177,6 +177,7 @@ def createjson():
     layer3nodesint = int(layer3nodes)
     layer4nodesint = int(layer4nodes)
     layer5nodesint = int(layer5nodes)
+    totalnodes = layer1nodesint + layer2nodesint + layer3nodesint + layer4nodesint + layer5nodesint
     layer1sizeint = int(layer1size)
     layer2sizeint = int(layer2size)
     layer3sizeint = int(layer3size)
@@ -222,59 +223,76 @@ def createjson():
          'nodes': [],
          'links': []}
 
+    j = -1
+
     for i in range(layer1nodesint):
-        d['nodes'].append({'id': i, 'group': 1, 'size': layer1sizeint, 'fixed': True,
+        j += 1
+        d['nodes'].append({'id': j, 'group': 1, 'size': layer1sizeint, 'fixed': True,
                            'x': random.randrange(0, xint),
                            'y': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
                            'color': layer1color,
                            'visibility': layer1visible})
-        if layer1puddlevisible == "on":
-            d['links'].append({'puddleid': i, 'source': 1, 'target': i})
 
     for i in range(layer2nodesint):
-        d['nodes'].append({'id': i, 'group': 2, 'size': layer2sizeint, 'fixed': True,
+        j += 1
+        d['nodes'].append({'id': j, 'group': 2, 'size': layer2sizeint, 'fixed': True,
                            'x': random.randrange(0, xint),
                            'y': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
                            'color': layer2color,
                            'visibility': layer2visible})
-        if layer2puddlevisible == "on":
-            d['links'].append({'puddleid': i, 'source': 1, 'target': i})
 
     for i in range(layer3nodesint):
-        d['nodes'].append({'id': i, 'group': 3, 'size': layer3sizeint, 'fixed': True,
+        j += 1
+        d['nodes'].append({'id': j, 'group': 3, 'size': layer3sizeint, 'fixed': True,
                            'x': random.randrange(0, xint),
                            'y': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
                            'color': layer3color,
                            'visibility': layer3visible})
-        if layer3puddlevisible == "on":
-            d['links'].append({'puddleid': i, 'source': 1, 'target': i})
 
     for i in range(layer4nodesint):
-        d['nodes'].append({'id': i, 'group': 4, 'size': layer4sizeint, 'fixed': True,
+        j += 1
+        d['nodes'].append({'id': j, 'group': 4, 'size': layer4sizeint, 'fixed': True,
                            'x': random.randrange(0, xint),
                            'y': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
                            'color': layer4color,
                            'visibility': layer4visible})
-        if layer4puddlevisible == "on":
-            d['links'].append({'puddleid': i, 'source': 1, 'target': i})
 
     for i in range(layer5nodesint):
-        d['nodes'].append({'id': i, 'group': 5, 'size': layer5sizeint, 'fixed': True,
+        j += 1
+        d['nodes'].append({'id': j, 'group': 5, 'size': layer5sizeint, 'fixed': True,
                            'x': random.randrange(0, xint),
                            'y': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
                            'color': layer5color,
                            'visibility': layer5visible})
-        if layer5puddlevisible == "on":
-            d['links'].append({'puddleid': i, 'source': 1, 'target': i})
 
     # Clustering logic here...need to start by getting x,y values, then linking them based on those values
-    for i in range(layer2nodesint):
-        print(d['nodes'][i])
+    # Add function for each algo, call the algo depending on dropdown value
+    for i in range(totalnodes):
+        print("x=", d['nodes'][i])
+        # print("y=", d['nodes'][i]['y'])
+
+    for key, value in d.items():
+        v = d.get('nodes')
+        if key == ['nodes']:
+            print(key, value, v)
+    print(d['nodes'][1]['x'])
+
+    if layer1puddlevisible == "on":
+        d['links'].append({'puddleid': 1, 'source': 1, 'target': 6})
+
+    if layer2puddlevisible == "on":
+        d['links'].append({'puddleid': 2, 'source': 1, 'target': 7})
+    if layer3puddlevisible == "on":
+        d['links'].append({'puddleid': 3, 'source': 1, 'target': 8})
+    if layer4puddlevisible == "on":
+        d['links'].append({'puddleid': 4, 'source': 1, 'target': 9})
+    if layer5puddlevisible == "on":
+        d['links'].append({'puddleid': 5, 'source': 1, 'target': 10})
 
     try:
         with open("d3.json", "w") as d3_json_out:
