@@ -22,6 +22,6 @@ Coming soon.
 *not listed in any order of importance*
 1. Modify `GET` method to get the clustering method. Not necessary until another method is implemented.
 2. Add node data to each layer accordian tab
-3. Add flag to display the Puddles or not
+3. ~~Add flag to display the Puddles or not~~
 4. Add logic to create Puddles on screen
 5. Add randomize graph button

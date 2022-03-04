@@ -229,7 +229,8 @@ def createjson():
                            'z': random.randrange(0, zint),
                            'color': layer1color,
                            'visibility': layer1visible})
-        d['links'].append({'puddleid': i, 'source': 1, 'target': i})
+        if layer1puddlevisible == "on":
+            d['links'].append({'puddleid': i, 'source': 1, 'target': i})
 
     for i in range(layer2nodesint):
         d['nodes'].append({'id': i, 'group': 2, 'size': layer2sizeint, 'fixed': True,
@@ -238,6 +239,9 @@ def createjson():
                            'z': random.randrange(0, zint),
                            'color': layer2color,
                            'visibility': layer2visible})
+        if layer2puddlevisible == "on":
+            d['links'].append({'puddleid': i, 'source': 1, 'target': i})
+
     for i in range(layer3nodesint):
         d['nodes'].append({'id': i, 'group': 3, 'size': layer3sizeint, 'fixed': True,
                            'x': random.randrange(0, xint),
@@ -245,6 +249,9 @@ def createjson():
                            'z': random.randrange(0, zint),
                            'color': layer3color,
                            'visibility': layer3visible})
+        if layer3puddlevisible == "on":
+            d['links'].append({'puddleid': i, 'source': 1, 'target': i})
+
     for i in range(layer4nodesint):
         d['nodes'].append({'id': i, 'group': 4, 'size': layer4sizeint, 'fixed': True,
                            'x': random.randrange(0, xint),
@@ -252,6 +259,9 @@ def createjson():
                            'z': random.randrange(0, zint),
                            'color': layer4color,
                            'visibility': layer4visible})
+        if layer4puddlevisible == "on":
+            d['links'].append({'puddleid': i, 'source': 1, 'target': i})
+
     for i in range(layer5nodesint):
         d['nodes'].append({'id': i, 'group': 5, 'size': layer5sizeint, 'fixed': True,
                            'x': random.randrange(0, xint),
@@ -259,11 +269,15 @@ def createjson():
                            'z': random.randrange(0, zint),
                            'color': layer5color,
                            'visibility': layer5visible})
+        if layer5puddlevisible == "on":
+            d['links'].append({'puddleid': i, 'source': 1, 'target': i})
 
-    json_file = "d3.json"
+    # Clustering logic here...need to start by getting x,y values, then linking them based on those values
+    for i in range(layer2nodesint):
+        print(d['nodes'][i])
 
     try:
-        with open(json_file, "w") as d3_json_out:
+        with open("d3.json", "w") as d3_json_out:
             json.dump(d, d3_json_out, indent=4, sort_keys=False)
         return redirect(url_for('index'))
     except Exception as e:
