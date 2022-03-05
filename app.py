@@ -223,11 +223,11 @@ def createjson():
          'nodes': [],
          'links': []}
 
-    j = -1
+    g = -1
 
     for i in range(layer1nodesint):
-        j += 1
-        d['nodes'].append({'id': j, 'group': 1, 'size': layer1sizeint, 'fixed': True,
+        g += 1
+        d['nodes'].append({'id': g, 'group': 1, 'size': layer1sizeint, 'fixed': True,
                            'x': random.randrange(0, xint),
                            'y': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
@@ -235,8 +235,8 @@ def createjson():
                            'visibility': layer1visible})
 
     for i in range(layer2nodesint):
-        j += 1
-        d['nodes'].append({'id': j, 'group': 2, 'size': layer2sizeint, 'fixed': True,
+        g += 1
+        d['nodes'].append({'id': g, 'group': 2, 'size': layer2sizeint, 'fixed': True,
                            'x': random.randrange(0, xint),
                            'y': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
@@ -244,8 +244,8 @@ def createjson():
                            'visibility': layer2visible})
 
     for i in range(layer3nodesint):
-        j += 1
-        d['nodes'].append({'id': j, 'group': 3, 'size': layer3sizeint, 'fixed': True,
+        g += 1
+        d['nodes'].append({'id': g, 'group': 3, 'size': layer3sizeint, 'fixed': True,
                            'x': random.randrange(0, xint),
                            'y': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
@@ -253,8 +253,8 @@ def createjson():
                            'visibility': layer3visible})
 
     for i in range(layer4nodesint):
-        j += 1
-        d['nodes'].append({'id': j, 'group': 4, 'size': layer4sizeint, 'fixed': True,
+        g += 1
+        d['nodes'].append({'id': g, 'group': 4, 'size': layer4sizeint, 'fixed': True,
                            'x': random.randrange(0, xint),
                            'y': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
@@ -262,8 +262,8 @@ def createjson():
                            'visibility': layer4visible})
 
     for i in range(layer5nodesint):
-        j += 1
-        d['nodes'].append({'id': j, 'group': 5, 'size': layer5sizeint, 'fixed': True,
+        g += 1
+        d['nodes'].append({'id': g, 'group': 5, 'size': layer5sizeint, 'fixed': True,
                            'x': random.randrange(0, xint),
                            'y': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
@@ -272,27 +272,28 @@ def createjson():
 
     # Clustering logic here...need to start by getting x,y values, then linking them based on those values
     # Add function for each algo, call the algo depending on dropdown value
-    for i in range(totalnodes):
-        print("x=", d['nodes'][i])
-        # print("y=", d['nodes'][i]['y'])
 
-    for key, value in d.items():
-        v = d.get('nodes')
-        if key == ['nodes']:
-            print(key, value, v)
-    print(d['nodes'][1]['x'])
-
+    # Set the PuddleId to 0
+    pid = 0
     if layer1puddlevisible == "on":
-        d['links'].append({'puddleid': 1, 'source': 1, 'target': 6})
+        d['links'].append({'puddleid': 1, 'source': 1, 'target': 6})  # Placeholder, delete later
 
     if layer2puddlevisible == "on":
-        d['links'].append({'puddleid': 2, 'source': 1, 'target': 7})
+        for i in range(totalnodes):
+            if d['nodes'][i]['group'] == 2:
+                pid += 1
+                x = d['nodes'][i]['x']
+                y = d['nodes'][i]['y']
+                print("x=", x, "y=", y)  # Ignore this error.
+                print(algo1(x, y))
+                d['links'].append({'puddleid': pid, 'source': i, 'target': 7})
+
     if layer3puddlevisible == "on":
-        d['links'].append({'puddleid': 3, 'source': 1, 'target': 8})
+        d['links'].append({'puddleid': 3, 'source': 1, 'target': 8})  # Placeholder, delete later
     if layer4puddlevisible == "on":
-        d['links'].append({'puddleid': 4, 'source': 1, 'target': 9})
+        d['links'].append({'puddleid': 4, 'source': 1, 'target': 9})  # Placeholder, delete later
     if layer5puddlevisible == "on":
-        d['links'].append({'puddleid': 5, 'source': 1, 'target': 10})
+        d['links'].append({'puddleid': 5, 'source': 1, 'target': 10})  # Placeholder, delete later
 
     try:
         with open("d3.json", "w") as d3_json_out:
@@ -301,3 +302,7 @@ def createjson():
     except Exception as e:
         print(e)
         return "Failed to open d3.json file."
+
+
+def algo1(x, y):
+    return x + y
