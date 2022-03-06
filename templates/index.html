@@ -16,6 +16,8 @@
   border:1px solid black;
 }
 
+
+
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -28,7 +30,6 @@
 </head>
 <body>
 
-<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-xl">
         <div class="modal-content">
@@ -232,24 +233,22 @@
                         </tr>
                         </tbody>
                     </table>
-                    <div class="mb-2">
-                        <label for="xid" class="form-label">x (latitude)</label>
-                        <input type="number" class="form-control" id="xid" name="x" aria-describedby="xHelp"
-                               value={{x}}
-                               required>
-                        <div id="xHelp" class="form-text">Enter the number of units for x</div>
-                    </div>
-                    <div class="mb-2">
-                        <label for="yid" class="form-label">y (longitude)</label>
-                        <input type="number" class="form-control" id="yid" name="y" aria-describedby="yHelp"
-                               value={{y}} required>
-                        <div id="yHelp" class="form-text">Enter the number of units for y</div>
-                    </div>
-                    <div class="mb-2">
-                        <label for="zid" class="form-label">z ()</label>
-                        <input type="number" class="form-control" id="zid" name="z" aria-describedby="zHelp"
-                               value={{z}} required>
-                        <div id="zHelp" class="form-text">Enter the number of units for z</div>
+                    <div class="input-group">
+                        <span class="input-group-text">x (latitude)</span>
+                        <input type="number" aria-label="x" class="form-control" id="xid" name="x"
+                        value={{x}}
+                        required
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="Enter the value for x">
+                        <span class="input-group-text">y (longitude)</span>
+                        <input type="number" aria-label="y" class="form-control" id="yid" name="y"
+                        value={{y}}
+                        required
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="Enter the value for y">
+                        <span class="input-group-text">z</span>
+                        <input type="number" aria-label="z" class="form-control" id="zid" name="z"
+                        value={{z}}
+                        required
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="Enter the value for z">
                     </div>
                     <div class="modal-footer">
                         *Higher layer nodes should be depicted with a larger size vertices
@@ -423,6 +422,15 @@ svg.append("text").attr("x", xminus).attr("y", yminus).text("({{x}},0)").style("
 // Legend for the x,y display
 svg.append("text").attr("x", xyminus).attr("y", 10).text("({{x}},{{y}})").style("font-size", "15px").attr("alignment-baseline","middle")
 
+
+
+</script>
+
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
 </script>
 
 <footer class="footer mt-auto py-3 bg-light">

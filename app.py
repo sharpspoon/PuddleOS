@@ -286,13 +286,14 @@ def createjson():
 
     if layer2puddlevisible == "on":
         for i in range(totalnodes):
-            if d['nodes'][i]['group'] == 2:
+            if d['nodes'][i]['group'] == 2:  # Ignore this error.
                 pid += 1
-                x = d['nodes'][i]['x']  # Ignore this error.
-                y = d['nodes'][i]['y']  # Ignore this error.
-                z = d['nodes'][i]['z']  # Ignore this error.
-                print("x=", x, "y=", y, "z=", z)
-                print(euclidean(x, y, z, 1, 2, 3))
+                xa = d['nodes'][i]['x']  # Ignore this error.
+                ya = d['nodes'][i]['y']  # Ignore this error.
+                za = d['nodes'][i]['z']  # Ignore this error.
+                dst = euclidean(xa, ya, za, 1, 2, 3)
+                print("xa=", xa, "ya=", ya, "za=", za)
+                print(dst)
                 d['links'].append({'puddleid': pid, 'source': i, 'target': 7})
 
     if layer3puddlevisible == "on":
@@ -311,8 +312,8 @@ def createjson():
         return "Failed to open d3.json file."
 
 
-def euclidean(x1, y1, z1, x2, y2, z2):
-    a = (x1, y1, z1)
-    b = (x2, y2, z2)
+def euclidean(xa, ya, za, xb, yb, zb):
+    a = (xa, ya, za)
+    b = (xb, yb, zb)
     dst = distance.euclidean(a, b)
     return dst

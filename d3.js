@@ -10,7 +10,8 @@ var svg = d3.select("svg"),
         //.force("charge", d3.forceManyBody())
         //.force("x", d3.forceX())
         //.force("y", d3.forceY())
-        .force("center", d3.forceCenter(width / 2, height / 2));
+        //.stop();
+        //.force("center", d3.forceCenter(width / 2, height / 2));
 
     d3.json("d3json", function (error, graph) {
         if (error) throw error;
@@ -36,6 +37,7 @@ var svg = d3.select("svg"),
             //    .on("start", dragstarted)
             //    .on("drag", dragged)
             //    .on("end", dragended));
+            // Use a timeout to allow the rest of the page to load first.
 
         node.append("title")
             .text(function (d) { return "id:"+d.id+", layer:"+d.group+", x:"+d.x+", y:"+d.y+", z:"+d.z;; });
