@@ -286,15 +286,35 @@ def createjson():
 
     if layer2puddlevisible == "on":
         for i in range(totalnodes):
-            if d['nodes'][i]['group'] == 2:  # Ignore this error.
-                pid += 1
-                xa = d['nodes'][i]['x']  # Ignore this error.
-                ya = d['nodes'][i]['y']  # Ignore this error.
-                za = d['nodes'][i]['z']  # Ignore this error.
-                dst = euclidean(xa, ya, za, 1, 2, 3)
-                print("xa=", xa, "ya=", ya, "za=", za)
-                print(dst)
-                d['links'].append({'puddleid': pid, 'source': i, 'target': 7})
+            if d['nodes'][i]['group'] == 2:  # If the current node is in group 2.
+                pid += 1  # Increase the Puddle ID by 1 each time.
+
+                # Set the previous node values to 0
+                px = 0
+                py = 0
+                pz = 0
+
+                # Set the previous, source, and destination x, y, z variables
+                if d['nodes'][i - 1]['group'] == 2:  # If this previous node is in the same group
+                    # print(d['nodes'][i - 1])
+                    px = d['nodes'][i - 1]['x']
+                    py = d['nodes'][i - 1]['y']
+                    pz = d['nodes'][i - 1]['z']
+
+                xa = d['nodes'][i]['x']
+                ya = d['nodes'][i]['y']
+                za = d['nodes'][i]['z']
+                xb = d['nodes'][i + 1]['x']
+                yb = d['nodes'][i + 1]['y']
+                zb = d['nodes'][i + 1]['z']
+
+                pdst = euclidean(px, py, pz, xa, ya, za)  # Get the previous Euclidean distance
+                dst = euclidean(xa, ya, za, xb, yb, zb)  # Get the current Euclidean distance
+                print("px=", px, "py=", py, "pz=", pz, "xa=", xa, "ya=", ya, "za=", za, "xb=", xb, "yb=", yb, "zb=", zb)
+                print("dst=", dst, "pdst=", pdst)
+                if dst < pdst:
+                    if d['nodes'][i + 1]['group'] == 2:  # This designed to prevent adding a link to a higher group
+                        d['links'].append({'puddleid': pid, 'source': i, 'target': i + 1})
 
     if layer3puddlevisible == "on":
         d['links'].append({'puddleid': 3, 'source': 1, 'target': 8})  # Placeholder, delete later
