@@ -1,5 +1,7 @@
 import json
 import random
+import numpy as np
+from scipy.spatial import distance
 
 from flask import Flask, render_template, request, redirect, url_for, send_file
 from datetime import date
@@ -12,6 +14,9 @@ app = Flask(__name__)
 def index():
     db = open("d3.json")
     data = json.load(db)
+
+    totalnodes = data['layer1total'] + data['layer2total'] + data['layer3total'] + data['layer4total'] + data[
+        'layer5total']
 
     if data['layer1visible'] == "on":
         layer1display = "checked"
@@ -92,7 +97,8 @@ def index():
                                layer5color=data['layer5color'],
                                layer5visible=layer5display,
                                layer5size=data['layer5size'],
-                               layer5puddlevisible=layer5puddledisplay, )
+                               layer5puddlevisible=layer5puddledisplay,
+                               totalnodes=totalnodes)
     except Exception as e:
         print(e)
         return render_template('index.html')
@@ -282,10 +288,11 @@ def createjson():
         for i in range(totalnodes):
             if d['nodes'][i]['group'] == 2:
                 pid += 1
-                x = d['nodes'][i]['x']
-                y = d['nodes'][i]['y']
-                print("x=", x, "y=", y)  # Ignore this error.
-                print(algo1(x, y))
+                x = d['nodes'][i]['x']  # Ignore this error.
+                y = d['nodes'][i]['y']  # Ignore this error.
+                z = d['nodes'][i]['z']  # Ignore this error.
+                print("x=", x, "y=", y, "z=", z)
+                print(euclidean(x, y, z, 1, 2, 3))
                 d['links'].append({'puddleid': pid, 'source': i, 'target': 7})
 
     if layer3puddlevisible == "on":
@@ -304,5 +311,8 @@ def createjson():
         return "Failed to open d3.json file."
 
 
-def algo1(x, y):
-    return x + y
+def euclidean(x1, y1, z1, x2, y2, z2):
+    a = (x1, y1, z1)
+    b = (x2, y2, z2)
+    dst = distance.euclidean(a, b)
+    return dst
