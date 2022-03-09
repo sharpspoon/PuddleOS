@@ -69,6 +69,7 @@ def index():
         layer5puddledisplay = ""
     try:
         return render_template('index.html',
+                               nodedata=data['nodes'],
                                year=date.today().year,
                                x=data['x'],
                                y=data['y'],
@@ -147,6 +148,11 @@ def createjson():
     layer3puddlevisible = request.form.get("puddleDisplay3")
     layer4puddlevisible = request.form.get("puddleDisplay4")
     layer5puddlevisible = request.form.get("puddleDisplay5")
+    # randomizelayer1 = request.form.get("randomizeLayer1")
+    # randomizelayer2 = request.form.get("randomizeLayer2")
+    # randomizelayer3 = request.form.get("randomizeLayer3")
+    # randomizelayer4 = request.form.get("randomizeLayer4")
+    # randomizelayer5 = request.form.get("randomizeLayer5")
     x = request.form.get("x")
     y = request.form.get("y")
     z = request.form.get("z")
@@ -234,8 +240,8 @@ def createjson():
     for i in range(layer1nodesint):
         g += 1
         d['nodes'].append({'id': g, 'group': 1, 'size': layer1sizeint, 'fixed': True,
-                           'x': random.randrange(0, xint),
-                           'y': random.randrange(0, yint),
+                           'fx': random.randrange(0, xint),
+                           'fy': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
                            'color': layer1color,
                            'visibility': layer1visible})
@@ -243,8 +249,8 @@ def createjson():
     for i in range(layer2nodesint):
         g += 1
         d['nodes'].append({'id': g, 'group': 2, 'size': layer2sizeint, 'fixed': True,
-                           'x': random.randrange(0, xint),
-                           'y': random.randrange(0, yint),
+                           'fx': random.randrange(0, xint),
+                           'fy': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
                            'color': layer2color,
                            'visibility': layer2visible})
@@ -252,8 +258,8 @@ def createjson():
     for i in range(layer3nodesint):
         g += 1
         d['nodes'].append({'id': g, 'group': 3, 'size': layer3sizeint, 'fixed': True,
-                           'x': random.randrange(0, xint),
-                           'y': random.randrange(0, yint),
+                           'fx': random.randrange(0, xint),
+                           'fy': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
                            'color': layer3color,
                            'visibility': layer3visible})
@@ -261,8 +267,8 @@ def createjson():
     for i in range(layer4nodesint):
         g += 1
         d['nodes'].append({'id': g, 'group': 4, 'size': layer4sizeint, 'fixed': True,
-                           'x': random.randrange(0, xint),
-                           'y': random.randrange(0, yint),
+                           'fx': random.randrange(0, xint),
+                           'fy': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
                            'color': layer4color,
                            'visibility': layer4visible})
@@ -270,8 +276,8 @@ def createjson():
     for i in range(layer5nodesint):
         g += 1
         d['nodes'].append({'id': g, 'group': 5, 'size': layer5sizeint, 'fixed': True,
-                           'x': random.randrange(0, xint),
-                           'y': random.randrange(0, yint),
+                           'fx': random.randrange(0, xint),
+                           'fy': random.randrange(0, yint),
                            'z': random.randrange(0, zint),
                            'color': layer5color,
                            'visibility': layer5visible})
@@ -297,15 +303,15 @@ def createjson():
                 # Set the previous, source, and destination x, y, z variables
                 if d['nodes'][i - 1]['group'] == 2:  # If this previous node is in the same group
                     # print(d['nodes'][i - 1])
-                    px = d['nodes'][i - 1]['x']
-                    py = d['nodes'][i - 1]['y']
+                    px = d['nodes'][i - 1]['fx']
+                    py = d['nodes'][i - 1]['fy']
                     pz = d['nodes'][i - 1]['z']
 
-                xa = d['nodes'][i]['x']
-                ya = d['nodes'][i]['y']
+                xa = d['nodes'][i]['fx']
+                ya = d['nodes'][i]['fy']
                 za = d['nodes'][i]['z']
-                xb = d['nodes'][i + 1]['x']
-                yb = d['nodes'][i + 1]['y']
+                xb = d['nodes'][i + 1]['fx']
+                yb = d['nodes'][i + 1]['fy']
                 zb = d['nodes'][i + 1]['z']
 
                 pdst = euclidean(px, py, pz, xa, ya, za)  # Get the previous Euclidean distance

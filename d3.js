@@ -1,8 +1,9 @@
-var svg = d3.select("svg"),
-        width = +svg.attr("width"),
-        height = +svg.attr("height");
+d3.json("d3json", function (error, graph) {
+    if (error) throw error;
 
-    var color = d3.scaleOrdinal(d3.schemeCategory20);
+    var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
 
     var simulation = d3.forceSimulation()
         .force("link", d3.forceLink().id(function (d) { return d.id; }))
@@ -13,41 +14,39 @@ var svg = d3.select("svg"),
         //.stop();
         //.force("center", d3.forceCenter(width / 2, height / 2));
 
-    d3.json("d3json", function (error, graph) {
-        if (error) throw error;
 
-        var link = svg.append("g")
-            .attr("class", "links")
-            .selectAll("line")
-            .data(graph.links)
-            .enter().append("line")
-            .attr("stroke-width", function (d) { return Math.sqrt(d.value); });
+    var link = svg.append("g")
+        .attr("class", "links")
+        .selectAll("line")
+        .data(graph.links)
+        .enter().append("line")
+        //.attr("stroke-width", function (d) { return Math.sqrt(d.value); });
 
-        var node = svg.append("g")
-            .attr("class", "nodes")
-            .selectAll("circle")
-            .data(graph.nodes)
-            .enter().append("circle")
-            .attr("r", function (d) { return d.size; })
-            .attr("fill", function (d) { return d.color; })
-            .style("visibility", function (d) { return d.visibility; })
-            //.attr("fill", function (d) { return color(d.group); })
-            .attr("opacity", 0.7);
-            //.call(d3.drag()
-            //    .on("start", dragstarted)
-            //    .on("drag", dragged)
-            //    .on("end", dragended));
-            // Use a timeout to allow the rest of the page to load first.
+    var node = svg.append("g")
+        .attr("class", "nodes")
+        .selectAll("circle")
+        .data(graph.nodes)
+        .enter().append("circle")
+        .attr("r", function (d) { return d.size; })
+        .attr("fill", function (d) { return d.color; })
+        .style("visibility", function (d) { return d.visibility; })
+        //.attr("fill", function (d) { return color(d.group); })
+        .attr("opacity", 0.7);
+        //.call(d3.drag()
+        //    .on("start", dragstarted)
+        //    .on("drag", dragged)
+        //    .on("end", dragended));
+        // Use a timeout to allow the rest of the page to load first.
 
-        node.append("title")
-            .text(function (d) { return "id:"+d.id+", layer:"+d.group+", x:"+d.x+", y:"+d.y+", z:"+d.z;; });
+    node.append("title")
+        .text(function (d) { return "id:"+d.id+", layer:"+d.group+", x:"+d.fx+", y:"+d.fy+", z:"+d.z;; });
 
-        simulation
-            .nodes(graph.nodes)
-            .on("tick", ticked);
+    simulation
+        .nodes(graph.nodes)
+        .on("tick", ticked);
 
-        simulation.force("link")
-            .links(graph.links);
+    simulation.force("link")
+        .links(graph.links);
 
         function ticked() {
             link
