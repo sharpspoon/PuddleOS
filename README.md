@@ -19,10 +19,14 @@
 Coming soon.
 
 ## To-Do
-1. Need to remove physics when adding links to nodes.
+1. ~~Need to remove physics when adding links to nodes.~~
 2. Add "Randomize Nodes" tick box
 3. Modify `GET` method to get the clustering method. Not necessary until another method is implemented.
 4. Add node data to each layer accordian tab.
 5. ~~Add flag to display the Puddles or not~~
 6. Add logic to create Puddles on screen.
 7. Add randomize graph button.
+
+
+## Contact
+Robin Ward - rcw0024@auburn.edu
