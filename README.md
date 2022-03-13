@@ -27,6 +27,7 @@ Coming soon.
 6. Add logic to create Puddles on screen.
 7. Add randomize graph button.
 8. Add clustering output for each run to HTML
+9. Fix x,y locations on SVG
 
 
 ## Contact

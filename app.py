@@ -285,11 +285,7 @@ def createjson():
                            'color': layer5color,
                            'visibility': layer5visible})
 
-    # Clustering logic here...need to start by getting x,y values, then linking them based on those values
-    # Add function for each algo, call the algo depending on dropdown value
-
-    # Set the PuddleId to 0
-    pid = 0
+    pid = 0  # Set the PuddleId to 0
     if layer1puddlevisible == "on":
         d['links'].append({'puddleid': 1, 'source': 1, 'target': 6})  # Placeholder, delete later
 
@@ -318,11 +314,11 @@ def createjson():
 
                 for j in range(layer2nodesint):  # For this current node, loop through all other nodes and find closest
                     # Set the current destination node location
-                    xb = d['nodes'][j + layer2startid + 1]['fx']
-                    yb = d['nodes'][j + layer2startid + 1]['fy']
-                    zb = d['nodes'][j + layer2startid + 1]['z']
-                    idb = d['nodes'][j + layer2startid + 1]['id']
-                    print('layer2startid=', layer2startid, "currentid=",identifier,"targetid", idb)
+                    xb = d['nodes'][j + layer2startid]['fx']
+                    yb = d['nodes'][j + layer2startid]['fy']
+                    zb = d['nodes'][j + layer2startid]['z']
+                    idb = d['nodes'][j + layer2startid]['id']
+                    # print('layer2startid=', layer2startid, "currentid=",identifier,"targetid", idb)
 
                     # Only proceed if the node is not the same node and in same group
                     if identifier != idb and d['nodes'][idb]['group'] == 2:
@@ -331,7 +327,7 @@ def createjson():
                         dst = euclidean(xa, ya, za, xb, yb, zb)
                         if j == 0 or dst < bestdst:
                             bestdst = dst
-                            bestdstid = j + layer2startid + 1
+                            bestdstid = j + layer2startid
                         print("id=", identifier,
                               "targetid=", idb,
                               "px=", px,
@@ -347,7 +343,7 @@ def createjson():
                               "bestdstid", bestdstid,
                               "bestdst", bestdst)
 
-                d['links'].append({'puddleid': pid, 'source': i, 'target': bestdstid})
+                d['links'].append({'puddleid': pid, 'source': i, 'target': bestdstid, 'euclidean': bestdst})
 
     if layer3puddlevisible == "on":
         d['links'].append({'puddleid': 3, 'source': 1, 'target': 8})  # Placeholder, delete later
