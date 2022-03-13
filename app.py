@@ -7,6 +7,7 @@ from flask import Flask, render_template, request, redirect, url_for, send_file
 from datetime import date
 
 app = Flask(__name__)
+positive_infinity = float('inf')
 
 
 @app.route("/", methods=["GET"])
@@ -303,41 +304,47 @@ def createjson():
                     py = d['nodes'][i - 1]['fy']
                     pz = d['nodes'][i - 1]['z']
                 else:  # There is no previous node in this group.
-                    px = d['nodes'][i]['fx']
-                    py = d['nodes'][i]['fy']
-                    pz = d['nodes'][i]['z']
+                    px = None
+                    py = None
+                    pz = None
 
                 xa = d['nodes'][i]['fx']
                 ya = d['nodes'][i]['fy']
                 za = d['nodes'][i]['z']
 
                 identifier = d['nodes'][i]['id']
+                bestdst = None
+                bestdstid = None
 
-                for j in range(layer2nodesint):
-                    if j == 0:  # This is for the first node to create a link
-                        xb = d['nodes'][j + layer2startid + 1]['fx']
-                        yb = d['nodes'][j + layer2startid + 1]['fy']
-                        zb = d['nodes'][j + layer2startid + 1]['z']
-                        dst = euclidean(xa, ya, za, xb, yb, zb)  # Get the current Euclidean distance
-                        d['links'].append({'puddleid': pid, 'source': i, 'target': i + 1})
-                        print("first node dst=", dst)
+                for j in range(layer2nodesint):  # For this current node, loop through all other nodes and find closest
+                    # Set the current destination node location
+                    xb = d['nodes'][j + layer2startid + 1]['fx']
+                    yb = d['nodes'][j + layer2startid + 1]['fy']
+                    zb = d['nodes'][j + layer2startid + 1]['z']
+
+                    # Get the current Euclidean distance for the current node i, to target node j
+                    dst = euclidean(xa, ya, za, xb, yb, zb)
+                    if j == 0:
                         bestdst = dst
-                    else:
-                        xb = d['nodes'][j + layer2startid]['fx']
-                        yb = d['nodes'][j + layer2startid]['fy']
-                        zb = d['nodes'][j + layer2startid]['z']
-                        dst = euclidean(xa, ya, za, xb, yb, zb)  # Get the current Euclidean distance
-                        print("id=", identifier, "px=", px, "py=", py, "pz=", pz, "xa=", xa, "ya=", ya, "za=", za,
-                              "xb=", xb,
-                              "yb=", yb, "zb=", zb)
-                        if dst < bestdst:
-                            bestdst = dst
+                        bestdstid = j + layer2startid + 1
+                    elif dst < bestdst:
+                        bestdst = dst
+                        bestdstid = j + layer2startid + 1
+                    print("id=", identifier,
+                          "px=", px,
+                          "py=", py,
+                          "pz=", pz,
+                          "xa=", xa,
+                          "ya=", ya,
+                          "za=", za,
+                          "xb=", xb,
+                          "yb=", yb,
+                          "zb=", zb,
+                          "dst", dst,
+                          "bestdstid", bestdstid,
+                          "bestdst", bestdst)
 
-                print("dst=", dst, "bestdst=", bestdst)
-
-                if dst < bestdst:
-                    if d['nodes'][i + 1]['group'] == 2:  # This designed to prevent adding a link to a higher group
-                        d['links'].append({'puddleid': pid, 'source': i, 'target': i + 1})
+                d['links'].append({'puddleid': pid, 'source': i, 'target': bestdstid})
 
     if layer3puddlevisible == "on":
         d['links'].append({'puddleid': 3, 'source': 1, 'target': 8})  # Placeholder, delete later
