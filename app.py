@@ -313,7 +313,7 @@ def createjson():
                 za = d['nodes'][i]['z']
 
                 identifier = d['nodes'][i]['id']
-                bestdst = None
+                bestdst = 10000
                 bestdstid = None
 
                 for j in range(layer2nodesint):  # For this current node, loop through all other nodes and find closest
@@ -321,28 +321,31 @@ def createjson():
                     xb = d['nodes'][j + layer2startid + 1]['fx']
                     yb = d['nodes'][j + layer2startid + 1]['fy']
                     zb = d['nodes'][j + layer2startid + 1]['z']
+                    idb = d['nodes'][j + layer2startid + 1]['id']
+                    print('layer2startid=', layer2startid, "currentid=",identifier,"targetid", idb)
 
-                    # Get the current Euclidean distance for the current node i, to target node j
-                    dst = euclidean(xa, ya, za, xb, yb, zb)
-                    if j == 0:
-                        bestdst = dst
-                        bestdstid = j + layer2startid + 1
-                    elif dst < bestdst:
-                        bestdst = dst
-                        bestdstid = j + layer2startid + 1
-                    print("id=", identifier,
-                          "px=", px,
-                          "py=", py,
-                          "pz=", pz,
-                          "xa=", xa,
-                          "ya=", ya,
-                          "za=", za,
-                          "xb=", xb,
-                          "yb=", yb,
-                          "zb=", zb,
-                          "dst", dst,
-                          "bestdstid", bestdstid,
-                          "bestdst", bestdst)
+                    # Only proceed if the node is not the same node and in same group
+                    if identifier != idb and d['nodes'][idb]['group'] == 2:
+
+                        # Get the current Euclidean distance for the current node i, to target node j
+                        dst = euclidean(xa, ya, za, xb, yb, zb)
+                        if j == 0 or dst < bestdst:
+                            bestdst = dst
+                            bestdstid = j + layer2startid + 1
+                        print("id=", identifier,
+                              "targetid=", idb,
+                              "px=", px,
+                              "py=", py,
+                              "pz=", pz,
+                              "xa=", xa,
+                              "ya=", ya,
+                              "za=", za,
+                              "xb=", xb,
+                              "yb=", yb,
+                              "zb=", zb,
+                              "dst", dst,
+                              "bestdstid", bestdstid,
+                              "bestdst", bestdst)
 
                 d['links'].append({'puddleid': pid, 'source': i, 'target': bestdstid})
 

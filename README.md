@@ -26,6 +26,7 @@ Coming soon.
 5. ~~Add flag to display the Puddles or not~~
 6. Add logic to create Puddles on screen.
 7. Add randomize graph button.
+8. Add clustering output for each run to HTML
 
 
 ## Contact
