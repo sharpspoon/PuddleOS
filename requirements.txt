@@ -1,1 +1,9 @@
-Flask~=2.0.2
+click==8.0.3
+Flask==2.0.2
+gunicorn==20.1.0
+itsdangerous==2.0.1
+Jinja2==3.0.3
+MarkupSafe==2.0.1
+numpy==1.22.2
+scipy==1.8.0
+Werkzeug==2.0.3
