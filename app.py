@@ -100,7 +100,8 @@ def index():
                                layer5visible=layer5display,
                                layer5size=data['layer5size'],
                                layer5puddlevisible=layer5puddledisplay,
-                               totalnodes=totalnodes)
+                               totalnodes=totalnodes,
+                               log=data['log'])
     except Exception as e:
         print(e)
         return render_template('index.html')
@@ -201,6 +202,7 @@ def createjson():
     xint = int(x)
     yint = int(y)
     zint = int(z)
+    log = ""
 
     d = {'x': xint,
          'y': yint,
@@ -236,7 +238,8 @@ def createjson():
          'layer5clustering': layer5clustering,
          'layer5puddlevisible': layer5puddlevisible,
          'nodes': [],
-         'links': []}
+         'links': [],
+         'log': log}
 
     g = -1
 
@@ -328,20 +331,26 @@ def createjson():
                         if j == 0 or dst < bestdst:
                             bestdst = dst
                             bestdstid = j + layer2startid
-                        print("id=", identifier,
-                              "targetid=", idb,
-                              "px=", px,
-                              "py=", py,
-                              "pz=", pz,
-                              "xa=", xa,
-                              "ya=", ya,
-                              "za=", za,
-                              "xb=", xb,
-                              "yb=", yb,
-                              "zb=", zb,
-                              "dst", dst,
-                              "bestdstid", bestdstid,
-                              "bestdst", bestdst)
+                        if j == 0:
+                            log += ("id=" + str(identifier) + " targetid=" + str(idb) + " px=" + str(px) +
+                                    " py=" + str(py) + " pz=" + str(pz) + " xa=" + str(xa) + " ya=" + str(
+                                        ya) + " za=" + str(za)
+                                    + " xb=" + str(xb) +
+                                    " yb=" + str(yb) +
+                                    " zb=" + str(zb) +
+                                    " dst=" + str(dst) +
+                                    " bestdstid=" + str(bestdstid) +
+                                    " bestdst=" + str(bestdst) + '\n')
+                        else:
+                            log += (
+                                    "id=" + str(identifier) + " targetid=" + str(idb) + " xa=" + str(xa) + " ya="
+                                    + str(ya) + " za=" + str(za)
+                                    + " xb=" + str(xb) +
+                                    " yb=" + str(yb) +
+                                    " zb=" + str(zb) +
+                                    " dst=" + str(dst) +
+                                    " bestdstid=" + str(bestdstid) +
+                                    " bestdst=" + str(bestdst) + "\n")
 
                 d['links'].append({'puddleid': pid, 'source': i, 'target': bestdstid, 'euclidean': bestdst})
 
@@ -351,6 +360,9 @@ def createjson():
         d['links'].append({'puddleid': 4, 'source': 1, 'target': 9})  # Placeholder, delete later
     if layer5puddlevisible == "on":
         d['links'].append({'puddleid': 5, 'source': 1, 'target': 10})  # Placeholder, delete later
+
+    print(log)
+    d['log'] = log
 
     try:
         with open("d3.json", "w") as d3_json_out:

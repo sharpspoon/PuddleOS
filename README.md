@@ -21,11 +21,8 @@ Coming soon.
 ## To-Do
 1.Add "Randomize Nodes" tick box.
 2. Modify `GET` method to get the clustering method. Not necessary until another method is implemented.
-3. Add node data to each layer accordian tab.
-4. Add logic to create Puddles on screen.
-5. Add randomize graph button.
-6. Add clustering output for each run to HTML.
-7. Fix heroku deployment.
+3. Add randomize graph button.
+4. Add clustering output for each run to HTML.
 
 
 ## Contact
