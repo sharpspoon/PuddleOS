@@ -16,6 +16,7 @@
   border:1px solid black;
 }
 
+
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -346,7 +347,29 @@
                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                          data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            {{log}}
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">target id</th>
+                                    <th scope="col">px</th>
+                                    <th scope="col">py</th>
+                                    <th scope="col">pz</th>
+                                    <th scope="col">xa</th>
+                                    <th scope="col">ya</th>
+                                    <th scope="col">za</th>
+                                    <th scope="col">xb</th>
+                                    <th scope="col">yb</th>
+                                    <th scope="col">zb</th>
+                                    <th scope="col">dst</th>
+                                    <th scope="col">bestdst</th>
+                                    <th scope="col">bestdstid</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {{log | safe}}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -386,6 +409,7 @@ svg.append("text").attr("x", xminus).attr("y", yminus).text("({{x}},{{y}})").sty
 // Legend for the x,y display
 svg.append("text").attr("x", xyminus).attr("y", 10).text("({{x}},0)").style("font-size", "15px").attr("alignment-baseline","middle")
 
+
 </script>
 
 <script>
@@ -393,6 +417,7 @@ svg.append("text").attr("x", xyminus).attr("y", 10).text("({{x}},0)").style("fon
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
+
 
 </script>
 

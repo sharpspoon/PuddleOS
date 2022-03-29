@@ -1,10 +1,9 @@
 import json
 import random
-import numpy as np
-from scipy.spatial import distance
+from datetime import date
 
 from flask import Flask, render_template, request, redirect, url_for, send_file
-from datetime import date
+from scipy.spatial import distance
 
 app = Flask(__name__)
 positive_infinity = float('inf')
@@ -331,26 +330,16 @@ def createjson():
                         if j == 0 or dst < bestdst:
                             bestdst = dst
                             bestdstid = j + layer2startid
-                        if j == 0:
-                            log += ("id=" + str(identifier) + " targetid=" + str(idb) + " px=" + str(px) +
-                                    " py=" + str(py) + " pz=" + str(pz) + " xa=" + str(xa) + " ya=" + str(
-                                        ya) + " za=" + str(za)
-                                    + " xb=" + str(xb) +
-                                    " yb=" + str(yb) +
-                                    " zb=" + str(zb) +
-                                    " dst=" + str(dst) +
-                                    " bestdstid=" + str(bestdstid) +
-                                    " bestdst=" + str(bestdst) + '\n')
-                        else:
-                            log += (
-                                    "id=" + str(identifier) + " targetid=" + str(idb) + " xa=" + str(xa) + " ya="
-                                    + str(ya) + " za=" + str(za)
-                                    + " xb=" + str(xb) +
-                                    " yb=" + str(yb) +
-                                    " zb=" + str(zb) +
-                                    " dst=" + str(dst) +
-                                    " bestdstid=" + str(bestdstid) +
-                                    " bestdst=" + str(bestdst) + "\n")
+                        log += (
+                                '''<tr><th scope="row">''' + str(identifier) + "</th><td>" + str(idb) + "</td><td>" + str(px) +
+                                "</td><td>" + str(py) + "</td><td>" + str(pz) + "</td><td>" + str(xa) + "</td><td>" + str(
+                                    ya) + "</td><td>" + str(za)
+                                + "</td><td>" + str(xb) +
+                                "</td><td>" + str(yb) +
+                                "</td><td>" + str(zb) +
+                                "</td><td>" + str(dst) +
+                                "</td><td>" + str(bestdst) +
+                                "</td><td>" + str(bestdstid) + '</td></tr>')
 
                 d['links'].append({'puddleid': pid, 'source': i, 'target': bestdstid, 'euclidean': bestdst})
 

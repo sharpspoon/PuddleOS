@@ -22,7 +22,6 @@ Coming soon.
 1.Add "Randomize Nodes" tick box.
 2. Modify `GET` method to get the clustering method. Not necessary until another method is implemented.
 3. Add randomize graph button.
-4. Add clustering output for each run to HTML.
 
 
 ## Contact
