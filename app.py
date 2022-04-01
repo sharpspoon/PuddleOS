@@ -188,11 +188,10 @@ def createjson():
          'links': [],
          'log': log}
 
-    g = -1
 
     # This function will create a new node with the speicified parameters
     # If you need a different fx,fy,fz, you can specify it when called.
-    def newNode(id, group, size, color, visibility,
+    def newNode(id: int, group: int, size: int, color: str, visibility: str,
             fx = None, 
             fy = None, 
             z = None):
@@ -204,8 +203,9 @@ def createjson():
                 'fy': fy if fy else random.randrange(0, yint),
                 'z': z if z else random.randrange(0, zint),
                 'color': color,
-                'visible': visibility}
+                'visibility': visibility}
 
+    g = -1
     for i in range(layer1nodesint):
         g += 1
         d['nodes'].append(newNode(g, 1, layer1nodesint, layer1color, layer1visible))
