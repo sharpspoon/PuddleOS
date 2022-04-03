@@ -1,5 +1,6 @@
 import json
 import random
+import math
 from datetime import date
 
 from flask import Flask, render_template, request, redirect, url_for, send_file
@@ -191,7 +192,7 @@ def createjson():
 
     # This function will create a new node with the speicified parameters
     # If you need a different fx,fy,fz, you can specify it when called.
-    def newNode(id: int, group: int, size: int, color: str, visibility: str,
+    def newNode(id, group, size, color, visibility,
             fx = None, 
             fy = None, 
             z = None):
@@ -208,23 +209,23 @@ def createjson():
     g = -1
     for i in range(layer1nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 1, layer1nodesint, layer1color, layer1visible))
+        d['nodes'].append(newNode(g, 1, layer1sizeint, layer1color, layer1visible))
 
     for i in range(layer2nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 2, layer2nodesint, layer2color, layer2visible))
+        d['nodes'].append(newNode(g, 2, layer2sizeint, layer2color, layer2visible))
 
     for i in range(layer3nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 3, layer3nodesint, layer3color, layer3visible))
+        d['nodes'].append(newNode(g, 3, layer3sizeint, layer3color, layer3visible))
 
     for i in range(layer4nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 4, layer4nodesint, layer4color, layer4visible))
+        d['nodes'].append(newNode(g, 4, layer4sizeint, layer4color, layer4visible))
 
     for i in range(layer5nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 5, layer5nodesint, layer5color, layer5visible))
+        d['nodes'].append(newNode(g, 5, layer5sizeint, layer5color, layer5visible))
         
 
     pid = 0  # Set the PuddleId to 0
@@ -232,8 +233,10 @@ def createjson():
         d['links'].append({'puddleid': 1, 'source': 1, 'target': 6})  # Placeholder, delete later
 
     if layer2puddlevisible == "on":
-        for i in range(totalnodes):
-            if d['nodes'][i]['group'] == 2:  # If the current node is in group 2.
+        for i in range(layer2startid, layer2nodesint):
+            # Get the node at the current index
+            node_a = d['nodes'][i]
+            if node_a['group'] == 2:  # If the current node is in group 2.
                 pid += 1  # Increase the Puddle ID by 1 each time.
 
                 # Set the previous, source, and destination x, y, z variables
@@ -246,20 +249,21 @@ def createjson():
                     py = None
                     pz = None
 
-                xa = d['nodes'][i]['fx']
-                ya = d['nodes'][i]['fy']
-                za = d['nodes'][i]['z']
+                xa = node_a['fx']
+                ya = node_a['fy']
+                za = node_a['z']
 
                 identifier = d['nodes'][i]['id']
-                bestdst = 10000
+                bestdst = float('inf')
                 bestdstid = None
 
-                for j in range(layer2nodesint):  # For this current node, loop through all other nodes and find closest
+                for j in range(layer2startid, layer2nodesint):  # For this current node, loop through all other nodes and find closest
                     # Set the current destination node location
-                    xb = d['nodes'][j + layer2startid]['fx']
-                    yb = d['nodes'][j + layer2startid]['fy']
-                    zb = d['nodes'][j + layer2startid]['z']
-                    idb = d['nodes'][j + layer2startid]['id']
+                    node_b = d['nodes'][j]
+                    xb = node_b['fx']
+                    yb = node_b['fy']
+                    zb = node_b['z']
+                    idb = node_b['id']
                     # print('layer2startid=', layer2startid, "currentid=",identifier,"targetid", idb)
 
                     # Only proceed if the node is not the same node and in same group
@@ -267,9 +271,9 @@ def createjson():
 
                         # Get the current Euclidean distance for the current node i, to target node j
                         dst = euclidean(xa, ya, za, xb, yb, zb)
-                        if j == 0 or dst < bestdst:
+                        if j == layer2startid or dst < bestdst:
                             bestdst = dst
-                            bestdstid = j + layer2startid
+                            bestdstid = j
                         log += (
                                 '''<tr><th scope="row">''' + str(identifier) + "</th><td>" + str(idb) + "</td><td>" + str(px) +
                                 "</td><td>" + str(py) + "</td><td>" + str(pz) + "</td><td>" + str(xa) + "</td><td>" + str(
@@ -290,7 +294,7 @@ def createjson():
     if layer5puddlevisible == "on":
         d['links'].append({'puddleid': 5, 'source': 1, 'target': 10})  # Placeholder, delete later
 
-    # print(log)
+    print('\n' + str(len(log)) + " characters added to log.\n")
     d['log'] = log
 
     try:
@@ -303,7 +307,10 @@ def createjson():
 
 
 def euclidean(xa, ya, za, xb, yb, zb):
-    a = (xa, ya, za)
-    b = (xb, yb, zb)
-    dst = distance.euclidean(a, b)
+    # a = (xa, ya, za)
+    # b = (xb, yb, zb)
+    # dst = distance.euclidean(a, b)
+
+    # tests on Matthew's computer ran math.hypot about 10-100x faster than scipy's function
+    dst = math.hypot(xa-xb, ya-yb, za-zb)
     return dst
