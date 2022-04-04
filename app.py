@@ -233,7 +233,7 @@ def createjson():
         d['links'].append({'puddleid': 1, 'source': 1, 'target': 6})  # Placeholder, delete later
 
     if layer2puddlevisible == "on":
-        for i in range(layer2startid, layer2nodesint):
+        for i in range(layer2startid, layer2startid+layer2nodesint):
             # Get the node at the current index
             node_a = d['nodes'][i]
             if node_a['group'] == 2:  # If the current node is in group 2.
@@ -257,7 +257,7 @@ def createjson():
                 bestdst = float('inf')
                 bestdstid = None
 
-                for j in range(layer2startid, layer2nodesint):  # For this current node, loop through all other nodes and find closest
+                for j in range(layer2startid, layer2startid+layer2nodesint):  # For this current node, loop through all other nodes and find closest
                     # Set the current destination node location
                     node_b = d['nodes'][j]
                     xb = node_b['fx']
@@ -284,7 +284,6 @@ def createjson():
                                 "</td><td>" + str(dst) +
                                 "</td><td>" + str(bestdst) +
                                 "</td><td>" + str(bestdstid) + '</td></tr>')
-
                 d['links'].append({'puddleid': pid, 'source': i, 'target': bestdstid, 'euclidean': bestdst})
 
     if layer3puddlevisible == "on":
