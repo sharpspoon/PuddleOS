@@ -16,6 +16,9 @@
     svg {
         border:1px solid black;
     }
+
+
+
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -27,7 +30,6 @@
     <title>PuddleOS</title>
 </head>
 <body>
-
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-xl">
         <div class="modal-content">
@@ -290,13 +292,17 @@
         </div>
     </div>
 </div>
+<div class="container">
+</div>
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="index">
-        PuddleOS
-    </a>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Settings
-    </button>
+    <div class="container">
+        <a class="navbar-brand" href="index">
+            PuddleOS
+        </a>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Settings
+        </button>
+    </div>
 </nav>
 <div class="row">
     <div class="shadow-lg p-3 mb-5 bg-body rounded">
@@ -366,7 +372,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    {{log | safe}}
+                                {{log | safe}}
                                 </tbody>
                             </table>
                         </div>
@@ -409,6 +415,9 @@ svg.append("text").attr("x", xminus).attr("y", yminus).text("({{x}},{{y}})").sty
 svg.append("text").attr("x", xyminus).attr("y", 10).text("({{x}},0)").style("font-size", "15px").attr("alignment-baseline","middle")
 
 
+
+
+
 </script>
 
 <script>
@@ -421,7 +430,10 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 </script>
 
 <footer class="footer mt-auto py-3 bg-light">
-    <span class="text-muted">{{year}}, Auburn University</span>
+    <div class="container">
+        <span class="text-muted">{{year}}, Auburn University</span>
+    </div>
+
 </footer>
 
 </body>

@@ -1,9 +1,12 @@
+app==0.0.1
 click==8.0.3
 Flask==2.0.2
 gunicorn==20.1.0
 itsdangerous==2.0.1
 Jinja2==3.0.3
 MarkupSafe==2.0.1
-numpy==1.22.2
-scipy==1.8.0
+numpy==1.22.3
+pip==20.2.4
+setuptools==49.2.1
+tinydb==4.6.1
 Werkzeug==2.0.3

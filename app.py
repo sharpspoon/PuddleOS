@@ -1,17 +1,16 @@
 import json
-import random
 import math
+import random
 from datetime import date
 
 from flask import Flask, render_template, request, redirect, url_for, send_file
-from scipy.spatial import distance
 
 app = Flask(__name__)
+
 
 @app.route("/", methods=["GET"])
 @app.route("/index", methods=["GET"])
 def index():
-
     data = None
     try:
         with open("d3.json") as f:
@@ -34,7 +33,7 @@ def index():
     layer3puddledisplay = "checked" if data['layer3puddlevisible'] == "on" else ""
     layer4puddledisplay = "checked" if data['layer4puddlevisible'] == "on" else ""
     layer5puddledisplay = "checked" if data['layer5puddlevisible'] == "on" else ""
-    
+
     try:
         return render_template('index.html',
                                nodedata=data['nodes'],
@@ -189,18 +188,17 @@ def createjson():
          'links': [],
          'log': log}
 
-
     # This function will create a new node with the speicified parameters
     # If you need a different fx,fy,fz, you can specify it when called.
     def newNode(id, group, size, color, visibility,
-            fx = None, 
-            fy = None, 
-            z = None):
+                fx=None,
+                fy=None,
+                z=None):
         return {'id': id,
                 'group': group,
                 'size': size,
                 'fixed': True,
-                'fx': fx if fx else random.randrange(0,xint),
+                'fx': fx if fx else random.randrange(0, xint),
                 'fy': fy if fy else random.randrange(0, yint),
                 'z': z if z else random.randrange(0, zint),
                 'color': color,
@@ -226,14 +224,13 @@ def createjson():
     for i in range(layer5nodesint):
         g += 1
         d['nodes'].append(newNode(g, 5, layer5sizeint, layer5color, layer5visible))
-        
 
     pid = 0  # Set the PuddleId to 0
     if layer1puddlevisible == "on":
         d['links'].append({'puddleid': 1, 'source': 1, 'target': 6})  # Placeholder, delete later
 
     if layer2puddlevisible == "on":
-        for i in range(layer2startid, layer2startid+layer2nodesint):
+        for i in range(layer2startid, layer2startid + layer2nodesint):
             # Get the node at the current index
             node_a = d['nodes'][i]
             if node_a['group'] == 2:  # If the current node is in group 2.
@@ -257,33 +254,37 @@ def createjson():
                 bestdst = float('inf')
                 bestdstid = None
 
-                for j in range(layer2startid, layer2startid+layer2nodesint):  # For this current node, loop through all other nodes and find closest
+                # For this current node, loop through all other nodes and find closest
+                for j in range(layer2startid, layer2startid + layer2nodesint):
                     # Set the current destination node location
                     node_b = d['nodes'][j]
                     xb = node_b['fx']
                     yb = node_b['fy']
                     zb = node_b['z']
                     idb = node_b['id']
-                    # print('layer2startid=', layer2startid, "currentid=",identifier,"targetid", idb)
 
                     # Only proceed if the node is not the same node and in same group
                     if identifier != idb and d['nodes'][idb]['group'] == 2:
-
                         # Get the current Euclidean distance for the current node i, to target node j
                         dst = euclidean(xa, ya, za, xb, yb, zb)
                         if j == layer2startid or dst < bestdst:
                             bestdst = dst
                             bestdstid = j
-                        log += (
-                                '''<tr><th scope="row">''' + str(identifier) + "</th><td>" + str(idb) + "</td><td>" + str(px) +
-                                "</td><td>" + str(py) + "</td><td>" + str(pz) + "</td><td>" + str(xa) + "</td><td>" + str(
-                                    ya) + "</td><td>" + str(za)
-                                + "</td><td>" + str(xb) +
-                                "</td><td>" + str(yb) +
-                                "</td><td>" + str(zb) +
-                                "</td><td>" + str(dst) +
-                                "</td><td>" + str(bestdst) +
-                                "</td><td>" + str(bestdstid) + '</td></tr>')
+                        log += ('''<tr><th scope="row">''' + str(identifier)
+                                + "</th><td>" + str(idb)
+                                + "</td><td>" + str(px)
+                                + "</td><td>" + str(py)
+                                + "</td><td>" + str(pz)
+                                + "</td><td>" + str(xa)
+                                + "</td><td>" + str(ya)
+                                + "</td><td>" + str(za)
+                                + "</td><td>" + str(xb)
+                                + "</td><td>" + str(yb)
+                                + "</td><td>" + str(zb)
+                                + "</td><td>" + str(dst)
+                                + "</td><td>" + str(bestdst)
+                                + "</td><td>" + str(bestdstid)
+                                + '</td></tr>')
                 d['links'].append({'puddleid': pid, 'source': i, 'target': bestdstid, 'euclidean': bestdst})
 
     if layer3puddlevisible == "on":
@@ -311,5 +312,5 @@ def euclidean(xa, ya, za, xb, yb, zb):
     # dst = distance.euclidean(a, b)
 
     # tests on Matthew's computer ran math.hypot about 10-100x faster than scipy's function
-    dst = math.hypot(xa-xb, ya-yb, za-zb)
+    dst = math.hypot(xa - xb, ya - yb, za - zb)
     return dst
