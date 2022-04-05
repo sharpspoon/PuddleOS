@@ -1,5 +1,11 @@
 # PuddleOS
-## Install Guide
+
+## How To Run
+Listed below are two options to access the application.
+1. Navigate to https://puddle-os.herokuapp.com
+2. Follow the "Local Install Guide" below.
+
+## Local Install Guide
 1. Clone the repository locally.
 2. Open a terminal as Admin/root.
 3. Change to the root directory of PuddleOS.
@@ -16,13 +22,37 @@
 7. The application should now be running under 127.0.0.1:5000
 
 ## User Guide
-Coming soon.
+1. Settings
+   1. Display - Toggle this to display or hide nodes within the specific layer
+   2. Clustering Method - Select the desired clustering method for the specific layer
+      1. Agglomerative Complete Linkage Hierarchical Clustering
+2. Graph - Graphical representation of the nodes and Puddles.
+3. Node Data - This is a dump of the JSON node data.
+4. Link Data - This is a dump of the JSON link data.
+5. Log - This is a table with data relating to the last run.
+   1. id - The id of the node.
+   2. target id - The id of the target node.
+   3. px - The previous node x-axis location.
+   4. py - The previous node y-axis location.
+   5. pz - The previous node z-axis location.
+   6. xa - The current node x-axis location.
+   7. ya - The current node y-axis location.
+   8. za - The current node z-axis location.
+   9. xb - The target node x-axis location.
+   10. yb - The target node y-axis location.
+   11. zb - The target node z-axis location.
+   12. dst - The distance from the current node to the target node.
+   13. best dst - The current shortest distance for the current node.
+   14. best dst id - The id of the best dst node.
 
 ## To-Do
-1.Add "Randomize Nodes" tick box.
+1. Add "Randomize Nodes" tick box.
 2. Modify `GET` method to get the clustering method. Not necessary until another method is implemented.
 3. Add randomize graph button.
-
+4. Add "Link Data" page. JSON dump of the link data.
+5. Change logs and node data to new pages. This should reduce load times.
 
 ## Contact
 Robin Ward - rcw0024@auburn.edu
+
+Matthew Freestone - maf0083@auburn.edu

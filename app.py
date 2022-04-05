@@ -2,7 +2,6 @@ import json
 import math
 import random
 from datetime import date
-
 from flask import Flask, render_template, request, redirect, url_for, send_file
 
 app = Flask(__name__)
@@ -307,10 +306,6 @@ def createjson():
 
 
 def euclidean(xa, ya, za, xb, yb, zb):
-    # a = (xa, ya, za)
-    # b = (xb, yb, zb)
-    # dst = distance.euclidean(a, b)
-
     # tests on Matthew's computer ran math.hypot about 10-100x faster than scipy's function
     dst = math.hypot(xa - xb, ya - yb, za - zb)
     return dst
