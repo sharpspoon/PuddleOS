@@ -218,6 +218,7 @@ def createjson():
             or layer4nodesint != data['layer4total'] \
             or layer5nodesint != data['layer5total']:
         nodecountchange = True
+    print(nodecountchange)
 
     # This function will create a new node with the specified parameters
     # If you need a different fx,fy,fz, you can specify it when called.
@@ -251,26 +252,20 @@ def createjson():
 
     for i in range(layer2nodesint):
         g += 1
-        if randomizelayer2 == "on" or nodecountchange:
+        if nodecountchange is True or randomizelayer2 == "on":
             d['nodes'].append(newNode(g, 2, layer2sizeint, layer2color, layer2visible))
         else:
-            print("layer2nodesint", layer2nodesint)
-            print("layer2startid", layer2startid)
-            print("i", i)
             x = data['nodes'][layer2startid + i]['fx']
             y = data['nodes'][layer2startid + i]['fy']
             z = data['nodes'][layer2startid + i]['z']
             nodex = int(x)
             nodey = int(y)
             nodez = int(z)
-            print(x, y, z)
             d['nodes'].append(newNode(g, 2, layer2sizeint, layer2color, layer2visible, nodex, nodey, nodez))
 
     for i in range(layer3nodesint):
         g += 1
-        print(data['layer3total'])
-        print(layer3nodesint)
-        if randomizelayer3 == "on" or nodecountchange:
+        if nodecountchange is True or randomizelayer3 == "on":
             d['nodes'].append(newNode(g, 3, layer3sizeint, layer3color, layer3visible))
         else:
             x = data['nodes'][layer3startid + i]['fx']
@@ -283,7 +278,7 @@ def createjson():
 
     for i in range(layer4nodesint):
         g += 1
-        if randomizelayer4 == "on" or nodecountchange:
+        if nodecountchange is True or randomizelayer4 == "on":
             d['nodes'].append(newNode(g, 4, layer4sizeint, layer4color, layer4visible))
         else:
             print(layer4startid)
@@ -297,7 +292,7 @@ def createjson():
 
     for i in range(layer5nodesint):
         g += 1
-        if nodecountchange or randomizelayer5 == "on":
+        if nodecountchange is True or randomizelayer5 == "on":
             d['nodes'].append(newNode(g, 5, layer5sizeint, layer5color, layer5visible))
         else:
             x = data['nodes'][layer5startid + i]['fx']
