@@ -6,6 +6,8 @@ from flask import Flask, render_template, request, redirect, url_for, send_file
 
 app = Flask(__name__)
 
+nodecountchange = False
+
 
 @app.route("/", methods=["GET"])
 @app.route("/index", methods=["GET"])
@@ -65,11 +67,23 @@ def index():
                                layer5visible=layer5display,
                                layer5size=data['layer5size'],
                                layer5puddlevisible=layer5puddledisplay,
-                               totalnodes=totalnodes,
-                               log=data['log'])
+                               totalnodes=totalnodes)
     except Exception as e:
         print(e)
         return render_template('index.html')
+
+
+@app.route("/log", methods=["GET"])
+def log():
+    data = None
+    try:
+        with open("d3.json") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print("Data json not found, exiting...")
+        exit(1)
+    return render_template('log.html',
+                           log=data['log'])
 
 
 @app.route("/d3json", methods=["GET"])
@@ -85,6 +99,7 @@ def graphjs():
 @app.route("/createjson", methods=["POST"])
 def createjson():
     # Get all form values on submission.
+    global nodecountchange
     layer1nodes = request.form.get("layer1")
     layer2nodes = request.form.get("layer2")
     layer3nodes = request.form.get("layer3")
@@ -197,6 +212,12 @@ def createjson():
     except FileNotFoundError:
         print("Data json not found, exiting...")
         exit(1)
+    if layer1nodesint != data['layer1total'] \
+            or layer2nodesint != data['layer2total'] \
+            or layer3nodesint != data['layer3total'] \
+            or layer4nodesint != data['layer4total'] \
+            or layer5nodesint != data['layer5total']:
+        nodecountchange = True
 
     # This function will create a new node with the specified parameters
     # If you need a different fx,fy,fz, you can specify it when called.
@@ -217,7 +238,7 @@ def createjson():
     g = -1
     for i in range(layer1nodesint):
         g += 1
-        if randomizelayer1 == "on":
+        if nodecountchange is True or randomizelayer1 == "on":
             d['nodes'].append(newNode(g, 1, layer1sizeint, layer1color, layer1visible))
         else:
             x = data['nodes'][layer1startid + i]['fx']
@@ -230,20 +251,26 @@ def createjson():
 
     for i in range(layer2nodesint):
         g += 1
-        if randomizelayer2 == "on":
+        if randomizelayer2 == "on" or nodecountchange:
             d['nodes'].append(newNode(g, 2, layer2sizeint, layer2color, layer2visible))
         else:
+            print("layer2nodesint", layer2nodesint)
+            print("layer2startid", layer2startid)
+            print("i", i)
             x = data['nodes'][layer2startid + i]['fx']
             y = data['nodes'][layer2startid + i]['fy']
             z = data['nodes'][layer2startid + i]['z']
             nodex = int(x)
             nodey = int(y)
             nodez = int(z)
+            print(x, y, z)
             d['nodes'].append(newNode(g, 2, layer2sizeint, layer2color, layer2visible, nodex, nodey, nodez))
 
     for i in range(layer3nodesint):
         g += 1
-        if randomizelayer3 == "on":
+        print(data['layer3total'])
+        print(layer3nodesint)
+        if randomizelayer3 == "on" or nodecountchange:
             d['nodes'].append(newNode(g, 3, layer3sizeint, layer3color, layer3visible))
         else:
             x = data['nodes'][layer3startid + i]['fx']
@@ -256,9 +283,10 @@ def createjson():
 
     for i in range(layer4nodesint):
         g += 1
-        if randomizelayer4 == "on":
+        if randomizelayer4 == "on" or nodecountchange:
             d['nodes'].append(newNode(g, 4, layer4sizeint, layer4color, layer4visible))
         else:
+            print(layer4startid)
             x = data['nodes'][layer4startid + i]['fx']
             y = data['nodes'][layer4startid + i]['fy']
             z = data['nodes'][layer4startid + i]['z']
@@ -269,7 +297,7 @@ def createjson():
 
     for i in range(layer5nodesint):
         g += 1
-        if randomizelayer5 == "on":
+        if nodecountchange or randomizelayer5 == "on":
             d['nodes'].append(newNode(g, 5, layer5sizeint, layer5color, layer5visible))
         else:
             x = data['nodes'][layer5startid + i]['fx']

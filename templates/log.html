@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="col">
+            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">target id</th>
+                                    <th scope="col">px</th>
+                                    <th scope="col">py</th>
+                                    <th scope="col">pz</th>
+                                    <th scope="col">xa</th>
+                                    <th scope="col">ya</th>
+                                    <th scope="col">za</th>
+                                    <th scope="col">xb</th>
+                                    <th scope="col">yb</th>
+                                    <th scope="col">zb</th>
+                                    <th scope="col">dst</th>
+                                    <th scope="col">best dst</th>
+                                    <th scope="col">best dst id</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{log | safe}}
+                                </tbody>
+                            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
