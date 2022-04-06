@@ -46,11 +46,10 @@ Listed below are two options to access the application.
    14. best dst id - The id of the best dst node.
 
 ## To-Do
-1. Add "Randomize Nodes" tick box.
-2. Modify `GET` method to get the clustering method. Not necessary until another method is implemented.
-3. Add randomize graph button.
-4. Add "Link Data" page. JSON dump of the link data.
-5. Change logs and node data to new pages. This should reduce load times.
+1. Modify `GET` method to get the clustering method. Not necessary until another method is implemented.
+2. Add randomize graph button.
+3. Add "Link Data" page. JSON dump of the link data.
+4. Change logs and node data to new pages. This should reduce load times.
 
 ## Contact
 Robin Ward - rcw0024@auburn.edu

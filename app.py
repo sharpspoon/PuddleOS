@@ -115,11 +115,11 @@ def createjson():
     layer3puddlevisible = request.form.get("puddleDisplay3")
     layer4puddlevisible = request.form.get("puddleDisplay4")
     layer5puddlevisible = request.form.get("puddleDisplay5")
-    # randomizelayer1 = request.form.get("randomizeLayer1")
-    # randomizelayer2 = request.form.get("randomizeLayer2")
-    # randomizelayer3 = request.form.get("randomizeLayer3")
-    # randomizelayer4 = request.form.get("randomizeLayer4")
-    # randomizelayer5 = request.form.get("randomizeLayer5")
+    randomizelayer1 = request.form.get("randomizeLayer1")
+    randomizelayer2 = request.form.get("randomizeLayer2")
+    randomizelayer3 = request.form.get("randomizeLayer3")
+    randomizelayer4 = request.form.get("randomizeLayer4")
+    randomizelayer5 = request.form.get("randomizeLayer5")
     x = request.form.get("x")
     y = request.form.get("y")
     z = request.form.get("z")
@@ -145,6 +145,9 @@ def createjson():
     layer5sizeint = int(layer5size)
     layer1startid = 0
     layer2startid = layer1startid + layer1nodesint
+    layer3startid = layer2startid + layer2nodesint
+    layer4startid = layer3startid + layer3nodesint
+    layer5startid = layer4startid + layer4nodesint
     xint = int(x)
     yint = int(y)
     zint = int(z)
@@ -187,7 +190,15 @@ def createjson():
          'links': [],
          'log': log}
 
-    # This function will create a new node with the speicified parameters
+    data = None
+    try:
+        with open("d3.json") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print("Data json not found, exiting...")
+        exit(1)
+
+    # This function will create a new node with the specified parameters
     # If you need a different fx,fy,fz, you can specify it when called.
     def newNode(id, group, size, color, visibility,
                 fx=None,
@@ -206,23 +217,68 @@ def createjson():
     g = -1
     for i in range(layer1nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 1, layer1sizeint, layer1color, layer1visible))
+        if randomizelayer1 == "on":
+            d['nodes'].append(newNode(g, 1, layer1sizeint, layer1color, layer1visible))
+        else:
+            x = data['nodes'][layer1startid + i]['fx']
+            y = data['nodes'][layer1startid + i]['fy']
+            z = data['nodes'][layer1startid + i]['z']
+            nodex = int(x)
+            nodey = int(y)
+            nodez = int(z)
+            d['nodes'].append(newNode(g, 1, layer1sizeint, layer1color, layer1visible, nodex, nodey, nodez))
 
     for i in range(layer2nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 2, layer2sizeint, layer2color, layer2visible))
+        if randomizelayer2 == "on":
+            d['nodes'].append(newNode(g, 2, layer2sizeint, layer2color, layer2visible))
+        else:
+            x = data['nodes'][layer2startid + i]['fx']
+            y = data['nodes'][layer2startid + i]['fy']
+            z = data['nodes'][layer2startid + i]['z']
+            nodex = int(x)
+            nodey = int(y)
+            nodez = int(z)
+            d['nodes'].append(newNode(g, 2, layer2sizeint, layer2color, layer2visible, nodex, nodey, nodez))
 
     for i in range(layer3nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 3, layer3sizeint, layer3color, layer3visible))
+        if randomizelayer3 == "on":
+            d['nodes'].append(newNode(g, 3, layer3sizeint, layer3color, layer3visible))
+        else:
+            x = data['nodes'][layer3startid + i]['fx']
+            y = data['nodes'][layer3startid + i]['fy']
+            z = data['nodes'][layer3startid + i]['z']
+            nodex = int(x)
+            nodey = int(y)
+            nodez = int(z)
+            d['nodes'].append(newNode(g, 3, layer3sizeint, layer3color, layer3visible, nodex, nodey, nodez))
 
     for i in range(layer4nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 4, layer4sizeint, layer4color, layer4visible))
+        if randomizelayer4 == "on":
+            d['nodes'].append(newNode(g, 4, layer4sizeint, layer4color, layer4visible))
+        else:
+            x = data['nodes'][layer4startid + i]['fx']
+            y = data['nodes'][layer4startid + i]['fy']
+            z = data['nodes'][layer4startid + i]['z']
+            nodex = int(x)
+            nodey = int(y)
+            nodez = int(z)
+            d['nodes'].append(newNode(g, 4, layer4sizeint, layer4color, layer4visible, nodex, nodey, nodez))
 
     for i in range(layer5nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 5, layer5sizeint, layer5color, layer5visible))
+        if randomizelayer5 == "on":
+            d['nodes'].append(newNode(g, 5, layer5sizeint, layer5color, layer5visible))
+        else:
+            x = data['nodes'][layer5startid + i]['fx']
+            y = data['nodes'][layer5startid + i]['fy']
+            z = data['nodes'][layer5startid + i]['z']
+            nodex = int(x)
+            nodey = int(y)
+            nodez = int(z)
+            d['nodes'].append(newNode(g, 5, layer5sizeint, layer5color, layer5visible, nodex, nodey, nodez))
 
     pid = 0  # Set the PuddleId to 0
     if layer1puddlevisible == "on":
