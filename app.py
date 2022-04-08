@@ -1,17 +1,17 @@
 import json
-import random
 import math
+import random
 from datetime import date
-
 from flask import Flask, render_template, request, redirect, url_for, send_file
-from scipy.spatial import distance
 
 app = Flask(__name__)
+
+nodecountchange = False
+
 
 @app.route("/", methods=["GET"])
 @app.route("/index", methods=["GET"])
 def index():
-
     data = None
     try:
         with open("d3.json") as f:
@@ -34,7 +34,7 @@ def index():
     layer3puddledisplay = "checked" if data['layer3puddlevisible'] == "on" else ""
     layer4puddledisplay = "checked" if data['layer4puddlevisible'] == "on" else ""
     layer5puddledisplay = "checked" if data['layer5puddlevisible'] == "on" else ""
-    
+
     try:
         return render_template('index.html',
                                nodedata=data['nodes'],
@@ -67,11 +67,23 @@ def index():
                                layer5visible=layer5display,
                                layer5size=data['layer5size'],
                                layer5puddlevisible=layer5puddledisplay,
-                               totalnodes=totalnodes,
-                               log=data['log'])
+                               totalnodes=totalnodes)
     except Exception as e:
         print(e)
         return render_template('index.html')
+
+
+@app.route("/log", methods=["GET"])
+def log():
+    data = None
+    try:
+        with open("d3.json") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print("Data json not found, exiting...")
+        exit(1)
+    return render_template('log.html',
+                           log=data['log'])
 
 
 @app.route("/d3json", methods=["GET"])
@@ -87,6 +99,7 @@ def graphjs():
 @app.route("/createjson", methods=["POST"])
 def createjson():
     # Get all form values on submission.
+    global nodecountchange
     layer1nodes = request.form.get("layer1")
     layer2nodes = request.form.get("layer2")
     layer3nodes = request.form.get("layer3")
@@ -117,11 +130,11 @@ def createjson():
     layer3puddlevisible = request.form.get("puddleDisplay3")
     layer4puddlevisible = request.form.get("puddleDisplay4")
     layer5puddlevisible = request.form.get("puddleDisplay5")
-    # randomizelayer1 = request.form.get("randomizeLayer1")
-    # randomizelayer2 = request.form.get("randomizeLayer2")
-    # randomizelayer3 = request.form.get("randomizeLayer3")
-    # randomizelayer4 = request.form.get("randomizeLayer4")
-    # randomizelayer5 = request.form.get("randomizeLayer5")
+    randomizelayer1 = request.form.get("randomizeLayer1")
+    randomizelayer2 = request.form.get("randomizeLayer2")
+    randomizelayer3 = request.form.get("randomizeLayer3")
+    randomizelayer4 = request.form.get("randomizeLayer4")
+    randomizelayer5 = request.form.get("randomizeLayer5")
     x = request.form.get("x")
     y = request.form.get("y")
     z = request.form.get("z")
@@ -147,6 +160,9 @@ def createjson():
     layer5sizeint = int(layer5size)
     layer1startid = 0
     layer2startid = layer1startid + layer1nodesint
+    layer3startid = layer2startid + layer2nodesint
+    layer4startid = layer3startid + layer3nodesint
+    layer5startid = layer4startid + layer4nodesint
     xint = int(x)
     yint = int(y)
     zint = int(z)
@@ -189,18 +205,32 @@ def createjson():
          'links': [],
          'log': log}
 
+    data = None
+    try:
+        with open("d3.json") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print("Data json not found, exiting...")
+        exit(1)
+    if layer1nodesint != data['layer1total'] \
+            or layer2nodesint != data['layer2total'] \
+            or layer3nodesint != data['layer3total'] \
+            or layer4nodesint != data['layer4total'] \
+            or layer5nodesint != data['layer5total']:
+        nodecountchange = True
+    print(nodecountchange)
 
-    # This function will create a new node with the speicified parameters
+    # This function will create a new node with the specified parameters
     # If you need a different fx,fy,fz, you can specify it when called.
     def newNode(id, group, size, color, visibility,
-            fx = None, 
-            fy = None, 
-            z = None):
+                fx=None,
+                fy=None,
+                z=None):
         return {'id': id,
                 'group': group,
                 'size': size,
                 'fixed': True,
-                'fx': fx if fx else random.randrange(0,xint),
+                'fx': fx if fx else random.randrange(0, xint),
                 'fy': fy if fy else random.randrange(0, yint),
                 'z': z if z else random.randrange(0, zint),
                 'color': color,
@@ -209,31 +239,76 @@ def createjson():
     g = -1
     for i in range(layer1nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 1, layer1sizeint, layer1color, layer1visible))
+        if nodecountchange is True or randomizelayer1 == "on":
+            d['nodes'].append(newNode(g, 1, layer1sizeint, layer1color, layer1visible))
+        else:
+            x = data['nodes'][layer1startid + i]['fx']
+            y = data['nodes'][layer1startid + i]['fy']
+            z = data['nodes'][layer1startid + i]['z']
+            nodex = int(x)
+            nodey = int(y)
+            nodez = int(z)
+            d['nodes'].append(newNode(g, 1, layer1sizeint, layer1color, layer1visible, nodex, nodey, nodez))
 
     for i in range(layer2nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 2, layer2sizeint, layer2color, layer2visible))
+        if nodecountchange is True or randomizelayer2 == "on":
+            d['nodes'].append(newNode(g, 2, layer2sizeint, layer2color, layer2visible))
+        else:
+            x = data['nodes'][layer2startid + i]['fx']
+            y = data['nodes'][layer2startid + i]['fy']
+            z = data['nodes'][layer2startid + i]['z']
+            nodex = int(x)
+            nodey = int(y)
+            nodez = int(z)
+            d['nodes'].append(newNode(g, 2, layer2sizeint, layer2color, layer2visible, nodex, nodey, nodez))
 
     for i in range(layer3nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 3, layer3sizeint, layer3color, layer3visible))
+        if nodecountchange is True or randomizelayer3 == "on":
+            d['nodes'].append(newNode(g, 3, layer3sizeint, layer3color, layer3visible))
+        else:
+            x = data['nodes'][layer3startid + i]['fx']
+            y = data['nodes'][layer3startid + i]['fy']
+            z = data['nodes'][layer3startid + i]['z']
+            nodex = int(x)
+            nodey = int(y)
+            nodez = int(z)
+            d['nodes'].append(newNode(g, 3, layer3sizeint, layer3color, layer3visible, nodex, nodey, nodez))
 
     for i in range(layer4nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 4, layer4sizeint, layer4color, layer4visible))
+        if nodecountchange is True or randomizelayer4 == "on":
+            d['nodes'].append(newNode(g, 4, layer4sizeint, layer4color, layer4visible))
+        else:
+            print(layer4startid)
+            x = data['nodes'][layer4startid + i]['fx']
+            y = data['nodes'][layer4startid + i]['fy']
+            z = data['nodes'][layer4startid + i]['z']
+            nodex = int(x)
+            nodey = int(y)
+            nodez = int(z)
+            d['nodes'].append(newNode(g, 4, layer4sizeint, layer4color, layer4visible, nodex, nodey, nodez))
 
     for i in range(layer5nodesint):
         g += 1
-        d['nodes'].append(newNode(g, 5, layer5sizeint, layer5color, layer5visible))
-        
+        if nodecountchange is True or randomizelayer5 == "on":
+            d['nodes'].append(newNode(g, 5, layer5sizeint, layer5color, layer5visible))
+        else:
+            x = data['nodes'][layer5startid + i]['fx']
+            y = data['nodes'][layer5startid + i]['fy']
+            z = data['nodes'][layer5startid + i]['z']
+            nodex = int(x)
+            nodey = int(y)
+            nodez = int(z)
+            d['nodes'].append(newNode(g, 5, layer5sizeint, layer5color, layer5visible, nodex, nodey, nodez))
 
     pid = 0  # Set the PuddleId to 0
     if layer1puddlevisible == "on":
         d['links'].append({'puddleid': 1, 'source': 1, 'target': 6})  # Placeholder, delete later
 
     if layer2puddlevisible == "on":
-        for i in range(layer2startid, layer2startid+layer2nodesint):
+        for i in range(layer2startid, layer2startid + layer2nodesint):
             # Get the node at the current index
             node_a = d['nodes'][i]
             if node_a['group'] == 2:  # If the current node is in group 2.
@@ -257,33 +332,37 @@ def createjson():
                 bestdst = float('inf')
                 bestdstid = None
 
-                for j in range(layer2startid, layer2startid+layer2nodesint):  # For this current node, loop through all other nodes and find closest
+                # For this current node, loop through all other nodes and find closest
+                for j in range(layer2startid, layer2startid + layer2nodesint):
                     # Set the current destination node location
                     node_b = d['nodes'][j]
                     xb = node_b['fx']
                     yb = node_b['fy']
                     zb = node_b['z']
                     idb = node_b['id']
-                    # print('layer2startid=', layer2startid, "currentid=",identifier,"targetid", idb)
 
                     # Only proceed if the node is not the same node and in same group
                     if identifier != idb and d['nodes'][idb]['group'] == 2:
-
                         # Get the current Euclidean distance for the current node i, to target node j
                         dst = euclidean(xa, ya, za, xb, yb, zb)
                         if j == layer2startid or dst < bestdst:
                             bestdst = dst
                             bestdstid = j
-                        log += (
-                                '''<tr><th scope="row">''' + str(identifier) + "</th><td>" + str(idb) + "</td><td>" + str(px) +
-                                "</td><td>" + str(py) + "</td><td>" + str(pz) + "</td><td>" + str(xa) + "</td><td>" + str(
-                                    ya) + "</td><td>" + str(za)
-                                + "</td><td>" + str(xb) +
-                                "</td><td>" + str(yb) +
-                                "</td><td>" + str(zb) +
-                                "</td><td>" + str(dst) +
-                                "</td><td>" + str(bestdst) +
-                                "</td><td>" + str(bestdstid) + '</td></tr>')
+                        log += ('''<tr><th scope="row">''' + str(identifier)
+                                + "</th><td>" + str(idb)
+                                + "</td><td>" + str(px)
+                                + "</td><td>" + str(py)
+                                + "</td><td>" + str(pz)
+                                + "</td><td>" + str(xa)
+                                + "</td><td>" + str(ya)
+                                + "</td><td>" + str(za)
+                                + "</td><td>" + str(xb)
+                                + "</td><td>" + str(yb)
+                                + "</td><td>" + str(zb)
+                                + "</td><td>" + str(dst)
+                                + "</td><td>" + str(bestdst)
+                                + "</td><td>" + str(bestdstid)
+                                + '</td></tr>')
                 d['links'].append({'puddleid': pid, 'source': i, 'target': bestdstid, 'euclidean': bestdst})
 
     if layer3puddlevisible == "on":
@@ -306,10 +385,6 @@ def createjson():
 
 
 def euclidean(xa, ya, za, xb, yb, zb):
-    # a = (xa, ya, za)
-    # b = (xb, yb, zb)
-    # dst = distance.euclidean(a, b)
-
     # tests on Matthew's computer ran math.hypot about 10-100x faster than scipy's function
-    dst = math.hypot(xa-xb, ya-yb, za-zb)
+    dst = math.hypot(xa - xb, ya - yb, za - zb)
     return dst
