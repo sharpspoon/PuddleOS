@@ -19,6 +19,7 @@
     }
 
 
+
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -81,7 +82,7 @@
                                        aria-describedby="layer1Help"
                                        value={{layer1}}
                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="NOTE: Changing the number of nodes will randomize the nodes."
+                                       title="NOTE: Changing the number of nodes will also randomize them."
                                        required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer1colorid"
                                        name="colorInput1"
@@ -125,7 +126,7 @@
                                        aria-describedby="layer2Help"
                                        value={{layer2}}
                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="NOTE: Changing the number of nodes will randomize the nodes."
+                                       title="NOTE: Changing the number of nodes will also randomize them."
                                        required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer2colorid"
                                        name="colorInput2"
@@ -168,7 +169,7 @@
                             <td><input type="number" class="form-control" id="layer3id" name="layer3"
                                        aria-describedby="layer3Help"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="NOTE: Changing the number of nodes will randomize the nodes."
+                                       title="NOTE: Changing the number of nodes will also randomize them."
                                        value={{layer3}} required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer3colorid"
                                        name="colorInput3"
@@ -212,7 +213,7 @@
                                        aria-describedby="layer4Help"
                                        value={{layer4}}
                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="NOTE: Changing the number of nodes will randomize the nodes."
+                                       title="NOTE: Changing the number of nodes will also randomize them."
                                        required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer4colorid"
                                        name="colorInput4"
@@ -255,7 +256,7 @@
                             <td><input type="number" class="form-control" id="layer5id" name="layer5"
                                        aria-describedby="layer5Help"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="NOTE: Changing the number of nodes will randomize the nodes."
+                                       title="NOTE: Changing the number of nodes will also randomize them."
                                        value={{layer5}}
                                        required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer5colorid"
@@ -312,6 +313,8 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link" href="log">Log</a>
+                <a class="nav-link" href="nodedata">Node Data</a>
+                <a class="nav-link" href="linkdata">Link Data</a>
             </div>
         </div>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -351,12 +354,14 @@ svg.append("text").attr("x", xminus).attr("y", yminus).text("({{x}},{{y}})").sty
 svg.append("text").attr("x", xyminus).attr("y", 10).text("({{x}},0)").style("font-size", "15px").attr("alignment-baseline","middle")
 
 
+
 </script>
 <script>
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
+
 
 
 </script>

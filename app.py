@@ -86,6 +86,32 @@ def log():
                            log=data['log'])
 
 
+@app.route("/nodedata", methods=["GET"])
+def nodedata():
+    data = None
+    try:
+        with open("d3.json") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print("Data json not found, exiting...")
+        exit(1)
+    return render_template('nodedata.html',
+                           nodedata=data['nodes'])
+
+
+@app.route("/linkdata", methods=["GET"])
+def linkdata():
+    data = None
+    try:
+        with open("d3.json") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print("Data json not found, exiting...")
+        exit(1)
+    return render_template('linkdata.html',
+                           linkdata=data['links'])
+
+
 @app.route("/d3json", methods=["GET"])
 def d3json():
     return send_file('d3.json')
