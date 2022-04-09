@@ -100,6 +100,7 @@ def graphjs():
 def createjson():
     # Get all form values on submission.
     global nodecountchange
+    nodecountchange = False
     layer1nodes = request.form.get("layer1")
     layer2nodes = request.form.get("layer2")
     layer3nodes = request.form.get("layer3")

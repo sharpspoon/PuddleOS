@@ -18,6 +18,7 @@
         border:1px solid black;
     }
 
+
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -79,6 +80,8 @@
                             <td><input type="number" class="form-control" id="layer1id" name="layer1"
                                        aria-describedby="layer1Help"
                                        value={{layer1}}
+                                       data-bs-toggle="tooltip" data-bs-placement="top"
+                                       title="NOTE: Changing the number of nodes will randomize the nodes."
                                        required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer1colorid"
                                        name="colorInput1"
@@ -121,6 +124,8 @@
                             <td><input type="number" class="form-control" id="layer2id" name="layer2"
                                        aria-describedby="layer2Help"
                                        value={{layer2}}
+                                       data-bs-toggle="tooltip" data-bs-placement="top"
+                                       title="NOTE: Changing the number of nodes will randomize the nodes."
                                        required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer2colorid"
                                        name="colorInput2"
@@ -162,6 +167,8 @@
                             </td>
                             <td><input type="number" class="form-control" id="layer3id" name="layer3"
                                        aria-describedby="layer3Help"
+                                       data-bs-toggle="tooltip" data-bs-placement="top"
+                                       title="NOTE: Changing the number of nodes will randomize the nodes."
                                        value={{layer3}} required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer3colorid"
                                        name="colorInput3"
@@ -204,6 +211,8 @@
                             <td><input type="number" class="form-control" id="layer4id" name="layer4"
                                        aria-describedby="layer4Help"
                                        value={{layer4}}
+                                       data-bs-toggle="tooltip" data-bs-placement="top"
+                                       title="NOTE: Changing the number of nodes will randomize the nodes."
                                        required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer4colorid"
                                        name="colorInput4"
@@ -245,6 +254,8 @@
                             </td>
                             <td><input type="number" class="form-control" id="layer5id" name="layer5"
                                        aria-describedby="layer5Help"
+                                       data-bs-toggle="tooltip" data-bs-placement="top"
+                                       title="NOTE: Changing the number of nodes will randomize the nodes."
                                        value={{layer5}}
                                        required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer5colorid"
@@ -339,12 +350,14 @@ svg.append("text").attr("x", xminus).attr("y", yminus).text("({{x}},{{y}})").sty
 // Legend for the x,y display
 svg.append("text").attr("x", xyminus).attr("y", 10).text("({{x}},0)").style("font-size", "15px").attr("alignment-baseline","middle")
 
+
 </script>
 <script>
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
+
 
 </script>
 <footer class="footer mt-auto py-3 bg-light">
