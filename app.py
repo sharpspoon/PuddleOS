@@ -3,6 +3,8 @@ import math
 import random
 from datetime import date
 from flask import Flask, render_template, request, redirect, url_for, send_file
+from pymongo import MongoClient
+from pprint import pprint
 
 app = Flask(__name__)
 

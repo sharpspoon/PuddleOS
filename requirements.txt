@@ -7,6 +7,8 @@ Jinja2==3.0.3
 MarkupSafe==2.0.1
 numpy==1.22.3
 pip==20.2.4
+pymongo==4.1.0
+python-dotenv==0.20.0
 setuptools==49.2.1
 tinydb==4.6.1
 Werkzeug==2.0.3
