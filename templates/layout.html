@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>PuddleOS</title>
+    <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css">
     <style>
     .links line {
         stroke: #999;
@@ -17,6 +19,8 @@
     svg {
         border:1px solid black;
     }
+
+
 
     </style>
     <!-- Required meta tags -->
@@ -64,9 +68,7 @@
                                 <div class="input-group mb-3">
                                     <select class="form-select" id="layer1ClusteringMethodId"
                                             name="layer1ClusteringMethod">
-                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
-                                            Clustering
-                                        </option>
+                                        {{layer1cluteringmethod | safe}}
                                     </select>
                                 </div>
                             </td>
@@ -79,6 +81,8 @@
                             <td><input type="number" class="form-control" id="layer1id" name="layer1"
                                        aria-describedby="layer1Help"
                                        value={{layer1}}
+                                       data-bs-toggle="tooltip" data-bs-placement="top"
+                                       title="NOTE: Changing the number of nodes will also randomize them."
                                        required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer1colorid"
                                        name="colorInput1"
@@ -106,9 +110,7 @@
                                 <div class="input-group mb-3">
                                     <select class="form-select" id="layer2ClusteringMethodId"
                                             name="layer2ClusteringMethod">
-                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
-                                            Clustering
-                                        </option>
+                                        {{layer2cluteringmethod | safe}}
                                     </select>
                                 </div>
                             </td>
@@ -121,6 +123,8 @@
                             <td><input type="number" class="form-control" id="layer2id" name="layer2"
                                        aria-describedby="layer2Help"
                                        value={{layer2}}
+                                       data-bs-toggle="tooltip" data-bs-placement="top"
+                                       title="NOTE: Changing the number of nodes will also randomize them."
                                        required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer2colorid"
                                        name="colorInput2"
@@ -148,9 +152,7 @@
                                 <div class="input-group mb-3">
                                     <select class="form-select" id="layer3ClusteringMethodId"
                                             name="layer3ClusteringMethod">
-                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
-                                            Clustering
-                                        </option>
+                                        {{layer3cluteringmethod | safe}}
                                     </select>
                                 </div>
                             </td>
@@ -162,6 +164,8 @@
                             </td>
                             <td><input type="number" class="form-control" id="layer3id" name="layer3"
                                        aria-describedby="layer3Help"
+                                       data-bs-toggle="tooltip" data-bs-placement="top"
+                                       title="NOTE: Changing the number of nodes will also randomize them."
                                        value={{layer3}} required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer3colorid"
                                        name="colorInput3"
@@ -189,9 +193,7 @@
                                 <div class="input-group mb-3">
                                     <select class="form-select" id="layer4ClusteringMethodId"
                                             name="layer4ClusteringMethod">
-                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
-                                            Clustering
-                                        </option>
+                                        {{layer4cluteringmethod | safe}}
                                     </select>
                                 </div>
                             </td>
@@ -204,6 +206,8 @@
                             <td><input type="number" class="form-control" id="layer4id" name="layer4"
                                        aria-describedby="layer4Help"
                                        value={{layer4}}
+                                       data-bs-toggle="tooltip" data-bs-placement="top"
+                                       title="NOTE: Changing the number of nodes will also randomize them."
                                        required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer4colorid"
                                        name="colorInput4"
@@ -231,9 +235,7 @@
                                 <div class="input-group mb-3">
                                     <select class="form-select" id="layer5ClusteringMethodId"
                                             name="layer5ClusteringMethod">
-                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
-                                            Clustering
-                                        </option>
+                                        {{layer5cluteringmethod | safe}}
                                     </select>
                                 </div>
                             </td>
@@ -245,6 +247,8 @@
                             </td>
                             <td><input type="number" class="form-control" id="layer5id" name="layer5"
                                        aria-describedby="layer5Help"
+                                       data-bs-toggle="tooltip" data-bs-placement="top"
+                                       title="NOTE: Changing the number of nodes will also randomize them."
                                        value={{layer5}}
                                        required></td>
                             <td><input type="color" class="form-control form-control-color" id="layer5colorid"
@@ -301,6 +305,8 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link" href="log">Log</a>
+                <a class="nav-link" href="nodedata">Node Data</a>
+                <a class="nav-link" href="linkdata">Link Data</a>
             </div>
         </div>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -339,12 +345,16 @@ svg.append("text").attr("x", xminus).attr("y", yminus).text("({{x}},{{y}})").sty
 // Legend for the x,y display
 svg.append("text").attr("x", xyminus).attr("y", 10).text("({{x}},0)").style("font-size", "15px").attr("alignment-baseline","middle")
 
+
+
 </script>
 <script>
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
+
+
 
 </script>
 <footer class="footer mt-auto py-3 bg-light">

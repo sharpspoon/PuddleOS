@@ -5,42 +5,13 @@
 <div class="row">
     <div class="shadow-lg p-3 mb-5 bg-body rounded">
         <div class="col">
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Graph
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                         data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            Randomly distributed fog nodes.
-                            <br>
-                            Total Nodes: {{totalnodes}}
-                            <br>
-                            (x,y)
-                            <br>
-                            <svg id="my_dataviz" width="{{x}}" height="{{y}}"></svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Node Data
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                         data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            {{nodedata}}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            Randomly distributed fog nodes.
+            <br>
+            Total Nodes: {{totalnodes}}
+            <br>
+            (x,y)
+            <br>
+            <svg id="my_dataviz" width="{{x}}" height="{{y}}"></svg>
         </div>
     </div>
 </div>
