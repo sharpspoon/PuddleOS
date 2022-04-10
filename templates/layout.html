@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>PuddleOS</title>
+    <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css">
     <style>
     .links line {
         stroke: #999;
@@ -66,9 +68,7 @@
                                 <div class="input-group mb-3">
                                     <select class="form-select" id="layer1ClusteringMethodId"
                                             name="layer1ClusteringMethod">
-                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
-                                            Clustering
-                                        </option>
+                                        {{layer1cluteringmethod | safe}}
                                     </select>
                                 </div>
                             </td>
@@ -110,9 +110,7 @@
                                 <div class="input-group mb-3">
                                     <select class="form-select" id="layer2ClusteringMethodId"
                                             name="layer2ClusteringMethod">
-                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
-                                            Clustering
-                                        </option>
+                                        {{layer2cluteringmethod | safe}}
                                     </select>
                                 </div>
                             </td>
@@ -154,9 +152,7 @@
                                 <div class="input-group mb-3">
                                     <select class="form-select" id="layer3ClusteringMethodId"
                                             name="layer3ClusteringMethod">
-                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
-                                            Clustering
-                                        </option>
+                                        {{layer3cluteringmethod | safe}}
                                     </select>
                                 </div>
                             </td>
@@ -197,9 +193,7 @@
                                 <div class="input-group mb-3">
                                     <select class="form-select" id="layer4ClusteringMethodId"
                                             name="layer4ClusteringMethod">
-                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
-                                            Clustering
-                                        </option>
+                                        {{layer4cluteringmethod | safe}}
                                     </select>
                                 </div>
                             </td>
@@ -241,9 +235,7 @@
                                 <div class="input-group mb-3">
                                     <select class="form-select" id="layer5ClusteringMethodId"
                                             name="layer5ClusteringMethod">
-                                        <option value="1" selected>Agglomerative Complete Linkage Hierarchical
-                                            Clustering
-                                        </option>
+                                        {{layer5cluteringmethod | safe}}
                                     </select>
                                 </div>
                             </td>
