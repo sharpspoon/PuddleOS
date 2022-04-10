@@ -428,6 +428,15 @@ def createjson():
         print(e)
         return "Failed to open d3.json file."
 
+@app.route('/database/load/<dataset_id>', methods=['GET'])
+def load_dataset(dataset_id):
+    print("Got request to load dataset " + dataset_id)
+    return redirect(url_for('index'))
+
+@app.route('/database/save', methods=['POST'])
+def save_dataset():
+    print("Got request to save dataset")
+    return redirect(url_for('index'))
 
 def euclidean(xa, ya, za, xb, yb, zb):
     # tests on Matthew's computer ran math.hypot about 10-100x faster than scipy's function
