@@ -7,6 +7,8 @@ from pymongo import MongoClient
 from pprint import pprint
 
 app = Flask(__name__)
+# make flask reload when templates are updated
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 nodecountchange = False
 
