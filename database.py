@@ -46,5 +46,6 @@ def create_user_data(user_id: uuid):
 
 def update_user_data(user_id: uuid, data):
     print("Got request to update user data for user " + str(user_id))
-    user_sessions.update_one({'user_id': str(user_id)}, {'$set': {'data': data}})
+    res = user_sessions.update_one({'user_id': str(user_id)}, {'$set': {'data': data}})
+    print("Updated user data for user " + str(user_id) + ": " + str(res.modified_count))
     return

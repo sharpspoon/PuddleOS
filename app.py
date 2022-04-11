@@ -23,7 +23,7 @@ nodecountchange = False
 
 # if true, will use MongoDB for user data
 # if false, will use local file d3.json
-USE_DATABASE = False
+USE_DATABASE = True
 
 
 @app.route("/", methods=["GET"])
@@ -119,7 +119,10 @@ def linkdata():
 
 @app.route("/d3json", methods=["GET"])
 def d3json():
-    return send_file('d3.json')
+    if USE_DATABASE:
+        return json.dumps(getUserData())
+    else:
+        return send_file('d3.json')
 
 
 @app.route("/d3js", methods=["GET"])
