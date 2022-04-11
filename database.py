@@ -1,8 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, Blueprint
+from datetime import datetime
 import uuid
 import json
+import os
+from dotenv import load_dotenv
 from pymongo import MongoClient
 
+load_dotenv()
+MONGO_URL = os.getenv('MONGO_URL')
+mongo_client = MongoClient(MONGO_URL, serverSelectionTimeoutMS=5000)
+user_sessions = mongo_client.dev.user_sessions
 
 bp = Blueprint('database', __name__, url_prefix='/database')
 
@@ -18,6 +25,14 @@ def save_dataset():
 
 def get_user_data(user_id: uuid):
     print("Got request to get user data for user " + str(user_id))
+    user_data = user_sessions.find_one({'user_id': str(user_id)})
+    if not user_data:
+        create_user_data(user_id)
+        user_data = user_sessions.find_one({'user_id': str(user_id)})
+    return user_data['data']
+
+def create_user_data(user_id: uuid):
+    print("Got request to create user data for user " + str(user_id))
     data = None
     try:
         with open("d3.json") as f:
@@ -25,8 +40,6 @@ def get_user_data(user_id: uuid):
     except FileNotFoundError:  
         print("Data json not found, exiting...")
         exit(1)
-    return data
-
-def create_user_data(user_id: uuid):
-    print("Got request to create user data for user " + str(user_id))
+    # createdAt is used to allow the data to expire 
+    user_sessions.insert_one({'user_id': str(user_id), 'createdAt': datetime.today().replace(microsecond=0),'data': data})
     return 

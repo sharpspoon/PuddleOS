@@ -36,6 +36,7 @@ def index():
             print("Data json not found, exiting...")
             exit(1)
         session['uuid'] = uuid4()
+        database.create_user_data(session['uuid'])
 
     totalnodes = data['layer1total'] + data['layer2total'] + data['layer3total'] + data['layer4total'] + data[
         'layer5total']
