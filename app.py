@@ -21,22 +21,15 @@ app.register_blueprint(database.bp)
 
 nodecountchange = False
 
+# if true, will use MongoDB for user data
+# if false, will use local file d3.json
+USE_DATABASE = False
+
 
 @app.route("/", methods=["GET"])
 @app.route("/index", methods=["GET"])
-def index():
-    data = None
-    if 'uuid' in session:
-        data = database.get_user_data(session['uuid'])
-    else:
-        try:
-            with open("d3.json") as f:
-                data = json.load(f)
-        except FileNotFoundError:  
-            print("Data json not found, exiting...")
-            exit(1)
-        session['uuid'] = uuid4()
-        database.create_user_data(session['uuid'])
+def index():     
+    data = getUserData()
 
     totalnodes = data['layer1total'] + data['layer2total'] + data['layer3total'] + data['layer4total'] + data[
         'layer5total']
@@ -102,13 +95,7 @@ def index():
 
 @app.route("/log", methods=["GET"])
 def log():
-    data = None
-    try:
-        with open("d3.json") as f:
-            data = json.load(f)
-    except FileNotFoundError:
-        print("Data json not found, exiting...")
-        exit(1)
+    data = getUserData()
     return render_template('log.html',
                            year=date.today().year,
                            log=data['log'])
@@ -116,27 +103,15 @@ def log():
 
 @app.route("/nodedata", methods=["GET"])
 def nodedata():
-    data = None
-    try:
-        with open("d3.json") as f:
-            data = json.load(f)
-    except FileNotFoundError:
-        print("Data json not found, exiting...")
-        exit(1)
+    data = getUserData()
     return render_template('nodedata.html',
                            year=date.today().year,
                            nodedata=data['nodes'])
 
 
 @app.route("/linkdata", methods=["GET"])
-def linkdata():
-    data = None
-    try:
-        with open("d3.json") as f:
-            data = json.load(f)
-    except FileNotFoundError:
-        print("Data json not found, exiting...")
-        exit(1)
+def linkdata():     
+    data = getUserData()
     return render_template('linkdata.html',
                            year=date.today().year,
                            linkdata=data['links'])
@@ -262,13 +237,7 @@ def createjson():
          'links': [],
          'log': log}
 
-    data = None
-    try:
-        with open("d3.json") as f:
-            data = json.load(f)
-    except FileNotFoundError:
-        print("Data json not found, exiting...")
-        exit(1)
+    data = getUserData()
     if layer1nodes != data['layer1total'] \
             or layer2nodes != data['layer2total'] \
             or layer3nodes != data['layer3total'] \
@@ -338,7 +307,6 @@ def createjson():
         if nodecountchange is True or randomizelayer4 == "on":
             d['nodes'].append(newNode(g, 4, layer4size, layer4color, layer4visible))
         else:
-            print(layer4startid)
             x = data['nodes'][layer4startid + i]['fx']
             y = data['nodes'][layer4startid + i]['fy']
             z = data['nodes'][layer4startid + i]['z']
@@ -432,15 +400,36 @@ def createjson():
     print('\n' + str(len(log)) + " characters added to log.\n")
     d['log'] = log
 
-    try:
-        with open("d3.json", "w") as d3_json_out:
-            json.dump(d, d3_json_out, indent=4, sort_keys=False)
-        return redirect(url_for('index'))
-    except Exception as e:
-        print(e)
-        return "Failed to open d3.json file."
+    if USE_DATABASE:
+        database.update_user_data(session['uuid'],d)
+    else:
+        try:
+            with open("d3.json", "w") as d3_json_out:
+                json.dump(d, d3_json_out, indent=4, sort_keys=False)
+        except Exception as e:
+            print(e)
+            return "Failed to open d3.json file."
+
+    return redirect(url_for('index'))
+
 
 def euclidean(xa, ya, za, xb, yb, zb):
     # tests on Matthew's computer ran math.hypot about 10-100x faster than scipy's function
     dst = math.hypot(xa - xb, ya - yb, za - zb)
     return dst
+
+def getUserData():
+    if USE_DATABASE:
+        if 'uuid' not in session:
+            session['uuid'] = uuid4()
+            database.create_user_data(session['uuid'])
+        return database.get_user_data(session['uuid'])
+    else:
+        data = None
+        try:
+            with open("d3.json") as f:
+                data = json.load(f)
+        except FileNotFoundError:
+            print("Data json not found, exiting...")
+            exit(1)
+        return data
