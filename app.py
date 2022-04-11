@@ -2,13 +2,22 @@ import json
 import math
 import random
 from datetime import date
-from flask import Flask, render_template, request, redirect, url_for, send_file
-from pymongo import MongoClient
-from pprint import pprint
+from uuid import uuid4
+from flask import Flask, render_template, request, redirect, url_for, send_file, session
+import database
 
+
+# to make flask auto reload when python files are updated:
+# $ export FLASK_ENV=development
+# Do not use this in production
 app = Flask(__name__)
 # make flask reload when templates are updated
 app.config["TEMPLATES_AUTO_RELOAD"] = True
+
+app.secret_key = b'SecretKeyForSession'
+
+# route anything starting with /database to database.py
+app.register_blueprint(database.bp)
 
 nodecountchange = False
 
@@ -17,12 +26,16 @@ nodecountchange = False
 @app.route("/index", methods=["GET"])
 def index():
     data = None
-    try:
-        with open("d3.json") as f:
-            data = json.load(f)
-    except FileNotFoundError:
-        print("Data json not found, exiting...")
-        exit(1)
+    if 'uuid' in session:
+        data = database.get_user_data(session['uuid'])
+    else:
+        try:
+            with open("d3.json") as f:
+                data = json.load(f)
+        except FileNotFoundError:  
+            print("Data json not found, exiting...")
+            exit(1)
+        session['uuid'] = uuid4()
 
     totalnodes = data['layer1total'] + data['layer2total'] + data['layer3total'] + data['layer4total'] + data[
         'layer5total']
@@ -44,7 +57,6 @@ def index():
     layer3clutering = buildclusteringhtml(data['layer3clustering'])
     layer4clutering = buildclusteringhtml(data['layer4clustering'])
     layer5clutering = buildclusteringhtml(data['layer5clustering'])
-
     try:
         return render_template('index.html',
                                nodedata=data['nodes'],
@@ -86,7 +98,6 @@ def index():
     except Exception as e:
         print(e)
         return render_template('index.html')
-
 
 @app.route("/log", methods=["GET"])
 def log():
@@ -427,16 +438,6 @@ def createjson():
     except Exception as e:
         print(e)
         return "Failed to open d3.json file."
-
-@app.route('/database/load/<dataset_id>', methods=['GET'])
-def load_dataset(dataset_id):
-    print("Got request to load dataset " + dataset_id)
-    return redirect(url_for('index'))
-
-@app.route('/database/save', methods=['POST'])
-def save_dataset():
-    print("Got request to save dataset")
-    return redirect(url_for('index'))
 
 def euclidean(xa, ya, za, xb, yb, zb):
     # tests on Matthew's computer ran math.hypot about 10-100x faster than scipy's function
