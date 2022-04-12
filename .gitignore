@@ -4,4 +4,4 @@ __pycache__/
 .env
 
 # contains virtual environment
-env/
+venv/
