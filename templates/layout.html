@@ -33,11 +33,11 @@
     <title>PuddleOS</title>
 </head>
 <body>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+                <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -295,7 +295,44 @@
         </div>
     </div>
 </div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="modal fade" id="saveDataModal" tabindex="-1" aria-labelledby="saveDataModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="saveDataModalLabel">Save data to MongoDB</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/database/save" method="post" class="d-flex flex-column gap-3">
+                    <div class="input-group">
+                        <span class="input-group-text">Name</span>
+                        <input type="text" aria-label="Dataset Name" class="form-control" id="name-id" name="name"
+                                placeholder="My Dataset"
+                                required
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="Enter the name of the dataset">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Author</span>
+                        <input type="text" aria-label="Author" class="form-control" id="author-id" name="author"
+                                placeholder="John Doe"
+                                required
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="Enter the value for author">
+                            </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Description</span>
+                        <textarea type="text" class="form-control" id="description-id" name="description"
+                                  placeholder="Enter a description of the dataset"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save to Database</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="index">PuddleOS</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -303,11 +340,22 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" href="log">Log</a>
-                <a class="nav-link" href="nodedata">Node Data</a>
-                <a class="nav-link" href="linkdata">Link Data</a>
-            </div>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="log">Log</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="nodedata">Node Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="linkdata">Link Data</a>
+                </li>
+            </ul>
+        </div>
+        <div class="d-flex gap-2">
+            <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#saveDataModal">Save Data</button> -->
+            <button type="button" class="btn btn-secondary" onclick="alert('Not yet implimented.')">Save Data</button>
+            <button type="button" class="btn btn-secondary" onclick="alert('Not yet implemented.')">Load Data</button>
         </div>
     </div>
 </nav>
