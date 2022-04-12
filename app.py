@@ -39,11 +39,11 @@ def index():
     layer4puddledisplay = "checked" if data['layer4puddlevisible'] == "on" else ""
     layer5puddledisplay = "checked" if data['layer5puddlevisible'] == "on" else ""
 
-    layer1clutering = buildclusteringhtml(data['layer1clustering'])
-    layer2clutering = buildclusteringhtml(data['layer2clustering'])
-    layer3clutering = buildclusteringhtml(data['layer3clustering'])
-    layer4clutering = buildclusteringhtml(data['layer4clustering'])
-    layer5clutering = buildclusteringhtml(data['layer5clustering'])
+    layer1clustering = buildclusteringhtml(data['layer1clustering'])
+    layer2clustering = buildclusteringhtml(data['layer2clustering'])
+    layer3clustering = buildclusteringhtml(data['layer3clustering'])
+    layer4clustering = buildclusteringhtml(data['layer4clustering'])
+    layer5clustering = buildclusteringhtml(data['layer5clustering'])
 
     try:
         return render_template('index.html',
@@ -53,31 +53,31 @@ def index():
                                y=data['y'],
                                z=data['z'],
                                layer1=data['layer1total'],
-                               layer1cluteringmethod=layer1clutering,
+                               layer1cluteringmethod=layer1clustering,
                                layer1color=data['layer1color'],
                                layer1visible=layer1display,
                                layer1size=data['layer1size'],
                                layer1puddlevisible=layer1puddledisplay,
                                layer2=data['layer2total'],
-                               layer2cluteringmethod=layer2clutering,
+                               layer2cluteringmethod=layer2clustering,
                                layer2color=data['layer2color'],
                                layer2visible=layer2display,
                                layer2size=data['layer2size'],
                                layer2puddlevisible=layer2puddledisplay,
                                layer3=data['layer3total'],
-                               layer3cluteringmethod=layer3clutering,
+                               layer3cluteringmethod=layer3clustering,
                                layer3color=data['layer3color'],
                                layer3visible=layer3display,
                                layer3size=data['layer3size'],
                                layer3puddlevisible=layer3puddledisplay,
                                layer4=data['layer4total'],
-                               layer4cluteringmethod=layer4clutering,
+                               layer4cluteringmethod=layer4clustering,
                                layer4color=data['layer4color'],
                                layer4visible=layer4display,
                                layer4size=data['layer4size'],
                                layer4puddlevisible=layer4puddledisplay,
                                layer5=data['layer5total'],
-                               layer5cluteringmethod=layer5clutering,
+                               layer5cluteringmethod=layer5clustering,
                                layer5color=data['layer5color'],
                                layer5visible=layer5display,
                                layer5size=data['layer5size'],
@@ -144,10 +144,10 @@ def buildclusteringhtml(method):
     ret = ""
     if method == "Agglomerative Complete Linkage Hierarchical Clustering":
         ret = '''<option value="Agglomerative Complete Linkage Hierarchical Clustering" selected>Agglomerative Complete Linkage Hierarchical Clustering</option>
-        <option value="K-Means">K-Means</option>'''
-    elif method == "K-Means":
+        <option value="DBSCAN">DBSCAN</option>'''
+    elif method == "DBSCAN":
         ret = '''<option value="Agglomerative Complete Linkage Hierarchical Clustering">Agglomerative Complete Linkage Hierarchical Clustering</option>
-        <option value="K-Means" selected>K-Means</option>'''
+        <option value="DBSCAN" selected>DBSCAN</option>'''
     return ret
 
 
