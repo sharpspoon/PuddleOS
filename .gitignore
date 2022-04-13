@@ -1,1 +1,7 @@
 __pycache__/
+
+# Holds passwords for atlas
+.env
+
+# contains virtual environment
+venv/
