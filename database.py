@@ -15,16 +15,16 @@ bp = Blueprint('database', __name__, url_prefix='/database')
 
 @bp.route('/load/<dataset_id>', methods=['GET'])
 def load_dataset(dataset_id):
-    print("Got request to load dataset " + dataset_id)
+    # print("Got request to load dataset " + dataset_id)
     return redirect(url_for('index'))
 
 @bp.route('/save', methods=['POST'])
 def save_dataset():
-    print("Got request to save dataset")
+    # print("Got request to save dataset")
     return redirect(url_for('index'))
 
 def get_user_data(user_id: uuid):
-    print("Got request to get user data for user " + str(user_id))
+    # print("Got request to get user data for user " + str(user_id))
     user_data = user_sessions.find_one({'user_id': str(user_id)})
     if not user_data:
         create_user_data(user_id)
@@ -32,7 +32,7 @@ def get_user_data(user_id: uuid):
     return user_data['data']
 
 def create_user_data(user_id: uuid):
-    print("Got request to create user data for user " + str(user_id))
+    # print("Got request to create user data for user " + str(user_id))
     data = None
     try:
         with open("d3.json") as f:
@@ -45,7 +45,7 @@ def create_user_data(user_id: uuid):
     return 
 
 def update_user_data(user_id: uuid, data):
-    print("Got request to update user data for user " + str(user_id))
+    # print("Got request to update user data for user " + str(user_id))
     res = user_sessions.update_one({'user_id': str(user_id)}, {'$set': {'data': data}})
-    print("Updated user data for user " + str(user_id) + ": " + str(res.modified_count))
+    # print("Updated user data for user " + str(user_id) + ": " + str(res.modified_count))
     return
