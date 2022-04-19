@@ -23,7 +23,7 @@ nodecountchange = False
 
 # if true, will use MongoDB for user data
 # if false, will use local file d3.json
-USE_DATABASE = True
+USE_DATABASE = False
 
 
 @app.route("/", methods=["GET"])
