@@ -5,6 +5,7 @@ from datetime import date
 from uuid import uuid4
 from flask import Flask, render_template, request, redirect, url_for, send_file, session
 import database
+from pprint import pprint
 
 
 # to make flask auto reload when python files are updated:
@@ -30,27 +31,17 @@ USE_DATABASE = False
 @app.route("/index", methods=["GET"])
 def index():     
     data = getUserData()
+    layers = data['layers']
 
-    totalnodes = data['layer1total'] + data['layer2total'] + data['layer3total'] + data['layer4total'] + data[
-        'layer5total']
+    totalnodes = sum(layer['total'] for layer in layers)
 
-    layer1display = "checked" if data['layer1visible'] == "on" else ""
-    layer2display = "checked" if data['layer2visible'] == "on" else ""
-    layer3display = "checked" if data['layer3visible'] == "on" else ""
-    layer4display = "checked" if data['layer4visible'] == "on" else ""
-    layer5display = "checked" if data['layer5visible'] == "on" else ""
+    result = lambda x: "checked" if x == "on" else ""
+    layer_displays = [result(x["visible"]) for x in layers]
 
-    layer1puddledisplay = "checked" if data['layer1puddlevisible'] == "on" else ""
-    layer2puddledisplay = "checked" if data['layer2puddlevisible'] == "on" else ""
-    layer3puddledisplay = "checked" if data['layer3puddlevisible'] == "on" else ""
-    layer4puddledisplay = "checked" if data['layer4puddlevisible'] == "on" else ""
-    layer5puddledisplay = "checked" if data['layer5puddlevisible'] == "on" else ""
+    result = lambda x: "checked" if x == "on" else ""
+    layer_puddle_displays = [result(x["puddle_visible"]) for x in layers]
 
-    layer1clustering = buildclusteringhtml(data['layer1clustering'])
-    layer2clustering = buildclusteringhtml(data['layer2clustering'])
-    layer3clustering = buildclusteringhtml(data['layer3clustering'])
-    layer4clustering = buildclusteringhtml(data['layer4clustering'])
-    layer5clustering = buildclusteringhtml(data['layer5clustering'])
+    layer_clusterings = [buildclusteringhtml(x["clustering"]) for x in layers]
 
     try:
         return render_template('index.html',
@@ -59,36 +50,10 @@ def index():
                                x=data['x'],
                                y=data['y'],
                                z=data['z'],
-                               layer1=data['layer1total'],
-                               layer1cluteringmethod=layer1clustering,
-                               layer1color=data['layer1color'],
-                               layer1visible=layer1display,
-                               layer1size=data['layer1size'],
-                               layer1puddlevisible=layer1puddledisplay,
-                               layer2=data['layer2total'],
-                               layer2cluteringmethod=layer2clustering,
-                               layer2color=data['layer2color'],
-                               layer2visible=layer2display,
-                               layer2size=data['layer2size'],
-                               layer2puddlevisible=layer2puddledisplay,
-                               layer3=data['layer3total'],
-                               layer3cluteringmethod=layer3clustering,
-                               layer3color=data['layer3color'],
-                               layer3visible=layer3display,
-                               layer3size=data['layer3size'],
-                               layer3puddlevisible=layer3puddledisplay,
-                               layer4=data['layer4total'],
-                               layer4cluteringmethod=layer4clustering,
-                               layer4color=data['layer4color'],
-                               layer4visible=layer4display,
-                               layer4size=data['layer4size'],
-                               layer4puddlevisible=layer4puddledisplay,
-                               layer5=data['layer5total'],
-                               layer5cluteringmethod=layer5clustering,
-                               layer5color=data['layer5color'],
-                               layer5visible=layer5display,
-                               layer5size=data['layer5size'],
-                               layer5puddlevisible=layer5puddledisplay,
+                               layer_displays=layer_displays,
+                               layer_puddle_displays=layer_puddle_displays,
+                               layer_clusterings=layer_clusterings,
+                               layers = layers,
                                totalnodes=totalnodes)
     except Exception as e:
         print(e)
@@ -123,7 +88,7 @@ def d3json():
     if USE_DATABASE:
         return json.dumps(getUserData())
     else:
-        return send_file('d3.json')
+        return send_file('sample.json')
 
 
 @app.route("/d3js", methods=["GET"])
@@ -408,11 +373,11 @@ def createjson():
         database.update_user_data(session['uuid'],d)
     else:
         try:
-            with open("d3.json", "w") as d3_json_out:
+            with open("sample.json", "w") as d3_json_out:
                 json.dump(d, d3_json_out, indent=4, sort_keys=False)
         except Exception as e:
             print(e)
-            return "Failed to open d3.json file."
+            return "Failed to open sample.json file."
 
     return redirect(url_for('index'))
 
@@ -431,7 +396,7 @@ def getUserData():
     else:
         data = None
         try:
-            with open("d3.json") as f:
+            with open("sample.json") as f:
                 data = json.load(f)
         except FileNotFoundError:
             print("Data json not found, exiting...")

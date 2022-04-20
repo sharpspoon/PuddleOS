@@ -10,7 +10,8 @@
             "color": "#a77b00",
             "size" : 5,
             "visible": null,
-            "clustering": "DBSCAN"
+            "clustering": "DBSCAN",
+            "puddle_visible": null
         },
         {
             "layerNumber" : 2,
@@ -19,7 +20,8 @@
             "color": "#d58400",
             "size" : 5,
             "visible": "on",
-            "clustering": "DBSCAN"
+            "clustering": "DBSCAN",
+            "puddle_visible": "on"
         },
         {
             "layerNumber" : 3,
@@ -28,7 +30,8 @@
             "color": "#008cb4",
             "size" : 20,
             "visible": "on",
-            "clustering": "Agglomerative Complete Linkage Hierarchical Clustering"
+            "clustering": "Agglomerative Complete Linkage Hierarchical Clustering",
+            "puddle_visible": null
         },
         {
             "layerNumber" : 4,
@@ -37,7 +40,8 @@
             "color": "#4d22b3",
             "size" : 50,
             "visible": null,
-            "clustering": "Agglomerative Complete Linkage Hierarchical Clustering"
+            "clustering": "Agglomerative Complete Linkage Hierarchical Clustering",
+            "puddle_visible": null
         },
         {
             "layerNumber" : 5,
@@ -46,7 +50,8 @@
             "color": "#ff4013",
             "size" : 75,
             "visible": null,
-            "clustering": "DBSCAN"
+            "clustering": "DBSCAN",
+            "puddle_visible": null
         }
     ],
     "nodes": [
