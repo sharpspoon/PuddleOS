@@ -6,7 +6,7 @@
         {
             "layerNumber" : 1,
             "name": "layer1",
-            "total": 5,
+            "total": 1,
             "color": "#a77b00",
             "size" : 5,
             "visible": null,
@@ -36,7 +36,7 @@
         {
             "layerNumber" : 4,
             "name": "layer4",
-            "total": 5,
+            "total": 2,
             "color": "#4d22b3",
             "size" : 50,
             "visible": null,
@@ -46,7 +46,7 @@
         {
             "layerNumber" : 5,
             "name": "layer5",
-            "total": 5,
+            "total": 2,
             "color": "#ff4013",
             "size" : 75,
             "visible": null,
