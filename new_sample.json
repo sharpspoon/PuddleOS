@@ -2,147 +2,157 @@
     "x": 500,
     "y": 500,
     "z": 10,
-    "layer_totals": [
-        1,
-        2,
-        2,
-        2,
-        2
-    ],
-    "layer_colors": [
-        "#a77b00",
-        "#d58400",
-        "#008cb4",
-        "#4d22b3",
-        "#ff4013"
-    ],
-    "layer_sizes": [
-        5,
-        5,
-        20,
-        50,
-        75
-    ],
-    "layer_visibiled": [
-        null,
-        "on",
-        "on",
-        null,
-        null
-    ],
-    "layer_clusterings": [
-        "DBSCAN",
-        "DBSCAN",
-        "Agglomerative Complete Linkage Hierarchical Clustering",
-        "Agglomerative Complete Linkage Hierarchical Clustering",
-        "DBSCAN"
-    ],
-    "layer_puddle_visibiled": [
-        "hidden",
-        "visible",
-        "hidden",
-        "hidden",
-        "hidden"
+    "layers": [
+        {
+            "layerNumber": 1,
+            "name": "layer1",
+            "total": 1,
+            "color": "#a77b00",
+            "size": 5,
+            "visible": null,
+            "clustering": "DBSCAN",
+            "puddle_visible": null
+        },
+        {
+            "layerNumber": 2,
+            "name": "layer2",
+            "total": 2,
+            "color": "#d58400",
+            "size": 5,
+            "visible": "on",
+            "clustering": "DBSCAN",
+            "puddle_visible": "on"
+        },
+        {
+            "layerNumber": 3,
+            "name": "layer3",
+            "total": 2,
+            "color": "#008cb4",
+            "size": 20,
+            "visible": "on",
+            "clustering": "Agglomerative Complete Linkage Hierarchical Clustering",
+            "puddle_visible": null
+        },
+        {
+            "layerNumber": 4,
+            "name": "layer4",
+            "total": 2,
+            "color": "#4d22b3",
+            "size": 50,
+            "visible": null,
+            "clustering": "Agglomerative Complete Linkage Hierarchical Clustering",
+            "puddle_visible": null
+        },
+        {
+            "layerNumber": 5,
+            "name": "layer5",
+            "total": 2,
+            "color": "#ff4013",
+            "size": 75,
+            "visible": null,
+            "clustering": "DBSCAN",
+            "puddle_visible": null
+        }
     ],
     "nodes": [
         {
             "id": 0,
-            "group": 0,
+            "group": 1,
             "size": 5,
             "fixed": true,
             "fx": 137,
             "fy": 180,
             "z": 1,
             "color": "#a77b00",
-            "visibility": null
+            "visibility": "hidden"
         },
         {
             "id": 1,
-            "group": 1,
+            "group": 2,
             "size": 5,
             "fixed": true,
             "fx": 167,
             "fy": 493,
             "z": 1,
             "color": "#d58400",
-            "visibility": "on"
+            "visibility": "visible"
         },
         {
             "id": 2,
-            "group": 1,
+            "group": 2,
             "size": 5,
             "fixed": true,
             "fx": 198,
             "fy": 96,
             "z": 9,
             "color": "#d58400",
-            "visibility": "on"
+            "visibility": "visible"
         },
         {
             "id": 3,
-            "group": 2,
+            "group": 3,
             "size": 20,
             "fixed": true,
             "fx": 244,
             "fy": 306,
             "z": 4,
             "color": "#008cb4",
-            "visibility": "on"
+            "visibility": "visible"
         },
         {
             "id": 4,
-            "group": 2,
+            "group": 3,
             "size": 20,
             "fixed": true,
             "fx": 207,
             "fy": 150,
             "z": 4,
             "color": "#008cb4",
-            "visibility": "on"
+            "visibility": "visible"
         },
         {
             "id": 5,
-            "group": 3,
+            "group": 4,
             "size": 50,
             "fixed": true,
             "fx": 377,
             "fy": 428,
             "z": 5,
             "color": "#4d22b3",
-            "visibility": null
+            "visibility": "hidden"
         },
         {
             "id": 6,
-            "group": 3,
+            "group": 4,
             "size": 50,
             "fixed": true,
             "fx": 276,
             "fy": 6,
             "z": 4,
             "color": "#4d22b3",
-            "visibility": null
+            "visibility": "hidden"
         },
         {
             "id": 7,
-            "group": 4,
+            "group": 5,
             "size": 75,
             "fixed": true,
             "fx": 133,
             "fy": 439,
             "z": 8,
             "color": "#ff4013",
-            "visibility": null
+            "visibility": "hidden"
         },
         {
             "id": 8,
-            "group": 4,
+            "group": 5,
             "size": 75,
             "fixed": true,
             "fx": 190,
             "fy": 57,
             "z": 7,
             "color": "#ff4013",
-            "visibility": null
+            "visibility": "hidden"
         }
     ],
     "links": [

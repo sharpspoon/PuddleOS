@@ -123,53 +123,18 @@ def createjson():
     nodecountchange = False
     layer_count = int(request.form.get("layer_count"))
     layer_nodes_count = [int(request.form.get(f'layer{i}')) for i in range(1, layer_count + 1)]
-    # layer1nodes = int(request.form.get("layer1"))
-    # layer2nodes = int(request.form.get("layer2"))
-    # layer3nodes = int(request.form.get("layer3"))
-    # layer4nodes = int(request.form.get("layer4"))
-    # layer5nodes = int(request.form.get("layer5"))
 
     layer_colors = [request.form.get(f'colorInput{i}') for i in range(1, layer_count + 1)]
-    # layer1color = request.form.get("colorInput1")
-    # layer2color = request.form.get("colorInput2")
-    # layer3color = request.form.get("colorInput3")
-    # layer4color = request.form.get("colorInput4")
-    # layer5color = request.form.get("colorInput5")
 
     layer_sizes = [int(request.form.get(f"layer{i}size")) for i in range(1, layer_count + 1)]
-    # layer1size = int(request.form.get("layer1size"))
-    # layer2size = int(request.form.get("layer2size"))
-    # layer3size = int(request.form.get("layer3size"))
-    # layer4size = int(request.form.get("layer4size"))
-    # layer5size = int(request.form.get("layer5size"))
 
-    layer_visibiled = [request.form.get(f"nodeDisplay{i}") for i in range(1, layer_count + 1)]
-    # layer1visibled3 = request.form.get("nodeDisplay1")
-    # layer2visibled3 = request.form.get("nodeDisplay2")
-    # layer3visibled3 = request.form.get("nodeDisplay3")
-    # layer4visibled3 = request.form.get("nodeDisplay4")
-    # layer5visibled3 = request.form.get("nodeDisplay5")
+    layer_visibiled_raw = [request.form.get(f"nodeDisplay{i}") for i in range(1, layer_count + 1)]
 
     layer_clusterings = [request.form.get(f"layer{i}ClusteringMethod") for i in range(1, layer_count + 1)]
-    # layer1clustering = request.form.get("layer1ClusteringMethod")
-    # layer2clustering = request.form.get("layer2ClusteringMethod")
-    # layer3clustering = request.form.get("layer3ClusteringMethod")
-    # layer4clustering = request.form.get("layer4ClusteringMethod")
-    # layer5clustering = request.form.get("layer5ClusteringMethod")
 
     layer_puddle_visibile_raw = [request.form.get(f"puddleDisplay{i}") for i in range(1, layer_count + 1)]
-    # layer1puddlevisible = request.form.get("puddleDisplay1")
-    # layer2puddlevisible = request.form.get("puddleDisplay2")
-    # layer3puddlevisible = request.form.get("puddleDisplay3")
-    # layer4puddlevisible = request.form.get("puddleDisplay4")
-    # layer5puddlevisible = request.form.get("puddleDisplay5")
 
     randomize_layer =  [request.form.get(f"randomizeLayer{i}") for i in range(1, layer_count + 1)]
-    # randomizelayer1 = request.form.get("randomizeLayer1")
-    # randomizelayer2 = request.form.get("randomizeLayer2")
-    # randomizelayer3 = request.form.get("randomizeLayer3")
-    # randomizelayer4 = request.form.get("randomizeLayer4")
-    # randomizelayer5 = request.form.get("randomizeLayer5")
 
     x = request.form.get("x")
     y = request.form.get("y")
@@ -177,49 +142,45 @@ def createjson():
 
     # This logic is for setting the individual nodes to visible or hidden
     result = lambda x : "visible" if x == "on" else "hidden"
+    layer_visibiled = [result(i) for i in layer_visibiled_raw]
+
+    # This logic is for setting the puddles to visible or hidden
+    result = lambda x : "visible" if x == "on" else "hidden"
     layer_puddle_visibiled = [result(i) for i in layer_puddle_visibile_raw]
-    # layer1visible = "visible" if layer1visibled3 == "on" else "hidden"
-    # layer2visible = "visible" if layer2visibled3 == "on" else "hidden"
-    # layer3visible = "visible" if layer3visibled3 == "on" else "hidden"
-    # layer4visible = "visible" if layer4visibled3 == "on" else "hidden"
-    # layer5visible = "visible" if layer5visibled3 == "on" else "hidden"
 
     totalnodes = sum(layer_nodes_count)
     layer_i_startid = [sum(layer_nodes_count[:i]) for i in range(layer_count)]
-    # layer1startid = 0
-    # layer2startid = layer1startid + layer1nodes
-    # layer3startid = layer2startid + layer2nodes
-    # layer4startid = layer3startid + layer3nodes
-    # layer5startid = layer4startid + layer4nodes
     xint = int(x)
     yint = int(y)
     zint = int(z)
     log = ""
 
-    d = {'x': xint,
+    result = {'x': xint,
          'y': yint,
          'z': zint,
-         'layer_totals': layer_nodes_count,
-         'layer_colors' : layer_colors,
-         'layer_sizes' : layer_sizes,
-         'layer_visibiled' : layer_visibiled,
-         'layer_clusterings' : layer_clusterings,
-         'layer_puddle_visibiled' : layer_puddle_visibiled,
+         'layers': [],
          'nodes': [],
          'links': [],
          'log': log}
 
-    data = getUserData()
-    data_layer_totals = [a['total'] for a in data['layers']]
+    original_data = getUserData()
+    data_layer_totals = [a['total'] for a in original_data['layers']]
     if data_layer_totals != layer_nodes_count:
         nodecountchange = True
-    # if layer1nodes != data['layer1total'] \
-    #         or layer2nodes != data['layer2total'] \
-    #         or layer3nodes != data['layer3total'] \
-    #         or layer4nodes != data['layer4total'] \
-    #         or layer5nodes != data['layer5total']:
-    #     nodecountchange = True
     print(f"nodecountchange: {nodecountchange}")
+
+    for i in range(layer_count):
+        new_layer = {
+            'layerNumber' : i+1,
+            'name' : f"layer{i+1}",
+            'total' : layer_nodes_count[i],
+            'color' : layer_colors[i],
+            'size' : layer_sizes[i],
+            'visible' : layer_visibiled_raw[i],
+            'clustering' : layer_clusterings[i],
+            'puddle_visible' : layer_puddle_visibile_raw[i],
+        }
+        result['layers'].append(new_layer)
 
     # This function will create a new node with the specified parameters
     # If you need a different fx,fy,fz, you can specify it when called.
@@ -242,81 +203,16 @@ def createjson():
         for i in range(layer_nodes_count[layer_i]):
             g += 1
             if nodecountchange is True or randomize_layer[layer_i] == "on":
-                d['nodes'].append(newNode(g, layer_i, layer_sizes[layer_i], layer_colors[layer_i], layer_visibiled[layer_i]))
+                result['nodes'].append(newNode(g, layer_i+1, layer_sizes[layer_i], layer_colors[layer_i], layer_visibiled[layer_i]))
             else:
-                curr_node = data['nodes'][layer_i_startid[layer_i] + i]
+                curr_node = original_data['nodes'][layer_i_startid[layer_i] + i]
                 x, y, z = map(int, (curr_node['fx'], curr_node['fy'], curr_node['z']))
-                d['nodes'].append(newNode(g, layer_i, layer_sizes[layer_i], layer_colors[layer_i], layer_visibiled[layer_i], x, y, z))
-
-    # for i in range(layer1nodes):
-    #     g += 1
-    #     if nodecountchange is True or randomizelayer1 == "on":
-    #         d['nodes'].append(newNode(g, 1, layer1size, layer1color, layer1visible))
-    #     else:
-    #         x = data['nodes'][layer1startid + i]['fx']
-    #         y = data['nodes'][layer1startid + i]['fy']
-    #         z = data['nodes'][layer1startid + i]['z']
-    #         nodex = int(x)
-    #         nodey = int(y)
-    #         nodez = int(z)
-    #         d['nodes'].append(newNode(g, 1, layer1size, layer1color, layer1visible, nodex, nodey, nodez))
-
-    # for i in range(layer2nodes):
-    #     g += 1
-    #     if nodecountchange is True or randomizelayer2 == "on":
-    #         d['nodes'].append(newNode(g, 2, layer2size, layer2color, layer2visible))
-    #     else:
-    #         x = data['nodes'][layer2startid + i]['fx']
-    #         y = data['nodes'][layer2startid + i]['fy']
-    #         z = data['nodes'][layer2startid + i]['z']
-    #         nodex = int(x)
-    #         nodey = int(y)
-    #         nodez = int(z)
-    #         d['nodes'].append(newNode(g, 2, layer2size, layer2color, layer2visible, nodex, nodey, nodez))
-
-    # for i in range(layer3nodes):
-    #     g += 1
-    #     if nodecountchange is True or randomizelayer3 == "on":
-    #         d['nodes'].append(newNode(g, 3, layer3size, layer3color, layer3visible))
-    #     else:
-    #         x = data['nodes'][layer3startid + i]['fx']
-    #         y = data['nodes'][layer3startid + i]['fy']
-    #         z = data['nodes'][layer3startid + i]['z']
-    #         nodex = int(x)
-    #         nodey = int(y)
-    #         nodez = int(z)
-    #         d['nodes'].append(newNode(g, 3, layer3size, layer3color, layer3visible, nodex, nodey, nodez))
-
-    # for i in range(layer4nodes):
-    #     g += 1
-    #     if nodecountchange is True or randomizelayer4 == "on":
-    #         d['nodes'].append(newNode(g, 4, layer4size, layer4color, layer4visible))
-    #     else:
-    #         x = data['nodes'][layer4startid + i]['fx']
-    #         y = data['nodes'][layer4startid + i]['fy']
-    #         z = data['nodes'][layer4startid + i]['z']
-    #         nodex = int(x)
-    #         nodey = int(y)
-    #         nodez = int(z)
-    #         d['nodes'].append(newNode(g, 4, layer4size, layer4color, layer4visible, nodex, nodey, nodez))
-
-    # for i in range(layer5nodes):
-    #     g += 1
-    #     if nodecountchange is True or randomizelayer5 == "on":
-    #         d['nodes'].append(newNode(g, 5, layer5size, layer5color, layer5visible))
-    #     else:
-    #         x = data['nodes'][layer5startid + i]['fx']
-    #         y = data['nodes'][layer5startid + i]['fy']
-    #         z = data['nodes'][layer5startid + i]['z']
-    #         nodex = int(x)
-    #         nodey = int(y)
-    #         nodez = int(z)
-    #         d['nodes'].append(newNode(g, 5, layer5size, layer5color, layer5visible, nodex, nodey, nodez))
+                result['nodes'].append(newNode(g, layer_i+1, layer_sizes[layer_i], layer_colors[layer_i], layer_visibiled[layer_i], x, y, z))
 
     pid = 0  # Set the PuddleId to 0
     for i in range(layer_count):
         if layer_puddle_visibiled[i]:
-            d['links'].append({'puddleid': i+1, 'source': 1, 'target': 6+i})  # Placeholder, delete later
+            result['links'].append({'puddleid': i+1, 'source': 1, 'target': 6+i})  # Placeholder, delete later
 
     # if layer1puddlevisible == "on":
     #     d['links'].append({'puddleid': 1, 'source': 1, 'target': 6})  # Placeholder, delete later
@@ -387,14 +283,14 @@ def createjson():
     #     d['links'].append({'puddleid': 5, 'source': 1, 'target': 10})  # Placeholder, delete later
 
     print('\n' + str(len(log)) + " characters added to log.\n")
-    d['log'] = log
+    result['log'] = log
 
     if USE_DATABASE:
-        database.update_user_data(session['uuid'],d)
+        database.update_user_data(session['uuid'],result)
     else:
         try:
             with open("new_sample.json", "w") as d3_json_out:
-                json.dump(d, d3_json_out, indent=4, sort_keys=False)
+                json.dump(result, d3_json_out, indent=4, sort_keys=False)
         except Exception as e:
             print(e)
             return "Failed to open new_sample.json file."
