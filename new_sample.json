@@ -159,27 +159,14 @@
         {
             "puddleid": 1,
             "source": 1,
-            "target": 6
+            "target": 2,
+            "euclidean": 398.2888399139499
         },
         {
             "puddleid": 2,
-            "source": 1,
-            "target": 7
-        },
-        {
-            "puddleid": 3,
-            "source": 1,
-            "target": 8
-        },
-        {
-            "puddleid": 4,
-            "source": 1,
-            "target": 9
-        },
-        {
-            "puddleid": 5,
-            "source": 1,
-            "target": 10
+            "source": 2,
+            "target": 1,
+            "euclidean": 398.2888399139499
         }
     ],
     "log": ""

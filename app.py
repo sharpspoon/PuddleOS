@@ -169,16 +169,16 @@ def createjson():
         nodecountchange = True
     print(f"nodecountchange: {nodecountchange}")
 
-    for i in range(layer_count):
+    for layer_i in range(layer_count):
         new_layer = {
-            'layerNumber' : i+1,
-            'name' : f"layer{i+1}",
-            'total' : layer_nodes_count[i],
-            'color' : layer_colors[i],
-            'size' : layer_sizes[i],
-            'visible' : layer_visibiled_raw[i],
-            'clustering' : layer_clusterings[i],
-            'puddle_visible' : layer_puddle_visibile_raw[i],
+            'layerNumber' : layer_i+1,
+            'name' : f"layer{layer_i+1}",
+            'total' : layer_nodes_count[layer_i],
+            'color' : layer_colors[layer_i],
+            'size' : layer_sizes[layer_i],
+            'visible' : layer_visibiled_raw[layer_i],
+            'clustering' : layer_clusterings[layer_i],
+            'puddle_visible' : layer_puddle_visibile_raw[layer_i],
         }
         result['layers'].append(new_layer)
 
@@ -198,21 +198,69 @@ def createjson():
                 'color': color,
                 'visibility': visibility}
 
+    nodes_by_group = [[] for _ in range(layer_count+1)]
     g = -1
     for layer_i in range(layer_count):
         for i in range(layer_nodes_count[layer_i]):
             g += 1
             if nodecountchange is True or randomize_layer[layer_i] == "on":
-                result['nodes'].append(newNode(g, layer_i+1, layer_sizes[layer_i], layer_colors[layer_i], layer_visibiled[layer_i]))
+                curr_node = newNode(g, layer_i+1, layer_sizes[layer_i], layer_colors[layer_i], layer_visibiled[layer_i])
+                result['nodes'].append(curr_node)
+                nodes_by_group[layer_i+1].append(curr_node)
             else:
                 curr_node = original_data['nodes'][layer_i_startid[layer_i] + i]
                 x, y, z = map(int, (curr_node['fx'], curr_node['fy'], curr_node['z']))
-                result['nodes'].append(newNode(g, layer_i+1, layer_sizes[layer_i], layer_colors[layer_i], layer_visibiled[layer_i], x, y, z))
+                curr_node = newNode(g, layer_i+1, layer_sizes[layer_i], layer_colors[layer_i], layer_visibiled[layer_i], x, y, z)
+                result['nodes'].append(curr_node)
+                nodes_by_group[layer_i+1].append(curr_node)
 
-    pid = 0  # Set the PuddleId to 0
-    for i in range(layer_count):
-        if layer_puddle_visibiled[i]:
-            result['links'].append({'puddleid': i+1, 'source': 1, 'target': 6+i})  # Placeholder, delete later
+    pprint(nodes_by_group)
+    pid = 1  # Set the PuddleId to 0
+    for layer_i in range(layer_count):
+        if layer_puddle_visibiled[layer_i] == 'visible':
+            for node in nodes_by_group[layer_i+1]:
+
+                # =============== Not really sure why this is needed ===================== #
+                # I think this is fine?
+                i_tmp = node['id']
+
+                # If this previous node is in the same group
+                if result['nodes'][i_tmp - 1]['group'] == layer_i:  
+                    px = result['nodes'][i_tmp - 1]['fx']
+                    py = result['nodes'][i_tmp - 1]['fy']
+                    pz = result['nodes'][i_tmp - 1]['z']
+                else:  
+                    # There is no previous node in this group.
+                    px = None
+                    py = None
+                    pz = None
+                # ======================================================================== #
+
+                # Get info for current node
+                x_0,y_0,z_0 = node['fx'], node['fy'], node['z']
+                id_0 = node['id']
+                best_dst = float('inf')
+                best_dst_id = -1
+
+                # Iterate through all other nodes in the same group to find closest
+                for node_b in nodes_by_group[layer_i+1]:
+                    if node_b['id'] == id_0:
+                        continue
+
+                    x_1,y_1,z_1 = node_b['fx'], node_b['fy'], node_b['z']
+                    id_1 = node_b['id']
+
+                    # SQRT not needed since we only care about being smallest
+                    dst = (x_1-x_0)**2 + (y_1-y_0)**2 + (z_1-z_0)**2
+                    if dst < best_dst:
+                        best_dst = dst
+                        best_dst_id = id_1
+
+                result['links'].append({'puddleid': pid, 'source': id_0, 'target': best_dst_id, 'euclidean': math.sqrt(best_dst)})
+                pid += 1
+                
+
+
 
     # if layer1puddlevisible == "on":
     #     d['links'].append({'puddleid': 1, 'source': 1, 'target': 6})  # Placeholder, delete later

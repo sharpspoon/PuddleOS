@@ -2,53 +2,53 @@
     "x": 500,
     "y": 500,
     "z": 10,
-    "layers" : [
+    "layers": [
         {
-            "layerNumber" : 1,
+            "layerNumber": 1,
             "name": "layer1",
             "total": 1,
             "color": "#a77b00",
-            "size" : 5,
+            "size": 5,
             "visible": null,
             "clustering": "DBSCAN",
             "puddle_visible": null
         },
         {
-            "layerNumber" : 2,
+            "layerNumber": 2,
             "name": "layer2",
             "total": 2,
             "color": "#d58400",
-            "size" : 5,
+            "size": 5,
             "visible": "on",
             "clustering": "DBSCAN",
             "puddle_visible": "on"
         },
         {
-            "layerNumber" : 3,
+            "layerNumber": 3,
             "name": "layer3",
             "total": 2,
             "color": "#008cb4",
-            "size" : 20,
+            "size": 20,
             "visible": "on",
             "clustering": "Agglomerative Complete Linkage Hierarchical Clustering",
             "puddle_visible": null
         },
         {
-            "layerNumber" : 4,
+            "layerNumber": 4,
             "name": "layer4",
             "total": 2,
             "color": "#4d22b3",
-            "size" : 50,
+            "size": 50,
             "visible": null,
             "clustering": "Agglomerative Complete Linkage Hierarchical Clustering",
             "puddle_visible": null
         },
         {
-            "layerNumber" : 5,
+            "layerNumber": 5,
             "name": "layer5",
             "total": 2,
             "color": "#ff4013",
-            "size" : 75,
+            "size": 75,
             "visible": null,
             "clustering": "DBSCAN",
             "puddle_visible": null
