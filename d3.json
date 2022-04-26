@@ -2,44 +2,66 @@
     "x": 500,
     "y": 500,
     "z": 10,
-    "layer1total": 1,
-    "layer1color": "#a77b00",
-    "layer1size": 5,
-    "layer1visible": null,
-    "layer1clustering": "DBSCAN",
-    "layer1puddlevisible": null,
-    "layer2total": 20,
-    "layer2color": "#d58400",
-    "layer2size": 5,
-    "layer2visible": "on",
-    "layer2clustering": "Agglomerative Complete Linkage Hierarchical Clustering",
-    "layer2puddlevisible": "on",
-    "layer3total": 20,
-    "layer3color": "#008cb4",
-    "layer3size": 20,
-    "layer3visible": null,
-    "layer3clustering": "Agglomerative Complete Linkage Hierarchical Clustering",
-    "layer3puddlevisible": null,
-    "layer4total": 29,
-    "layer4color": "#4d22b3",
-    "layer4size": 50,
-    "layer4visible": null,
-    "layer4clustering": "DBSCAN",
-    "layer4puddlevisible": null,
-    "layer5total": 2,
-    "layer5color": "#ff4013",
-    "layer5size": 75,
-    "layer5visible": null,
-    "layer5clustering": "Agglomerative Complete Linkage Hierarchical Clustering",
-    "layer5puddlevisible": null,
+    "layers": [
+        {
+            "layerNumber": 1,
+            "name": "layer1",
+            "total": 1,
+            "color": "#a77b00",
+            "size": 5,
+            "visible": null,
+            "clustering": "DBSCAN",
+            "puddle_visible": null
+        },
+        {
+            "layerNumber": 2,
+            "name": "layer2",
+            "total": 2,
+            "color": "#d58400",
+            "size": 5,
+            "visible": "on",
+            "clustering": "DBSCAN",
+            "puddle_visible": "on"
+        },
+        {
+            "layerNumber": 3,
+            "name": "layer3",
+            "total": 2,
+            "color": "#008cb4",
+            "size": 20,
+            "visible": "on",
+            "clustering": "Agglomerative Complete Linkage Hierarchical Clustering",
+            "puddle_visible": null
+        },
+        {
+            "layerNumber": 4,
+            "name": "layer4",
+            "total": 2,
+            "color": "#4d22b3",
+            "size": 50,
+            "visible": null,
+            "clustering": "Agglomerative Complete Linkage Hierarchical Clustering",
+            "puddle_visible": null
+        },
+        {
+            "layerNumber": 5,
+            "name": "layer5",
+            "total": 2,
+            "color": "#ff4013",
+            "size": 75,
+            "visible": null,
+            "clustering": "DBSCAN",
+            "puddle_visible": null
+        }
+    ],
     "nodes": [
         {
             "id": 0,
             "group": 1,
             "size": 5,
             "fixed": true,
-            "fx": 246,
-            "fy": 170,
+            "fx": 137,
+            "fy": 180,
             "z": 1,
             "color": "#a77b00",
             "visibility": "hidden"
@@ -49,9 +71,9 @@
             "group": 2,
             "size": 5,
             "fixed": true,
-            "fx": 65,
-            "fy": 277,
-            "z": 2,
+            "fx": 167,
+            "fy": 493,
+            "z": 1,
             "color": "#d58400",
             "visibility": "visible"
         },
@@ -60,768 +82,75 @@
             "group": 2,
             "size": 5,
             "fixed": true,
-            "fx": 434,
-            "fy": 449,
-            "z": 4,
+            "fx": 198,
+            "fy": 96,
+            "z": 9,
             "color": "#d58400",
             "visibility": "visible"
         },
         {
             "id": 3,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 335,
-            "fy": 13,
-            "z": 5,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 4,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 220,
-            "fy": 108,
-            "z": 1,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 5,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 363,
-            "fy": 383,
-            "z": 8,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 6,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 119,
-            "fy": 80,
-            "z": 3,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 7,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 211,
-            "fy": 388,
-            "z": 2,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 8,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 123,
-            "fy": 148,
-            "z": 7,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 9,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 479,
-            "fy": 275,
-            "z": 1,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 10,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 129,
-            "fy": 165,
-            "z": 3,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 11,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 78,
-            "fy": 410,
-            "z": 7,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 12,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 414,
-            "fy": 225,
-            "z": 4,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 13,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 211,
-            "fy": 18,
-            "z": 2,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 14,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 334,
-            "fy": 48,
-            "z": 4,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 15,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 236,
-            "fy": 277,
-            "z": 4,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 16,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 178,
-            "fy": 477,
-            "z": 9,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 17,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 225,
-            "fy": 438,
-            "z": 3,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 18,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 444,
-            "fy": 452,
-            "z": 8,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 19,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 484,
-            "fy": 422,
-            "z": 5,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 20,
-            "group": 2,
-            "size": 5,
-            "fixed": true,
-            "fx": 125,
-            "fy": 149,
-            "z": 6,
-            "color": "#d58400",
-            "visibility": "visible"
-        },
-        {
-            "id": 21,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 189,
-            "fy": 446,
-            "z": 7,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 22,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 414,
-            "fy": 59,
-            "z": 7,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 23,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 86,
-            "fy": 321,
-            "z": 5,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 24,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 285,
-            "fy": 224,
-            "z": 5,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 25,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 487,
-            "fy": 221,
-            "z": 9,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 26,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 8,
-            "fy": 335,
-            "z": 4,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 27,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 44,
-            "fy": 415,
-            "z": 4,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 28,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 310,
-            "fy": 334,
-            "z": 4,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 29,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 438,
-            "fy": 356,
-            "z": 8,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 30,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 78,
-            "fy": 91,
-            "z": 6,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 31,
             "group": 3,
             "size": 20,
             "fixed": true,
             "fx": 244,
-            "fy": 291,
-            "z": 3,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 32,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 388,
-            "fy": 335,
-            "z": 8,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 33,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 499,
-            "fy": 474,
-            "z": 5,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 34,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 222,
-            "fy": 53,
-            "z": 5,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 35,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 30,
-            "fy": 386,
-            "z": 8,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 36,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 439,
-            "fy": 7,
-            "z": 6,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 37,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 493,
-            "fy": 408,
-            "z": 7,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 38,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 126,
-            "fy": 204,
-            "z": 2,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 39,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 121,
-            "fy": 48,
-            "z": 7,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 40,
-            "group": 3,
-            "size": 20,
-            "fixed": true,
-            "fx": 35,
-            "fy": 315,
-            "z": 8,
-            "color": "#008cb4",
-            "visibility": "hidden"
-        },
-        {
-            "id": 41,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 77,
-            "fy": 354,
-            "z": 9,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 42,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 131,
-            "fy": 93,
-            "z": 5,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 43,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 6,
-            "fy": 250,
-            "z": 9,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 44,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 238,
-            "fy": 410,
-            "z": 5,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 45,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 79,
-            "fy": 289,
-            "z": 9,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 46,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 111,
-            "fy": 88,
-            "z": 6,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 47,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 372,
-            "fy": 41,
+            "fy": 306,
             "z": 4,
-            "color": "#4d22b3",
-            "visibility": "hidden"
+            "color": "#008cb4",
+            "visibility": "visible"
         },
         {
-            "id": 48,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 133,
-            "fy": 474,
-            "z": 8,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 49,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 196,
-            "fy": 417,
-            "z": 4,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 50,
-            "group": 4,
-            "size": 50,
+            "id": 4,
+            "group": 3,
+            "size": 20,
             "fixed": true,
             "fx": 207,
-            "fy": 109,
-            "z": 1,
-            "color": "#4d22b3",
-            "visibility": "hidden"
+            "fy": 150,
+            "z": 4,
+            "color": "#008cb4",
+            "visibility": "visible"
         },
         {
-            "id": 51,
+            "id": 5,
             "group": 4,
             "size": 50,
             "fixed": true,
-            "fx": 422,
-            "fy": 99,
-            "z": 1,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 52,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 370,
-            "fy": 103,
-            "z": 2,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 53,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 298,
-            "fy": 491,
-            "z": 6,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 54,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 76,
-            "fy": 84,
+            "fx": 377,
+            "fy": 428,
             "z": 5,
             "color": "#4d22b3",
             "visibility": "hidden"
         },
         {
-            "id": 55,
+            "id": 6,
             "group": 4,
             "size": 50,
             "fixed": true,
-            "fx": 394,
-            "fy": 117,
-            "z": 6,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 56,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 418,
-            "fy": 441,
+            "fx": 276,
+            "fy": 6,
             "z": 4,
             "color": "#4d22b3",
             "visibility": "hidden"
         },
         {
-            "id": 57,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 440,
-            "fy": 192,
-            "z": 7,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 58,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 258,
-            "fy": 15,
-            "z": 1,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 59,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 402,
-            "fy": 307,
-            "z": 8,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 60,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 212,
-            "fy": 342,
-            "z": 8,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 61,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 115,
-            "fy": 232,
-            "z": 9,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 62,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 432,
-            "fy": 225,
-            "z": 1,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 63,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 274,
-            "fy": 243,
-            "z": 1,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 64,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 197,
-            "fy": 492,
-            "z": 4,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 65,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 53,
-            "fy": 434,
-            "z": 8,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 66,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 105,
-            "fy": 416,
-            "z": 6,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 67,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 111,
-            "fy": 11,
-            "z": 9,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 68,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 55,
-            "fy": 158,
-            "z": 8,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 69,
-            "group": 4,
-            "size": 50,
-            "fixed": true,
-            "fx": 246,
-            "fy": 410,
-            "z": 3,
-            "color": "#4d22b3",
-            "visibility": "hidden"
-        },
-        {
-            "id": 70,
+            "id": 7,
             "group": 5,
             "size": 75,
             "fixed": true,
-            "fx": 48,
-            "fy": 86,
-            "z": 3,
+            "fx": 133,
+            "fy": 439,
+            "z": 8,
             "color": "#ff4013",
             "visibility": "hidden"
         },
         {
-            "id": 71,
+            "id": 8,
             "group": 5,
             "size": 75,
             "fixed": true,
-            "fx": 382,
-            "fy": 262,
-            "z": 3,
+            "fx": 190,
+            "fy": 57,
+            "z": 7,
             "color": "#ff4013",
             "visibility": "hidden"
         }
@@ -830,123 +159,15 @@
         {
             "puddleid": 1,
             "source": 1,
-            "target": 10,
-            "euclidean": 129.0
+            "target": 2,
+            "euclidean": 398.2888399139499
         },
         {
             "puddleid": 2,
             "source": 2,
-            "target": 18,
-            "euclidean": 11.180339887498949
-        },
-        {
-            "puddleid": 3,
-            "source": 3,
-            "target": 14,
-            "euclidean": 35.02855977627399
-        },
-        {
-            "puddleid": 4,
-            "source": 4,
-            "target": 13,
-            "euclidean": 90.45440840556087
-        },
-        {
-            "puddleid": 5,
-            "source": 5,
-            "target": 2,
-            "euclidean": 97.02061636580135
-        },
-        {
-            "puddleid": 6,
-            "source": 6,
-            "target": 8,
-            "euclidean": 68.23488843692792
-        },
-        {
-            "puddleid": 7,
-            "source": 7,
-            "target": 17,
-            "euclidean": 51.93264869039515
-        },
-        {
-            "puddleid": 8,
-            "source": 8,
-            "target": 20,
-            "euclidean": 2.449489742783178
-        },
-        {
-            "puddleid": 9,
-            "source": 9,
-            "target": 12,
-            "euclidean": 82.06095295571457
-        },
-        {
-            "puddleid": 10,
-            "source": 10,
-            "target": 20,
-            "euclidean": 16.76305461424021
-        },
-        {
-            "puddleid": 11,
-            "source": 11,
-            "target": 16,
-            "euclidean": 120.38687636117153
-        },
-        {
-            "puddleid": 12,
-            "source": 12,
-            "target": 9,
-            "euclidean": 82.06095295571457
-        },
-        {
-            "puddleid": 13,
-            "source": 13,
-            "target": 4,
-            "euclidean": 90.45440840556087
-        },
-        {
-            "puddleid": 14,
-            "source": 14,
-            "target": 3,
-            "euclidean": 35.02855977627399
-        },
-        {
-            "puddleid": 15,
-            "source": 15,
-            "target": 7,
-            "euclidean": 113.79806676741043
-        },
-        {
-            "puddleid": 16,
-            "source": 16,
-            "target": 17,
-            "euclidean": 61.36774397026503
-        },
-        {
-            "puddleid": 17,
-            "source": 17,
-            "target": 7,
-            "euclidean": 51.93264869039515
-        },
-        {
-            "puddleid": 18,
-            "source": 18,
-            "target": 2,
-            "euclidean": 11.180339887498949
-        },
-        {
-            "puddleid": 19,
-            "source": 19,
-            "target": 18,
-            "euclidean": 50.08991914547277
-        },
-        {
-            "puddleid": 20,
-            "source": 20,
-            "target": 8,
-            "euclidean": 2.449489742783178
+            "target": 1,
+            "euclidean": 398.2888399139499
         }
     ],
-    "log": "<tr><th scope=\"row\">1</th><td>2</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>407.1228315877163</td><td>407.1228315877163</td><td>2</td></tr><tr><th scope=\"row\">1</th><td>3</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>335</td><td>13</td><td>5</td><td>377.63077205121937</td><td>377.63077205121937</td><td>3</td></tr><tr><th scope=\"row\">1</th><td>4</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>220</td><td>108</td><td>1</td><td>229.31855572543623</td><td>229.31855572543623</td><td>4</td></tr><tr><th scope=\"row\">1</th><td>5</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>363</td><td>383</td><td>8</td><td>316.34790974495155</td><td>229.31855572543623</td><td>4</td></tr><tr><th scope=\"row\">1</th><td>6</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>119</td><td>80</td><td>3</td><td>204.26942992038724</td><td>204.26942992038724</td><td>6</td></tr><tr><th scope=\"row\">1</th><td>7</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>211</td><td>388</td><td>2</td><td>183.40392580313</td><td>183.40392580313</td><td>7</td></tr><tr><th scope=\"row\">1</th><td>8</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>123</td><td>148</td><td>7</td><td>141.5273825095342</td><td>141.5273825095342</td><td>8</td></tr><tr><th scope=\"row\">1</th><td>9</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>479</td><td>275</td><td>1</td><td>414.00603860330347</td><td>141.5273825095342</td><td>8</td></tr><tr><th scope=\"row\">1</th><td>10</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>129</td><td>165</td><td>3</td><td>129.0</td><td>129.0</td><td>10</td></tr><tr><th scope=\"row\">1</th><td>11</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>78</td><td>410</td><td>7</td><td>133.72733452813603</td><td>129.0</td><td>10</td></tr><tr><th scope=\"row\">1</th><td>12</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>414</td><td>225</td><td>4</td><td>352.85832851159967</td><td>129.0</td><td>10</td></tr><tr><th scope=\"row\">1</th><td>13</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>211</td><td>18</td><td>2</td><td>297.31632985761144</td><td>129.0</td><td>10</td></tr><tr><th scope=\"row\">1</th><td>14</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>334</td><td>48</td><td>4</td><td>353.27892662880413</td><td>129.0</td><td>10</td></tr><tr><th scope=\"row\">1</th><td>15</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>236</td><td>277</td><td>4</td><td>171.011695506477</td><td>129.0</td><td>10</td></tr><tr><th scope=\"row\">1</th><td>16</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>178</td><td>477</td><td>9</td><td>229.8216699965432</td><td>129.0</td><td>10</td></tr><tr><th scope=\"row\">1</th><td>17</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>225</td><td>438</td><td>3</td><td>226.98458097412694</td><td>129.0</td><td>10</td></tr><tr><th scope=\"row\">1</th><td>18</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>444</td><td>452</td><td>8</td><td>417.4949101486149</td><td>129.0</td><td>10</td></tr><tr><th scope=\"row\">1</th><td>19</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>484</td><td>422</td><td>5</td><td>443.3903472111228</td><td>129.0</td><td>10</td></tr><tr><th scope=\"row\">1</th><td>20</td><td>None</td><td>None</td><td>None</td><td>65</td><td>277</td><td>2</td><td>125</td><td>149</td><td>6</td><td>141.4213562373095</td><td>129.0</td><td>10</td></tr><tr><th scope=\"row\">2</th><td>1</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>65</td><td>277</td><td>2</td><td>407.1228315877163</td><td>407.1228315877163</td><td>1</td></tr><tr><th scope=\"row\">2</th><td>3</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>447.0995414893645</td><td>407.1228315877163</td><td>1</td></tr><tr><th scope=\"row\">2</th><td>4</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>220</td><td>108</td><td>1</td><td>402.59905613401526</td><td>402.59905613401526</td><td>4</td></tr><tr><th scope=\"row\">2</th><td>5</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>363</td><td>383</td><td>8</td><td>97.02061636580135</td><td>97.02061636580135</td><td>5</td></tr><tr><th scope=\"row\">2</th><td>6</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>119</td><td>80</td><td>3</td><td>485.16698156407966</td><td>97.02061636580135</td><td>5</td></tr><tr><th scope=\"row\">2</th><td>7</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>211</td><td>388</td><td>2</td><td>231.20121106949244</td><td>97.02061636580135</td><td>5</td></tr><tr><th scope=\"row\">2</th><td>8</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>123</td><td>148</td><td>7</td><td>432.817513508869</td><td>97.02061636580135</td><td>5</td></tr><tr><th scope=\"row\">2</th><td>9</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>479</td><td>275</td><td>1</td><td>179.74982614734293</td><td>97.02061636580135</td><td>5</td></tr><tr><th scope=\"row\">2</th><td>10</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>129</td><td>165</td><td>3</td><td>416.75172465150035</td><td>97.02061636580135</td><td>5</td></tr><tr><th scope=\"row\">2</th><td>11</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>78</td><td>410</td><td>7</td><td>358.14242976782293</td><td>97.02061636580135</td><td>5</td></tr><tr><th scope=\"row\">2</th><td>12</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>414</td><td>225</td><td>4</td><td>224.89108474992958</td><td>97.02061636580135</td><td>5</td></tr><tr><th scope=\"row\">2</th><td>13</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>211</td><td>18</td><td>2</td><td>485.2772403482364</td><td>97.02061636580135</td><td>5</td></tr><tr><th scope=\"row\">2</th><td>14</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>334</td><td>48</td><td>4</td><td>413.28077622846183</td><td>97.02061636580135</td><td>5</td></tr><tr><th scope=\"row\">2</th><td>15</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>236</td><td>277</td><td>4</td><td>262.27466518899615</td><td>97.02061636580135</td><td>5</td></tr><tr><th scope=\"row\">2</th><td>16</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>178</td><td>477</td><td>9</td><td>257.5752317285185</td><td>97.02061636580135</td><td>5</td></tr><tr><th scope=\"row\">2</th><td>17</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>225</td><td>438</td><td>3</td><td>209.29166251907887</td><td>97.02061636580135</td><td>5</td></tr><tr><th scope=\"row\">2</th><td>18</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>444</td><td>452</td><td>8</td><td>11.180339887498949</td><td>11.180339887498949</td><td>18</td></tr><tr><th scope=\"row\">2</th><td>19</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>484</td><td>422</td><td>5</td><td>56.83308895353129</td><td>11.180339887498949</td><td>18</td></tr><tr><th scope=\"row\">2</th><td>20</td><td>65</td><td>277</td><td>2</td><td>434</td><td>449</td><td>4</td><td>125</td><td>149</td><td>6</td><td>430.6796953653609</td><td>11.180339887498949</td><td>18</td></tr><tr><th scope=\"row\">3</th><td>1</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>65</td><td>277</td><td>2</td><td>377.63077205121937</td><td>377.63077205121937</td><td>1</td></tr><tr><th scope=\"row\">3</th><td>2</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>434</td><td>449</td><td>4</td><td>447.0995414893645</td><td>377.63077205121937</td><td>1</td></tr><tr><th scope=\"row\">3</th><td>4</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>149.21796138535066</td><td>149.21796138535066</td><td>4</td></tr><tr><th scope=\"row\">3</th><td>5</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>363</td><td>383</td><td>8</td><td>371.07007424474426</td><td>149.21796138535066</td><td>4</td></tr><tr><th scope=\"row\">3</th><td>6</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>119</td><td>80</td><td>3</td><td>226.16144675872587</td><td>149.21796138535066</td><td>4</td></tr><tr><th scope=\"row\">3</th><td>7</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>211</td><td>388</td><td>2</td><td>394.9810122018526</td><td>149.21796138535066</td><td>4</td></tr><tr><th scope=\"row\">3</th><td>8</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>123</td><td>148</td><td>7</td><td>251.342395946247</td><td>149.21796138535066</td><td>4</td></tr><tr><th scope=\"row\">3</th><td>9</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>479</td><td>275</td><td>1</td><td>298.9916386790774</td><td>149.21796138535066</td><td>4</td></tr><tr><th scope=\"row\">3</th><td>10</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>129</td><td>165</td><td>3</td><td>256.01562452319195</td><td>149.21796138535066</td><td>4</td></tr><tr><th scope=\"row\">3</th><td>11</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>78</td><td>410</td><td>7</td><td>472.9291701724477</td><td>149.21796138535066</td><td>4</td></tr><tr><th scope=\"row\">3</th><td>12</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>414</td><td>225</td><td>4</td><td>226.24323194296883</td><td>149.21796138535066</td><td>4</td></tr><tr><th scope=\"row\">3</th><td>13</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>211</td><td>18</td><td>2</td><td>124.13702106946178</td><td>124.13702106946178</td><td>13</td></tr><tr><th scope=\"row\">3</th><td>14</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>334</td><td>48</td><td>4</td><td>35.02855977627399</td><td>35.02855977627399</td><td>14</td></tr><tr><th scope=\"row\">3</th><td>15</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>236</td><td>277</td><td>4</td><td>281.9538969406169</td><td>35.02855977627399</td><td>14</td></tr><tr><th scope=\"row\">3</th><td>16</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>178</td><td>477</td><td>9</td><td>489.858142731138</td><td>35.02855977627399</td><td>14</td></tr><tr><th scope=\"row\">3</th><td>17</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>225</td><td>438</td><td>3</td><td>439.00911152275637</td><td>35.02855977627399</td><td>14</td></tr><tr><th scope=\"row\">3</th><td>18</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>444</td><td>452</td><td>8</td><td>452.3394742889459</td><td>35.02855977627399</td><td>14</td></tr><tr><th scope=\"row\">3</th><td>19</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>484</td><td>422</td><td>5</td><td>435.2953020651613</td><td>35.02855977627399</td><td>14</td></tr><tr><th scope=\"row\">3</th><td>20</td><td>434</td><td>449</td><td>4</td><td>335</td><td>13</td><td>5</td><td>125</td><td>149</td><td>6</td><td>250.19392478635447</td><td>35.02855977627399</td><td>14</td></tr><tr><th scope=\"row\">4</th><td>1</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>65</td><td>277</td><td>2</td><td>229.31855572543623</td><td>229.31855572543623</td><td>1</td></tr><tr><th scope=\"row\">4</th><td>2</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>434</td><td>449</td><td>4</td><td>402.59905613401526</td><td>229.31855572543623</td><td>1</td></tr><tr><th scope=\"row\">4</th><td>3</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>335</td><td>13</td><td>5</td><td>149.21796138535066</td><td>149.21796138535066</td><td>3</td></tr><tr><th scope=\"row\">4</th><td>5</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>310.037094554829</td><td>149.21796138535066</td><td>3</td></tr><tr><th scope=\"row\">4</th><td>6</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>119</td><td>80</td><td>3</td><td>104.82843125793688</td><td>104.82843125793688</td><td>6</td></tr><tr><th scope=\"row\">4</th><td>7</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>211</td><td>388</td><td>2</td><td>280.14639030335553</td><td>104.82843125793688</td><td>6</td></tr><tr><th scope=\"row\">4</th><td>8</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>123</td><td>148</td><td>7</td><td>105.09519494249012</td><td>104.82843125793688</td><td>6</td></tr><tr><th scope=\"row\">4</th><td>9</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>479</td><td>275</td><td>1</td><td>308.1720298794165</td><td>104.82843125793688</td><td>6</td></tr><tr><th scope=\"row\">4</th><td>10</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>129</td><td>165</td><td>3</td><td>107.39646176667087</td><td>104.82843125793688</td><td>6</td></tr><tr><th scope=\"row\">4</th><td>11</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>78</td><td>410</td><td>7</td><td>333.7723775269608</td><td>104.82843125793688</td><td>6</td></tr><tr><th scope=\"row\">4</th><td>12</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>414</td><td>225</td><td>4</td><td>226.57007745949153</td><td>104.82843125793688</td><td>6</td></tr><tr><th scope=\"row\">4</th><td>13</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>211</td><td>18</td><td>2</td><td>90.45440840556087</td><td>90.45440840556087</td><td>13</td></tr><tr><th scope=\"row\">4</th><td>14</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>334</td><td>48</td><td>4</td><td>128.86038956948718</td><td>90.45440840556087</td><td>13</td></tr><tr><th scope=\"row\">4</th><td>15</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>236</td><td>277</td><td>4</td><td>169.78221343827508</td><td>90.45440840556087</td><td>13</td></tr><tr><th scope=\"row\">4</th><td>16</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>178</td><td>477</td><td>9</td><td>371.46870662277865</td><td>90.45440840556087</td><td>13</td></tr><tr><th scope=\"row\">4</th><td>17</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>225</td><td>438</td><td>3</td><td>330.0439364690708</td><td>90.45440840556087</td><td>13</td></tr><tr><th scope=\"row\">4</th><td>18</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>444</td><td>452</td><td>8</td><td>410.5618102064536</td><td>90.45440840556087</td><td>13</td></tr><tr><th scope=\"row\">4</th><td>19</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>484</td><td>422</td><td>5</td><td>410.2535801184434</td><td>90.45440840556087</td><td>13</td></tr><tr><th scope=\"row\">4</th><td>20</td><td>335</td><td>13</td><td>5</td><td>220</td><td>108</td><td>1</td><td>125</td><td>149</td><td>6</td><td>103.5905401086412</td><td>90.45440840556087</td><td>13</td></tr><tr><th scope=\"row\">5</th><td>1</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>65</td><td>277</td><td>2</td><td>316.34790974495155</td><td>316.34790974495155</td><td>1</td></tr><tr><th scope=\"row\">5</th><td>2</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>434</td><td>449</td><td>4</td><td>97.02061636580135</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>3</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>335</td><td>13</td><td>5</td><td>371.07007424474426</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>4</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>220</td><td>108</td><td>1</td><td>310.037094554829</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>6</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>389.0629769073382</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>7</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>211</td><td>388</td><td>2</td><td>152.20052562327112</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>8</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>123</td><td>148</td><td>7</td><td>335.89581718145877</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>9</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>479</td><td>275</td><td>1</td><td>158.64740779476986</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>10</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>129</td><td>165</td><td>3</td><td>319.8515280563781</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>11</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>78</td><td>410</td><td>7</td><td>286.27783707440574</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>12</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>414</td><td>225</td><td>4</td><td>166.07528413343147</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>13</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>211</td><td>18</td><td>2</td><td>395.4301455377422</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>14</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>334</td><td>48</td><td>4</td><td>336.27667180463175</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>15</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>236</td><td>277</td><td>4</td><td>165.47205202087756</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>16</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>178</td><td>477</td><td>9</td><td>207.51385495913277</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>17</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>225</td><td>438</td><td>3</td><td>148.64050591948345</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>18</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>444</td><td>452</td><td>8</td><td>106.4048871058092</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>19</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>484</td><td>422</td><td>5</td><td>127.16524682475162</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">5</th><td>20</td><td>220</td><td>108</td><td>1</td><td>363</td><td>383</td><td>8</td><td>125</td><td>149</td><td>6</td><td>333.7723775269607</td><td>97.02061636580135</td><td>2</td></tr><tr><th scope=\"row\">6</th><td>1</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>65</td><td>277</td><td>2</td><td>204.26942992038724</td><td>204.26942992038724</td><td>1</td></tr><tr><th scope=\"row\">6</th><td>2</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>434</td><td>449</td><td>4</td><td>485.16698156407966</td><td>204.26942992038724</td><td>1</td></tr><tr><th scope=\"row\">6</th><td>3</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>335</td><td>13</td><td>5</td><td>226.16144675872587</td><td>204.26942992038724</td><td>1</td></tr><tr><th scope=\"row\">6</th><td>4</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>220</td><td>108</td><td>1</td><td>104.82843125793688</td><td>104.82843125793688</td><td>4</td></tr><tr><th scope=\"row\">6</th><td>5</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>363</td><td>383</td><td>8</td><td>389.0629769073382</td><td>104.82843125793688</td><td>4</td></tr><tr><th scope=\"row\">6</th><td>7</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>321.4482851097514</td><td>104.82843125793688</td><td>4</td></tr><tr><th scope=\"row\">6</th><td>8</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>123</td><td>148</td><td>7</td><td>68.23488843692792</td><td>68.23488843692792</td><td>8</td></tr><tr><th scope=\"row\">6</th><td>9</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>479</td><td>275</td><td>1</td><td>409.42520684491325</td><td>68.23488843692792</td><td>8</td></tr><tr><th scope=\"row\">6</th><td>10</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>129</td><td>165</td><td>3</td><td>85.58621384311846</td><td>68.23488843692792</td><td>8</td></tr><tr><th scope=\"row\">6</th><td>11</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>78</td><td>410</td><td>7</td><td>332.56127254988667</td><td>68.23488843692792</td><td>8</td></tr><tr><th scope=\"row\">6</th><td>12</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>414</td><td>225</td><td>4</td><td>328.71111937383563</td><td>68.23488843692792</td><td>8</td></tr><tr><th scope=\"row\">6</th><td>13</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>211</td><td>18</td><td>2</td><td>110.9459327780879</td><td>68.23488843692792</td><td>8</td></tr><tr><th scope=\"row\">6</th><td>14</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>334</td><td>48</td><td>4</td><td>217.37065119284156</td><td>68.23488843692792</td><td>8</td></tr><tr><th scope=\"row\">6</th><td>15</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>236</td><td>277</td><td>4</td><td>229.1266025584982</td><td>68.23488843692792</td><td>8</td></tr><tr><th scope=\"row\">6</th><td>16</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>178</td><td>477</td><td>9</td><td>401.40503235510147</td><td>68.23488843692792</td><td>8</td></tr><tr><th scope=\"row\">6</th><td>17</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>225</td><td>438</td><td>3</td><td>373.3630940518894</td><td>68.23488843692792</td><td>8</td></tr><tr><th scope=\"row\">6</th><td>18</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>444</td><td>452</td><td>8</td><td>493.9979757043545</td><td>68.23488843692792</td><td>8</td></tr><tr><th scope=\"row\">6</th><td>19</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>484</td><td>422</td><td>5</td><td>500.1929627653712</td><td>68.23488843692792</td><td>8</td></tr><tr><th scope=\"row\">6</th><td>20</td><td>363</td><td>383</td><td>8</td><td>119</td><td>80</td><td>3</td><td>125</td><td>149</td><td>6</td><td>69.32532004974807</td><td>68.23488843692792</td><td>8</td></tr><tr><th scope=\"row\">7</th><td>1</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>65</td><td>277</td><td>2</td><td>183.40392580313</td><td>183.40392580313</td><td>1</td></tr><tr><th scope=\"row\">7</th><td>2</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>434</td><td>449</td><td>4</td><td>231.20121106949244</td><td>183.40392580313</td><td>1</td></tr><tr><th scope=\"row\">7</th><td>3</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>335</td><td>13</td><td>5</td><td>394.9810122018526</td><td>183.40392580313</td><td>1</td></tr><tr><th scope=\"row\">7</th><td>4</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>220</td><td>108</td><td>1</td><td>280.14639030335553</td><td>183.40392580313</td><td>1</td></tr><tr><th scope=\"row\">7</th><td>5</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>363</td><td>383</td><td>8</td><td>152.20052562327112</td><td>152.20052562327112</td><td>5</td></tr><tr><th scope=\"row\">7</th><td>6</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>119</td><td>80</td><td>3</td><td>321.4482851097514</td><td>152.20052562327112</td><td>5</td></tr><tr><th scope=\"row\">7</th><td>8</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>255.67362007058924</td><td>152.20052562327112</td><td>5</td></tr><tr><th scope=\"row\">7</th><td>9</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>479</td><td>275</td><td>1</td><td>290.85047704963455</td><td>152.20052562327112</td><td>5</td></tr><tr><th scope=\"row\">7</th><td>10</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>129</td><td>165</td><td>3</td><td>237.60050504996826</td><td>152.20052562327112</td><td>5</td></tr><tr><th scope=\"row\">7</th><td>11</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>78</td><td>410</td><td>7</td><td>134.8999629355027</td><td>134.8999629355027</td><td>11</td></tr><tr><th scope=\"row\">7</th><td>12</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>414</td><td>225</td><td>4</td><td>260.3497647396671</td><td>134.8999629355027</td><td>11</td></tr><tr><th scope=\"row\">7</th><td>13</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>211</td><td>18</td><td>2</td><td>370.0</td><td>134.8999629355027</td><td>11</td></tr><tr><th scope=\"row\">7</th><td>14</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>334</td><td>48</td><td>4</td><td>361.5701868240799</td><td>134.8999629355027</td><td>11</td></tr><tr><th scope=\"row\">7</th><td>15</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>236</td><td>277</td><td>4</td><td>113.79806676741043</td><td>113.79806676741043</td><td>15</td></tr><tr><th scope=\"row\">7</th><td>16</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>178</td><td>477</td><td>9</td><td>95.17877914745492</td><td>95.17877914745492</td><td>16</td></tr><tr><th scope=\"row\">7</th><td>17</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>225</td><td>438</td><td>3</td><td>51.93264869039515</td><td>51.93264869039515</td><td>17</td></tr><tr><th scope=\"row\">7</th><td>18</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>444</td><td>452</td><td>8</td><td>241.70436487577132</td><td>51.93264869039515</td><td>17</td></tr><tr><th scope=\"row\">7</th><td>19</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>484</td><td>422</td><td>5</td><td>275.1254259424236</td><td>51.93264869039515</td><td>17</td></tr><tr><th scope=\"row\">7</th><td>20</td><td>119</td><td>80</td><td>3</td><td>211</td><td>388</td><td>2</td><td>125</td><td>149</td><td>6</td><td>254.03346236273677</td><td>51.93264869039515</td><td>17</td></tr><tr><th scope=\"row\">8</th><td>1</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>65</td><td>277</td><td>2</td><td>141.5273825095342</td><td>141.5273825095342</td><td>1</td></tr><tr><th scope=\"row\">8</th><td>2</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>434</td><td>449</td><td>4</td><td>432.817513508869</td><td>141.5273825095342</td><td>1</td></tr><tr><th scope=\"row\">8</th><td>3</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>335</td><td>13</td><td>5</td><td>251.342395946247</td><td>141.5273825095342</td><td>1</td></tr><tr><th scope=\"row\">8</th><td>4</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>220</td><td>108</td><td>1</td><td>105.09519494249012</td><td>105.09519494249012</td><td>4</td></tr><tr><th scope=\"row\">8</th><td>5</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>363</td><td>383</td><td>8</td><td>335.89581718145877</td><td>105.09519494249012</td><td>4</td></tr><tr><th scope=\"row\">8</th><td>6</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>119</td><td>80</td><td>3</td><td>68.23488843692792</td><td>68.23488843692792</td><td>6</td></tr><tr><th scope=\"row\">8</th><td>7</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>211</td><td>388</td><td>2</td><td>255.67362007058924</td><td>68.23488843692792</td><td>6</td></tr><tr><th scope=\"row\">8</th><td>9</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>378.0224861036708</td><td>68.23488843692792</td><td>6</td></tr><tr><th scope=\"row\">8</th><td>10</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>129</td><td>165</td><td>3</td><td>18.466185312619388</td><td>18.466185312619388</td><td>10</td></tr><tr><th scope=\"row\">8</th><td>11</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>78</td><td>410</td><td>7</td><td>265.8364158650955</td><td>18.466185312619388</td><td>10</td></tr><tr><th scope=\"row\">8</th><td>12</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>414</td><td>225</td><td>4</td><td>301.029898847274</td><td>18.466185312619388</td><td>10</td></tr><tr><th scope=\"row\">8</th><td>13</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>211</td><td>18</td><td>2</td><td>157.06368135250108</td><td>18.466185312619388</td><td>10</td></tr><tr><th scope=\"row\">8</th><td>14</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>334</td><td>48</td><td>4</td><td>233.51659469939176</td><td>18.466185312619388</td><td>10</td></tr><tr><th scope=\"row\">8</th><td>15</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>236</td><td>277</td><td>4</td><td>171.51967817133988</td><td>18.466185312619388</td><td>10</td></tr><tr><th scope=\"row\">8</th><td>16</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>178</td><td>477</td><td>9</td><td>333.5715815233666</td><td>18.466185312619388</td><td>10</td></tr><tr><th scope=\"row\">8</th><td>17</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>225</td><td>438</td><td>3</td><td>307.44105126023754</td><td>18.466185312619388</td><td>10</td></tr><tr><th scope=\"row\">8</th><td>18</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>444</td><td>452</td><td>8</td><td>442.1063220538698</td><td>18.466185312619388</td><td>10</td></tr><tr><th scope=\"row\">8</th><td>19</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>484</td><td>422</td><td>5</td><td>453.2118709830977</td><td>18.466185312619388</td><td>10</td></tr><tr><th scope=\"row\">8</th><td>20</td><td>211</td><td>388</td><td>2</td><td>123</td><td>148</td><td>7</td><td>125</td><td>149</td><td>6</td><td>2.449489742783178</td><td>2.449489742783178</td><td>20</td></tr><tr><th scope=\"row\">9</th><td>1</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>65</td><td>277</td><td>2</td><td>414.00603860330347</td><td>414.00603860330347</td><td>1</td></tr><tr><th scope=\"row\">9</th><td>2</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>434</td><td>449</td><td>4</td><td>179.74982614734293</td><td>179.74982614734293</td><td>2</td></tr><tr><th scope=\"row\">9</th><td>3</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>335</td><td>13</td><td>5</td><td>298.9916386790774</td><td>179.74982614734293</td><td>2</td></tr><tr><th scope=\"row\">9</th><td>4</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>220</td><td>108</td><td>1</td><td>308.1720298794165</td><td>179.74982614734293</td><td>2</td></tr><tr><th scope=\"row\">9</th><td>5</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>363</td><td>383</td><td>8</td><td>158.64740779476986</td><td>158.64740779476986</td><td>5</td></tr><tr><th scope=\"row\">9</th><td>6</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>119</td><td>80</td><td>3</td><td>409.42520684491325</td><td>158.64740779476986</td><td>5</td></tr><tr><th scope=\"row\">9</th><td>7</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>211</td><td>388</td><td>2</td><td>290.85047704963455</td><td>158.64740779476986</td><td>5</td></tr><tr><th scope=\"row\">9</th><td>8</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>123</td><td>148</td><td>7</td><td>378.0224861036708</td><td>158.64740779476986</td><td>5</td></tr><tr><th scope=\"row\">9</th><td>10</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>366.8841779090507</td><td>158.64740779476986</td><td>5</td></tr><tr><th scope=\"row\">9</th><td>11</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>78</td><td>410</td><td>7</td><td>423.1571811986652</td><td>158.64740779476986</td><td>5</td></tr><tr><th scope=\"row\">9</th><td>12</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>414</td><td>225</td><td>4</td><td>82.06095295571457</td><td>82.06095295571457</td><td>12</td></tr><tr><th scope=\"row\">9</th><td>13</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>211</td><td>18</td><td>2</td><td>371.3138833924743</td><td>82.06095295571457</td><td>12</td></tr><tr><th scope=\"row\">9</th><td>14</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>334</td><td>48</td><td>4</td><td>269.3752030161648</td><td>82.06095295571457</td><td>12</td></tr><tr><th scope=\"row\">9</th><td>15</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>236</td><td>277</td><td>4</td><td>243.0267474991179</td><td>82.06095295571457</td><td>12</td></tr><tr><th scope=\"row\">9</th><td>16</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>178</td><td>477</td><td>9</td><td>362.5865413939133</td><td>82.06095295571457</td><td>12</td></tr><tr><th scope=\"row\">9</th><td>17</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>225</td><td>438</td><td>3</td><td>301.8095425926755</td><td>82.06095295571457</td><td>12</td></tr><tr><th scope=\"row\">9</th><td>18</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>444</td><td>452</td><td>8</td><td>180.5630083931922</td><td>82.06095295571457</td><td>12</td></tr><tr><th scope=\"row\">9</th><td>19</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>484</td><td>422</td><td>5</td><td>147.13938969562162</td><td>82.06095295571457</td><td>12</td></tr><tr><th scope=\"row\">9</th><td>20</td><td>123</td><td>148</td><td>7</td><td>479</td><td>275</td><td>1</td><td>125</td><td>149</td><td>6</td><td>375.7885043478579</td><td>82.06095295571457</td><td>12</td></tr><tr><th scope=\"row\">10</th><td>1</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>65</td><td>277</td><td>2</td><td>129.0</td><td>129.0</td><td>1</td></tr><tr><th scope=\"row\">10</th><td>2</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>434</td><td>449</td><td>4</td><td>416.75172465150035</td><td>129.0</td><td>1</td></tr><tr><th scope=\"row\">10</th><td>3</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>335</td><td>13</td><td>5</td><td>256.01562452319195</td><td>129.0</td><td>1</td></tr><tr><th scope=\"row\">10</th><td>4</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>220</td><td>108</td><td>1</td><td>107.39646176667087</td><td>107.39646176667087</td><td>4</td></tr><tr><th scope=\"row\">10</th><td>5</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>363</td><td>383</td><td>8</td><td>319.8515280563781</td><td>107.39646176667087</td><td>4</td></tr><tr><th scope=\"row\">10</th><td>6</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>119</td><td>80</td><td>3</td><td>85.58621384311846</td><td>85.58621384311846</td><td>6</td></tr><tr><th scope=\"row\">10</th><td>7</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>211</td><td>388</td><td>2</td><td>237.60050504996826</td><td>85.58621384311846</td><td>6</td></tr><tr><th scope=\"row\">10</th><td>8</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>123</td><td>148</td><td>7</td><td>18.466185312619388</td><td>18.466185312619388</td><td>8</td></tr><tr><th scope=\"row\">10</th><td>9</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>479</td><td>275</td><td>1</td><td>366.8841779090507</td><td>18.466185312619388</td><td>8</td></tr><tr><th scope=\"row\">10</th><td>11</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>250.28383887099065</td><td>18.466185312619388</td><td>8</td></tr><tr><th scope=\"row\">10</th><td>12</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>414</td><td>225</td><td>4</td><td>291.2490343331631</td><td>18.466185312619388</td><td>8</td></tr><tr><th scope=\"row\">10</th><td>13</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>211</td><td>18</td><td>2</td><td>168.32706258947192</td><td>18.466185312619388</td><td>8</td></tr><tr><th scope=\"row\">10</th><td>14</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>334</td><td>48</td><td>4</td><td>236.04025080481506</td><td>18.466185312619388</td><td>8</td></tr><tr><th scope=\"row\">10</th><td>15</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>236</td><td>277</td><td>4</td><td>154.89996772110703</td><td>18.466185312619388</td><td>8</td></tr><tr><th scope=\"row\">10</th><td>16</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>178</td><td>477</td><td>9</td><td>315.8813068226735</td><td>18.466185312619388</td><td>8</td></tr><tr><th scope=\"row\">10</th><td>17</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>225</td><td>438</td><td>3</td><td>289.3872837565604</td><td>18.466185312619388</td><td>8</td></tr><tr><th scope=\"row\">10</th><td>18</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>444</td><td>452</td><td>8</td><td>426.1678073247673</td><td>18.466185312619388</td><td>8</td></tr><tr><th scope=\"row\">10</th><td>19</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>484</td><td>422</td><td>5</td><td>438.2670418820014</td><td>18.466185312619388</td><td>8</td></tr><tr><th scope=\"row\">10</th><td>20</td><td>479</td><td>275</td><td>1</td><td>129</td><td>165</td><td>3</td><td>125</td><td>149</td><td>6</td><td>16.76305461424021</td><td>16.76305461424021</td><td>20</td></tr><tr><th scope=\"row\">11</th><td>1</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>65</td><td>277</td><td>2</td><td>133.72733452813603</td><td>133.72733452813603</td><td>1</td></tr><tr><th scope=\"row\">11</th><td>2</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>434</td><td>449</td><td>4</td><td>358.14242976782293</td><td>133.72733452813603</td><td>1</td></tr><tr><th scope=\"row\">11</th><td>3</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>335</td><td>13</td><td>5</td><td>472.9291701724477</td><td>133.72733452813603</td><td>1</td></tr><tr><th scope=\"row\">11</th><td>4</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>220</td><td>108</td><td>1</td><td>333.7723775269608</td><td>133.72733452813603</td><td>1</td></tr><tr><th scope=\"row\">11</th><td>5</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>363</td><td>383</td><td>8</td><td>286.27783707440574</td><td>133.72733452813603</td><td>1</td></tr><tr><th scope=\"row\">11</th><td>6</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>119</td><td>80</td><td>3</td><td>332.56127254988667</td><td>133.72733452813603</td><td>1</td></tr><tr><th scope=\"row\">11</th><td>7</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>211</td><td>388</td><td>2</td><td>134.8999629355027</td><td>133.72733452813603</td><td>1</td></tr><tr><th scope=\"row\">11</th><td>8</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>123</td><td>148</td><td>7</td><td>265.8364158650955</td><td>133.72733452813603</td><td>1</td></tr><tr><th scope=\"row\">11</th><td>9</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>479</td><td>275</td><td>1</td><td>423.1571811986652</td><td>133.72733452813603</td><td>1</td></tr><tr><th scope=\"row\">11</th><td>10</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>129</td><td>165</td><td>3</td><td>250.28383887099065</td><td>133.72733452813603</td><td>1</td></tr><tr><th scope=\"row\">11</th><td>12</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>383.575285960918</td><td>133.72733452813603</td><td>1</td></tr><tr><th scope=\"row\">11</th><td>13</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>211</td><td>18</td><td>2</td><td>413.97826029877467</td><td>133.72733452813603</td><td>1</td></tr><tr><th scope=\"row\">11</th><td>14</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>334</td><td>48</td><td>4</td><td>443.3835811123367</td><td>133.72733452813603</td><td>1</td></tr><tr><th scope=\"row\">11</th><td>15</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>236</td><td>277</td><td>4</td><td>206.54781528740506</td><td>133.72733452813603</td><td>1</td></tr><tr><th scope=\"row\">11</th><td>16</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>178</td><td>477</td><td>9</td><td>120.38687636117153</td><td>120.38687636117153</td><td>16</td></tr><tr><th scope=\"row\">11</th><td>17</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>225</td><td>438</td><td>3</td><td>149.6963593411677</td><td>120.38687636117153</td><td>16</td></tr><tr><th scope=\"row\">11</th><td>18</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>444</td><td>452</td><td>8</td><td>368.4033116029225</td><td>120.38687636117153</td><td>16</td></tr><tr><th scope=\"row\">11</th><td>19</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>484</td><td>422</td><td>5</td><td>406.1822251157724</td><td>120.38687636117153</td><td>16</td></tr><tr><th scope=\"row\">11</th><td>20</td><td>129</td><td>165</td><td>3</td><td>78</td><td>410</td><td>7</td><td>125</td><td>149</td><td>6</td><td>265.19992458520795</td><td>120.38687636117153</td><td>16</td></tr><tr><th scope=\"row\">12</th><td>1</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>65</td><td>277</td><td>2</td><td>352.85832851159967</td><td>352.85832851159967</td><td>1</td></tr><tr><th scope=\"row\">12</th><td>2</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>434</td><td>449</td><td>4</td><td>224.89108474992958</td><td>224.89108474992958</td><td>2</td></tr><tr><th scope=\"row\">12</th><td>3</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>335</td><td>13</td><td>5</td><td>226.24323194296883</td><td>224.89108474992958</td><td>2</td></tr><tr><th scope=\"row\">12</th><td>4</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>220</td><td>108</td><td>1</td><td>226.57007745949153</td><td>224.89108474992958</td><td>2</td></tr><tr><th scope=\"row\">12</th><td>5</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>363</td><td>383</td><td>8</td><td>166.07528413343147</td><td>166.07528413343147</td><td>5</td></tr><tr><th scope=\"row\">12</th><td>6</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>119</td><td>80</td><td>3</td><td>328.71111937383563</td><td>166.07528413343147</td><td>5</td></tr><tr><th scope=\"row\">12</th><td>7</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>211</td><td>388</td><td>2</td><td>260.3497647396671</td><td>166.07528413343147</td><td>5</td></tr><tr><th scope=\"row\">12</th><td>8</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>123</td><td>148</td><td>7</td><td>301.029898847274</td><td>166.07528413343147</td><td>5</td></tr><tr><th scope=\"row\">12</th><td>9</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>479</td><td>275</td><td>1</td><td>82.06095295571457</td><td>82.06095295571457</td><td>9</td></tr><tr><th scope=\"row\">12</th><td>10</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>129</td><td>165</td><td>3</td><td>291.2490343331631</td><td>82.06095295571457</td><td>9</td></tr><tr><th scope=\"row\">12</th><td>11</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>78</td><td>410</td><td>7</td><td>383.575285960918</td><td>82.06095295571457</td><td>9</td></tr><tr><th scope=\"row\">12</th><td>13</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>289.9344753560707</td><td>82.06095295571457</td><td>9</td></tr><tr><th scope=\"row\">12</th><td>14</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>334</td><td>48</td><td>4</td><td>194.2395428330699</td><td>82.06095295571457</td><td>9</td></tr><tr><th scope=\"row\">12</th><td>15</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>236</td><td>277</td><td>4</td><td>185.44001725625458</td><td>82.06095295571457</td><td>9</td></tr><tr><th scope=\"row\">12</th><td>16</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>178</td><td>477</td><td>9</td><td>345.28973341239094</td><td>82.06095295571457</td><td>9</td></tr><tr><th scope=\"row\">12</th><td>17</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>225</td><td>438</td><td>3</td><td>284.7648152423329</td><td>82.06095295571457</td><td>9</td></tr><tr><th scope=\"row\">12</th><td>18</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>444</td><td>452</td><td>8</td><td>229.00873345791857</td><td>82.06095295571457</td><td>9</td></tr><tr><th scope=\"row\">12</th><td>19</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>484</td><td>422</td><td>5</td><td>209.06936647916643</td><td>82.06095295571457</td><td>9</td></tr><tr><th scope=\"row\">12</th><td>20</td><td>78</td><td>410</td><td>7</td><td>414</td><td>225</td><td>4</td><td>125</td><td>149</td><td>6</td><td>298.8327291311981</td><td>82.06095295571457</td><td>9</td></tr><tr><th scope=\"row\">13</th><td>1</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>65</td><td>277</td><td>2</td><td>297.31632985761144</td><td>297.31632985761144</td><td>1</td></tr><tr><th scope=\"row\">13</th><td>2</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>434</td><td>449</td><td>4</td><td>485.2772403482364</td><td>297.31632985761144</td><td>1</td></tr><tr><th scope=\"row\">13</th><td>3</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>335</td><td>13</td><td>5</td><td>124.13702106946178</td><td>124.13702106946178</td><td>3</td></tr><tr><th scope=\"row\">13</th><td>4</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>220</td><td>108</td><td>1</td><td>90.45440840556087</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>5</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>363</td><td>383</td><td>8</td><td>395.4301455377422</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>6</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>119</td><td>80</td><td>3</td><td>110.9459327780879</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>7</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>211</td><td>388</td><td>2</td><td>370.0</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>8</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>123</td><td>148</td><td>7</td><td>157.06368135250108</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>9</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>479</td><td>275</td><td>1</td><td>371.3138833924743</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>10</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>129</td><td>165</td><td>3</td><td>168.32706258947192</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>11</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>78</td><td>410</td><td>7</td><td>413.97826029877467</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>12</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>414</td><td>225</td><td>4</td><td>289.9344753560707</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>14</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>126.62148316932635</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>15</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>236</td><td>277</td><td>4</td><td>260.21145247663486</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>16</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>178</td><td>477</td><td>9</td><td>460.2379819180507</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>17</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>225</td><td>438</td><td>3</td><td>420.2344583681829</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>18</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>444</td><td>452</td><td>8</td><td>492.62663346595457</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>19</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>484</td><td>422</td><td>5</td><td>487.6002461033013</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">13</th><td>20</td><td>414</td><td>225</td><td>4</td><td>211</td><td>18</td><td>2</td><td>125</td><td>149</td><td>6</td><td>156.7577749267959</td><td>90.45440840556087</td><td>4</td></tr><tr><th scope=\"row\">14</th><td>1</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>65</td><td>277</td><td>2</td><td>353.27892662880413</td><td>353.27892662880413</td><td>1</td></tr><tr><th scope=\"row\">14</th><td>2</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>434</td><td>449</td><td>4</td><td>413.28077622846183</td><td>353.27892662880413</td><td>1</td></tr><tr><th scope=\"row\">14</th><td>3</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>335</td><td>13</td><td>5</td><td>35.02855977627399</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>4</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>220</td><td>108</td><td>1</td><td>128.86038956948718</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>5</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>363</td><td>383</td><td>8</td><td>336.27667180463175</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>6</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>119</td><td>80</td><td>3</td><td>217.37065119284156</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>7</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>211</td><td>388</td><td>2</td><td>361.5701868240799</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>8</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>123</td><td>148</td><td>7</td><td>233.51659469939176</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>9</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>479</td><td>275</td><td>1</td><td>269.3752030161648</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>10</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>129</td><td>165</td><td>3</td><td>236.04025080481506</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>11</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>78</td><td>410</td><td>7</td><td>443.3835811123367</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>12</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>414</td><td>225</td><td>4</td><td>194.2395428330699</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>13</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>211</td><td>18</td><td>2</td><td>126.62148316932635</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>15</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>249.0883377438615</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>16</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>178</td><td>477</td><td>9</td><td>456.51067895504923</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>17</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>225</td><td>438</td><td>3</td><td>404.94691010057113</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>18</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>444</td><td>452</td><td>8</td><td>418.72664113953863</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>19</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>484</td><td>422</td><td>5</td><td>402.96029581089005</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">14</th><td>20</td><td>211</td><td>18</td><td>2</td><td>334</td><td>48</td><td>4</td><td>125</td><td>149</td><td>6</td><td>232.13358223230003</td><td>35.02855977627399</td><td>3</td></tr><tr><th scope=\"row\">15</th><td>1</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>65</td><td>277</td><td>2</td><td>171.011695506477</td><td>171.011695506477</td><td>1</td></tr><tr><th scope=\"row\">15</th><td>2</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>434</td><td>449</td><td>4</td><td>262.27466518899615</td><td>171.011695506477</td><td>1</td></tr><tr><th scope=\"row\">15</th><td>3</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>335</td><td>13</td><td>5</td><td>281.9538969406169</td><td>171.011695506477</td><td>1</td></tr><tr><th scope=\"row\">15</th><td>4</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>220</td><td>108</td><td>1</td><td>169.78221343827508</td><td>169.78221343827508</td><td>4</td></tr><tr><th scope=\"row\">15</th><td>5</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>363</td><td>383</td><td>8</td><td>165.47205202087756</td><td>165.47205202087756</td><td>5</td></tr><tr><th scope=\"row\">15</th><td>6</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>119</td><td>80</td><td>3</td><td>229.1266025584982</td><td>165.47205202087756</td><td>5</td></tr><tr><th scope=\"row\">15</th><td>7</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>211</td><td>388</td><td>2</td><td>113.79806676741043</td><td>113.79806676741043</td><td>7</td></tr><tr><th scope=\"row\">15</th><td>8</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>123</td><td>148</td><td>7</td><td>171.51967817133988</td><td>113.79806676741043</td><td>7</td></tr><tr><th scope=\"row\">15</th><td>9</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>479</td><td>275</td><td>1</td><td>243.0267474991179</td><td>113.79806676741043</td><td>7</td></tr><tr><th scope=\"row\">15</th><td>10</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>129</td><td>165</td><td>3</td><td>154.89996772110703</td><td>113.79806676741043</td><td>7</td></tr><tr><th scope=\"row\">15</th><td>11</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>78</td><td>410</td><td>7</td><td>206.54781528740506</td><td>113.79806676741043</td><td>7</td></tr><tr><th scope=\"row\">15</th><td>12</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>414</td><td>225</td><td>4</td><td>185.44001725625458</td><td>113.79806676741043</td><td>7</td></tr><tr><th scope=\"row\">15</th><td>13</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>211</td><td>18</td><td>2</td><td>260.21145247663486</td><td>113.79806676741043</td><td>7</td></tr><tr><th scope=\"row\">15</th><td>14</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>334</td><td>48</td><td>4</td><td>249.0883377438615</td><td>113.79806676741043</td><td>7</td></tr><tr><th scope=\"row\">15</th><td>16</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>208.30026404207942</td><td>113.79806676741043</td><td>7</td></tr><tr><th scope=\"row\">15</th><td>17</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>225</td><td>438</td><td>3</td><td>161.37843722133388</td><td>113.79806676741043</td><td>7</td></tr><tr><th scope=\"row\">15</th><td>18</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>444</td><td>452</td><td>8</td><td>271.85474062447395</td><td>113.79806676741043</td><td>7</td></tr><tr><th scope=\"row\">15</th><td>19</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>484</td><td>422</td><td>5</td><td>287.28035087697873</td><td>113.79806676741043</td><td>7</td></tr><tr><th scope=\"row\">15</th><td>20</td><td>334</td><td>48</td><td>4</td><td>236</td><td>277</td><td>4</td><td>125</td><td>149</td><td>6</td><td>169.43730403898664</td><td>113.79806676741043</td><td>7</td></tr><tr><th scope=\"row\">16</th><td>1</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>65</td><td>277</td><td>2</td><td>229.8216699965432</td><td>229.8216699965432</td><td>1</td></tr><tr><th scope=\"row\">16</th><td>2</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>434</td><td>449</td><td>4</td><td>257.5752317285185</td><td>229.8216699965432</td><td>1</td></tr><tr><th scope=\"row\">16</th><td>3</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>335</td><td>13</td><td>5</td><td>489.858142731138</td><td>229.8216699965432</td><td>1</td></tr><tr><th scope=\"row\">16</th><td>4</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>220</td><td>108</td><td>1</td><td>371.46870662277865</td><td>229.8216699965432</td><td>1</td></tr><tr><th scope=\"row\">16</th><td>5</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>363</td><td>383</td><td>8</td><td>207.51385495913277</td><td>207.51385495913277</td><td>5</td></tr><tr><th scope=\"row\">16</th><td>6</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>119</td><td>80</td><td>3</td><td>401.40503235510147</td><td>207.51385495913277</td><td>5</td></tr><tr><th scope=\"row\">16</th><td>7</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>211</td><td>388</td><td>2</td><td>95.17877914745492</td><td>95.17877914745492</td><td>7</td></tr><tr><th scope=\"row\">16</th><td>8</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>123</td><td>148</td><td>7</td><td>333.5715815233666</td><td>95.17877914745492</td><td>7</td></tr><tr><th scope=\"row\">16</th><td>9</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>479</td><td>275</td><td>1</td><td>362.5865413939133</td><td>95.17877914745492</td><td>7</td></tr><tr><th scope=\"row\">16</th><td>10</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>129</td><td>165</td><td>3</td><td>315.8813068226735</td><td>95.17877914745492</td><td>7</td></tr><tr><th scope=\"row\">16</th><td>11</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>78</td><td>410</td><td>7</td><td>120.38687636117153</td><td>95.17877914745492</td><td>7</td></tr><tr><th scope=\"row\">16</th><td>12</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>414</td><td>225</td><td>4</td><td>345.28973341239094</td><td>95.17877914745492</td><td>7</td></tr><tr><th scope=\"row\">16</th><td>13</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>211</td><td>18</td><td>2</td><td>460.2379819180507</td><td>95.17877914745492</td><td>7</td></tr><tr><th scope=\"row\">16</th><td>14</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>334</td><td>48</td><td>4</td><td>456.51067895504923</td><td>95.17877914745492</td><td>7</td></tr><tr><th scope=\"row\">16</th><td>15</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>236</td><td>277</td><td>4</td><td>208.30026404207942</td><td>95.17877914745492</td><td>7</td></tr><tr><th scope=\"row\">16</th><td>17</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>61.36774397026503</td><td>61.36774397026503</td><td>17</td></tr><tr><th scope=\"row\">16</th><td>18</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>444</td><td>452</td><td>8</td><td>267.1741005412014</td><td>61.36774397026503</td><td>17</td></tr><tr><th scope=\"row\">16</th><td>19</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>484</td><td>422</td><td>5</td><td>310.9292524031793</td><td>61.36774397026503</td><td>17</td></tr><tr><th scope=\"row\">16</th><td>20</td><td>236</td><td>277</td><td>4</td><td>178</td><td>477</td><td>9</td><td>125</td><td>149</td><td>6</td><td>332.26796414941964</td><td>61.36774397026503</td><td>17</td></tr><tr><th scope=\"row\">17</th><td>1</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>65</td><td>277</td><td>2</td><td>226.98458097412694</td><td>226.98458097412694</td><td>1</td></tr><tr><th scope=\"row\">17</th><td>2</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>434</td><td>449</td><td>4</td><td>209.29166251907887</td><td>209.29166251907887</td><td>2</td></tr><tr><th scope=\"row\">17</th><td>3</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>335</td><td>13</td><td>5</td><td>439.00911152275637</td><td>209.29166251907887</td><td>2</td></tr><tr><th scope=\"row\">17</th><td>4</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>220</td><td>108</td><td>1</td><td>330.0439364690708</td><td>209.29166251907887</td><td>2</td></tr><tr><th scope=\"row\">17</th><td>5</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>363</td><td>383</td><td>8</td><td>148.64050591948345</td><td>148.64050591948345</td><td>5</td></tr><tr><th scope=\"row\">17</th><td>6</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>119</td><td>80</td><td>3</td><td>373.3630940518894</td><td>148.64050591948345</td><td>5</td></tr><tr><th scope=\"row\">17</th><td>7</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>211</td><td>388</td><td>2</td><td>51.93264869039515</td><td>51.93264869039515</td><td>7</td></tr><tr><th scope=\"row\">17</th><td>8</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>123</td><td>148</td><td>7</td><td>307.44105126023754</td><td>51.93264869039515</td><td>7</td></tr><tr><th scope=\"row\">17</th><td>9</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>479</td><td>275</td><td>1</td><td>301.8095425926755</td><td>51.93264869039515</td><td>7</td></tr><tr><th scope=\"row\">17</th><td>10</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>129</td><td>165</td><td>3</td><td>289.3872837565604</td><td>51.93264869039515</td><td>7</td></tr><tr><th scope=\"row\">17</th><td>11</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>78</td><td>410</td><td>7</td><td>149.6963593411677</td><td>51.93264869039515</td><td>7</td></tr><tr><th scope=\"row\">17</th><td>12</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>414</td><td>225</td><td>4</td><td>284.7648152423329</td><td>51.93264869039515</td><td>7</td></tr><tr><th scope=\"row\">17</th><td>13</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>211</td><td>18</td><td>2</td><td>420.2344583681829</td><td>51.93264869039515</td><td>7</td></tr><tr><th scope=\"row\">17</th><td>14</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>334</td><td>48</td><td>4</td><td>404.94691010057113</td><td>51.93264869039515</td><td>7</td></tr><tr><th scope=\"row\">17</th><td>15</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>236</td><td>277</td><td>4</td><td>161.37843722133388</td><td>51.93264869039515</td><td>7</td></tr><tr><th scope=\"row\">17</th><td>16</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>178</td><td>477</td><td>9</td><td>61.36774397026503</td><td>51.93264869039515</td><td>7</td></tr><tr><th scope=\"row\">17</th><td>18</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>219.50398629637687</td><td>51.93264869039515</td><td>7</td></tr><tr><th scope=\"row\">17</th><td>19</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>484</td><td>422</td><td>5</td><td>259.5014450826815</td><td>51.93264869039515</td><td>7</td></tr><tr><th scope=\"row\">17</th><td>20</td><td>178</td><td>477</td><td>9</td><td>225</td><td>438</td><td>3</td><td>125</td><td>149</td><td>6</td><td>305.8267483396441</td><td>51.93264869039515</td><td>7</td></tr><tr><th scope=\"row\">18</th><td>1</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>65</td><td>277</td><td>2</td><td>417.4949101486149</td><td>417.4949101486149</td><td>1</td></tr><tr><th scope=\"row\">18</th><td>2</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>434</td><td>449</td><td>4</td><td>11.180339887498949</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>3</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>335</td><td>13</td><td>5</td><td>452.3394742889459</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>4</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>220</td><td>108</td><td>1</td><td>410.5618102064536</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>5</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>363</td><td>383</td><td>8</td><td>106.4048871058092</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>6</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>119</td><td>80</td><td>3</td><td>493.9979757043545</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>7</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>211</td><td>388</td><td>2</td><td>241.70436487577132</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>8</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>123</td><td>148</td><td>7</td><td>442.1063220538698</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>9</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>479</td><td>275</td><td>1</td><td>180.5630083931922</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>10</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>129</td><td>165</td><td>3</td><td>426.1678073247673</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>11</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>78</td><td>410</td><td>7</td><td>368.4033116029225</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>12</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>414</td><td>225</td><td>4</td><td>229.00873345791857</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>13</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>211</td><td>18</td><td>2</td><td>492.62663346595457</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>14</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>334</td><td>48</td><td>4</td><td>418.72664113953863</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>15</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>236</td><td>277</td><td>4</td><td>271.85474062447395</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>16</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>178</td><td>477</td><td>9</td><td>267.1741005412014</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>17</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>225</td><td>438</td><td>3</td><td>219.50398629637687</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>19</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>50.08991914547277</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">18</th><td>20</td><td>225</td><td>438</td><td>3</td><td>444</td><td>452</td><td>8</td><td>125</td><td>149</td><td>6</td><td>439.9704535534176</td><td>11.180339887498949</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>1</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>65</td><td>277</td><td>2</td><td>443.3903472111228</td><td>443.3903472111228</td><td>1</td></tr><tr><th scope=\"row\">19</th><td>2</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>434</td><td>449</td><td>4</td><td>56.83308895353129</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>3</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>335</td><td>13</td><td>5</td><td>435.2953020651613</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>4</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>220</td><td>108</td><td>1</td><td>410.2535801184434</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>5</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>363</td><td>383</td><td>8</td><td>127.16524682475162</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>6</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>119</td><td>80</td><td>3</td><td>500.1929627653712</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>7</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>211</td><td>388</td><td>2</td><td>275.1254259424236</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>8</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>123</td><td>148</td><td>7</td><td>453.2118709830977</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>9</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>479</td><td>275</td><td>1</td><td>147.13938969562162</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>10</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>129</td><td>165</td><td>3</td><td>438.2670418820014</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>11</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>78</td><td>410</td><td>7</td><td>406.1822251157724</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>12</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>414</td><td>225</td><td>4</td><td>209.06936647916643</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>13</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>211</td><td>18</td><td>2</td><td>487.6002461033013</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>14</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>334</td><td>48</td><td>4</td><td>402.96029581089005</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>15</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>236</td><td>277</td><td>4</td><td>287.28035087697873</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>16</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>178</td><td>477</td><td>9</td><td>310.9292524031793</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>17</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>225</td><td>438</td><td>3</td><td>259.5014450826815</td><td>56.83308895353129</td><td>2</td></tr><tr><th scope=\"row\">19</th><td>18</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>444</td><td>452</td><td>8</td><td>50.08991914547277</td><td>50.08991914547277</td><td>18</td></tr><tr><th scope=\"row\">19</th><td>20</td><td>444</td><td>452</td><td>8</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>451.0110863382407</td><td>50.08991914547277</td><td>18</td></tr><tr><th scope=\"row\">20</th><td>1</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>65</td><td>277</td><td>2</td><td>141.4213562373095</td><td>141.4213562373095</td><td>1</td></tr><tr><th scope=\"row\">20</th><td>2</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>434</td><td>449</td><td>4</td><td>430.6796953653609</td><td>141.4213562373095</td><td>1</td></tr><tr><th scope=\"row\">20</th><td>3</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>335</td><td>13</td><td>5</td><td>250.19392478635447</td><td>141.4213562373095</td><td>1</td></tr><tr><th scope=\"row\">20</th><td>4</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>220</td><td>108</td><td>1</td><td>103.5905401086412</td><td>103.5905401086412</td><td>4</td></tr><tr><th scope=\"row\">20</th><td>5</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>363</td><td>383</td><td>8</td><td>333.7723775269607</td><td>103.5905401086412</td><td>4</td></tr><tr><th scope=\"row\">20</th><td>6</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>119</td><td>80</td><td>3</td><td>69.32532004974807</td><td>69.32532004974807</td><td>6</td></tr><tr><th scope=\"row\">20</th><td>7</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>211</td><td>388</td><td>2</td><td>254.03346236273677</td><td>69.32532004974807</td><td>6</td></tr><tr><th scope=\"row\">20</th><td>8</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>123</td><td>148</td><td>7</td><td>2.449489742783178</td><td>2.449489742783178</td><td>8</td></tr><tr><th scope=\"row\">20</th><td>9</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>479</td><td>275</td><td>1</td><td>375.7885043478579</td><td>2.449489742783178</td><td>8</td></tr><tr><th scope=\"row\">20</th><td>10</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>129</td><td>165</td><td>3</td><td>16.76305461424021</td><td>2.449489742783178</td><td>8</td></tr><tr><th scope=\"row\">20</th><td>11</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>78</td><td>410</td><td>7</td><td>265.19992458520795</td><td>2.449489742783178</td><td>8</td></tr><tr><th scope=\"row\">20</th><td>12</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>414</td><td>225</td><td>4</td><td>298.8327291311981</td><td>2.449489742783178</td><td>8</td></tr><tr><th scope=\"row\">20</th><td>13</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>211</td><td>18</td><td>2</td><td>156.7577749267959</td><td>2.449489742783178</td><td>8</td></tr><tr><th scope=\"row\">20</th><td>14</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>334</td><td>48</td><td>4</td><td>232.13358223230003</td><td>2.449489742783178</td><td>8</td></tr><tr><th scope=\"row\">20</th><td>15</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>236</td><td>277</td><td>4</td><td>169.43730403898664</td><td>2.449489742783178</td><td>8</td></tr><tr><th scope=\"row\">20</th><td>16</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>178</td><td>477</td><td>9</td><td>332.26796414941964</td><td>2.449489742783178</td><td>8</td></tr><tr><th scope=\"row\">20</th><td>17</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>225</td><td>438</td><td>3</td><td>305.8267483396441</td><td>2.449489742783178</td><td>8</td></tr><tr><th scope=\"row\">20</th><td>18</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>444</td><td>452</td><td>8</td><td>439.9704535534176</td><td>2.449489742783178</td><td>8</td></tr><tr><th scope=\"row\">20</th><td>19</td><td>484</td><td>422</td><td>5</td><td>125</td><td>149</td><td>6</td><td>484</td><td>422</td><td>5</td><td>451.0110863382407</td><td>2.449489742783178</td><td>8</td></tr>"
+    "log": "<tr><th scope=\"row\">1</th><td>2</td><td>None</td><td>None</td><td>None</td><td>167</td><td>493</td><td>1</td><td>198</td><td>96</td><td>9</td><td>398.2888399139499</td><td>398.2888399139499</td><td>2</td></tr><tr><th scope=\"row\">2</th><td>1</td><td>167</td><td>493</td><td>1</td><td>198</td><td>96</td><td>9</td><td>167</td><td>493</td><td>1</td><td>398.2888399139499</td><td>398.2888399139499</td><td>1</td></tr>"
 }

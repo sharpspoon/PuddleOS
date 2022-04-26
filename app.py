@@ -97,7 +97,7 @@ def d3json():
     if USE_DATABASE:
         return json.dumps(getUserData())
     else:
-        return send_file('sample.json')
+        return send_file('d3.json')
 
 
 @app.route("/d3js", methods=["GET"])
@@ -354,11 +354,11 @@ def createjson():
         database.update_user_data(session['uuid'],result)
     else:
         try:
-            with open("new_sample.json", "w") as d3_json_out:
+            with open("d3.json", "w") as d3_json_out:
                 json.dump(result, d3_json_out, indent=4, sort_keys=False)
         except Exception as e:
             print(e)
-            return "Failed to open new_sample.json file."
+            return "Failed to open d3.json file."
 
     return redirect(url_for('index'))
 
@@ -377,7 +377,7 @@ def getUserData():
     else:
         data = None
         try:
-            with open("sample.json") as f:
+            with open("d3.json") as f:
                 data = json.load(f)
         except FileNotFoundError:
             print("Data json not found, exiting...")
