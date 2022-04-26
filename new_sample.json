@@ -169,5 +169,5 @@
             "euclidean": 398.2888399139499
         }
     ],
-    "log": ""
+    "log": "<tr><th scope=\"row\">1</th><td>2</td><td>None</td><td>None</td><td>None</td><td>167</td><td>493</td><td>1</td><td>198</td><td>96</td><td>9</td><td>398.2888399139499</td><td>398.2888399139499</td><td>2</td></tr><tr><th scope=\"row\">2</th><td>1</td><td>167</td><td>493</td><td>1</td><td>198</td><td>96</td><td>9</td><td>167</td><td>493</td><td>1</td><td>398.2888399139499</td><td>398.2888399139499</td><td>1</td></tr>"
 }

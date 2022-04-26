@@ -214,7 +214,6 @@ def createjson():
                 result['nodes'].append(curr_node)
                 nodes_by_group[layer_i+1].append(curr_node)
 
-    pprint(nodes_by_group)
     pid = 1  # Set the PuddleId to 0
     for layer_i in range(layer_count):
         if layer_puddle_visibiled[layer_i] == 'visible':
@@ -225,7 +224,7 @@ def createjson():
                 i_tmp = node['id']
 
                 # If this previous node is in the same group
-                if result['nodes'][i_tmp - 1]['group'] == layer_i:  
+                if result['nodes'][i_tmp - 1]['group'] == layer_i+1:  
                     px = result['nodes'][i_tmp - 1]['fx']
                     py = result['nodes'][i_tmp - 1]['fy']
                     pz = result['nodes'][i_tmp - 1]['z']
@@ -237,7 +236,7 @@ def createjson():
                 # ======================================================================== #
 
                 # Get info for current node
-                x_0,y_0,z_0 = node['fx'], node['fy'], node['z']
+                x_0, y_0, z_0 = node['fx'], node['fy'], node['z']
                 id_0 = node['id']
                 best_dst = float('inf')
                 best_dst_id = -1
@@ -247,7 +246,7 @@ def createjson():
                     if node_b['id'] == id_0:
                         continue
 
-                    x_1,y_1,z_1 = node_b['fx'], node_b['fy'], node_b['z']
+                    x_1, y_1, z_1 = node_b['fx'], node_b['fy'], node_b['z']
                     id_1 = node_b['id']
 
                     # SQRT not needed since we only care about being smallest
@@ -255,6 +254,24 @@ def createjson():
                     if dst < best_dst:
                         best_dst = dst
                         best_dst_id = id_1
+
+                    # Add to log -- more pythonic way to concatenate a bunch of strings without newlines between them
+                    log += (f'<tr><th scope="row">{id_0}</th>'
+                    f'<td>{id_1}</td>'
+                    f'<td>{px}</td>'
+                    f'<td>{py}</td>'
+                    f'<td>{pz}</td>'
+                    f'<td>{x_0}</td>'
+                    f'<td>{y_0}</td>'
+                    f'<td>{z_0}</td>'
+                    f'<td>{x_1}</td>'
+                    f'<td>{y_1}</td>'
+                    f'<td>{z_1}</td>'
+                    f'<td>{math.sqrt(dst)}</td>'
+                    f'<td>{math.sqrt(best_dst)}</td>'
+                    f'<td>{best_dst_id}</td>'
+                    '</tr>'
+                    )
 
                 result['links'].append({'puddleid': pid, 'source': id_0, 'target': best_dst_id, 'euclidean': math.sqrt(best_dst)})
                 pid += 1
