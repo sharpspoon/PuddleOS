@@ -104,6 +104,23 @@ def d3json():
 def graphjs():
     return send_file('d3.js')
 
+@app.route('/addlayer', methods=['POST'])
+def addlayer():
+    data = getUserData()
+    layers = data['layers']
+    layers.append({
+        "layerNumber" : len(layers)+1,
+        "name": "layer" + str(len(layers) + 1),
+        "total": 5,
+        "color": "#" + str(hex(random.randint(0, 16777215))[2:]).zfill(6),
+        "size": 25,
+        "visible": "on",
+        "puddle_visible": "on",
+        "clustering": "Agglomerative Complete Linkage Hierarchical Clustering"
+    })
+    updateUserData(data)
+    return redirect(url_for('index'))
+
 
 def buildclusteringhtml(method):
     ret = ""
@@ -166,6 +183,10 @@ def createjson():
     original_data = getUserData()
     data_layer_totals = [a['total'] for a in original_data['layers']]
     if data_layer_totals != layer_nodes_count:
+        nodecountchange = True
+
+    # Kinda hacky way to remake nodes if a layer was added or removed
+    if totalnodes != len(original_data['nodes']):
         nodecountchange = True
     print(f"nodecountchange: {nodecountchange}")
 
@@ -275,98 +296,13 @@ def createjson():
 
                 result['links'].append({'puddleid': pid, 'source': id_0, 'target': best_dst_id, 'euclidean': math.sqrt(best_dst)})
                 pid += 1
-                
-
-
-
-    # if layer1puddlevisible == "on":
-    #     d['links'].append({'puddleid': 1, 'source': 1, 'target': 6})  # Placeholder, delete later
-
-    # if layer2puddlevisible == "on":
-    #     for i in range(layer2startid, layer2startid + layer2nodes):
-    #         # Get the node at the current index
-    #         node_a = d['nodes'][i]
-    #         if node_a['group'] == 2:  # If the current node is in group 2.
-    #             pid += 1  # Increase the Puddle ID by 1 each time.
-
-    #             # Set the previous, source, and destination x, y, z variables
-    #             if d['nodes'][i - 1]['group'] == 2:  # If this previous node is in the same group
-    #                 px = d['nodes'][i - 1]['fx']
-    #                 py = d['nodes'][i - 1]['fy']
-    #                 pz = d['nodes'][i - 1]['z']
-    #             else:  # There is no previous node in this group.
-    #                 px = None
-    #                 py = None
-    #                 pz = None
-
-    #             xa = node_a['fx']
-    #             ya = node_a['fy']
-    #             za = node_a['z']
-
-    #             identifier = d['nodes'][i]['id']
-    #             bestdst = float('inf')
-    #             bestdstid = None
-
-    #             # For this current node, loop through all other nodes and find closest
-    #             for j in range(layer2startid, layer2startid + layer2nodes):
-    #                 # Set the current destination node location
-    #                 node_b = d['nodes'][j]
-    #                 xb = node_b['fx']
-    #                 yb = node_b['fy']
-    #                 zb = node_b['z']
-    #                 idb = node_b['id']
-
-    #                 # Only proceed if the node is not the same node and in same group
-    #                 if identifier != idb and d['nodes'][idb]['group'] == 2:
-    #                     # Get the current Euclidean distance for the current node i, to target node j
-    #                     dst = euclidean(xa, ya, za, xb, yb, zb)
-    #                     if j == layer2startid or dst < bestdst:
-    #                         bestdst = dst
-    #                         bestdstid = j
-    #                     log += ('''<tr><th scope="row">''' + str(identifier)
-    #                             + "</th><td>" + str(idb)
-    #                             + "</td><td>" + str(px)
-    #                             + "</td><td>" + str(py)
-    #                             + "</td><td>" + str(pz)
-    #                             + "</td><td>" + str(xa)
-    #                             + "</td><td>" + str(ya)
-    #                             + "</td><td>" + str(za)
-    #                             + "</td><td>" + str(xb)
-    #                             + "</td><td>" + str(yb)
-    #                             + "</td><td>" + str(zb)
-    #                             + "</td><td>" + str(dst)
-    #                             + "</td><td>" + str(bestdst)
-    #                             + "</td><td>" + str(bestdstid)
-    #                             + '</td></tr>')
-    #             d['links'].append({'puddleid': pid, 'source': i, 'target': bestdstid, 'euclidean': bestdst})
-
-    # if layer3puddlevisible == "on":
-    #     d['links'].append({'puddleid': 3, 'source': 1, 'target': 8})  # Placeholder, delete later
-    # if layer4puddlevisible == "on":
-    #     d['links'].append({'puddleid': 4, 'source': 1, 'target': 9})  # Placeholder, delete later
-    # if layer5puddlevisible == "on":
-    #     d['links'].append({'puddleid': 5, 'source': 1, 'target': 10})  # Placeholder, delete later
 
     print('\n' + str(len(log)) + " characters added to log.\n")
     result['log'] = log
 
-    if USE_DATABASE:
-        database.update_user_data(session['uuid'],result)
-    else:
-        try:
-            with open("d3.json", "w") as d3_json_out:
-                json.dump(result, d3_json_out, indent=4, sort_keys=False)
-        except Exception as e:
-            print(e)
-            return "Failed to open d3.json file."
+    updateUserData(result)
 
     return redirect(url_for('index'))
-
-
-def euclidean(xa, ya, za, xb, yb, zb):
-    # tests on Matthew's computer ran math.hypot about 10-100x faster than scipy's function
-    dst = math.hypot(xa - xb, ya - yb, za - zb)
-    return dst
 
 def getUserData():
     if USE_DATABASE:
@@ -383,3 +319,14 @@ def getUserData():
             print("Data json not found, exiting...")
             exit(1)
         return data
+
+def updateUserData(newData):
+    if USE_DATABASE:
+        database.update_user_data(session['uuid'],newData)
+    else:
+        try:
+            with open("d3.json", "w") as d3_json_out:
+                json.dump(newData, d3_json_out, indent=4, sort_keys=False)
+        except Exception as e:
+            print(e)
+            return "Failed to open d3.json file."

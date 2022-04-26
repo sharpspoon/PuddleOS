@@ -41,6 +41,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <form action="/addlayer" method="post">
+                    <button type="submit" class="btn btn-primary">Add Layer</button>
+                </form>
                 <form action="/createjson" method="post">
                     <input value={{layers_count}} name="layer_count" hidden></input>
                     <table class="table">
