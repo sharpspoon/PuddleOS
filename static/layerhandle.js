@@ -11,7 +11,7 @@ addLayerBtn.addEventListener('click', function () {
     const clusteringMethodOptions = `<option value="Agglomerative Complete Linkage Hierarchical Clustering" selected>Agglomerative Complete Linkage Hierarchical Clustering</option>
             <option value="DBSCAN">DBSCAN</option>`
     const newHTML = `
-                    <tr>
+                    <tr class="saveMenuItem">
                         <th scope="row">${i}</th>
                         <td>
                             <div class="form-check form-switch">
@@ -52,6 +52,61 @@ addLayerBtn.addEventListener('click', function () {
                                         id="randomizeLayer${i}id" name="randomizeLayer${i}">
                             </div>
                         </td>
+                        <td><button type="button" class="btn btn-danger deleteLayerBtn" value=${i} id="deleteBtn${i}">X</button></td>
                     </tr>`;
     layerTableBody.innerHTML += newHTML
+    bindDeletes();
 })
+
+function bindDeletes() {
+    const deleteBtns = document.getElementsByClassName('deleteLayerBtn');
+    for (let btn of deleteBtns) {
+        btn.addEventListener('click', function () {
+            layerCount.value = parseInt(layerCount.value) - 1;
+            btn.parentElement.parentElement.remove();
+            let saveMenuItems = document.getElementsByClassName('saveMenuItem');
+            let i = btn.value;
+            for (let item of saveMenuItems) {
+                if (item.children[0].innerHTML > i) {
+                    let curr_i = parseInt(item.children[0].innerHTML);
+                    item.children[0].innerHTML = curr_i - 1;
+
+                    let check = document.getElementById(`nodeDisplay${curr_i}id`)
+                    check.id = `nodeDisplay${curr_i-1}id`;
+                    check.name = `nodeDisplay${curr_i-1}`;
+
+                    let clustering = document.getElementById(`layer${curr_i}ClusteringMethodId`)
+                    clustering.id = `layer${curr_i-1}ClusteringMethodId`;
+                    clustering.name = `layer${curr_i-1}ClusteringMethod`;
+
+                    check = document.getElementById(`puddleDisplay${curr_i}id`)
+                    check.id = `puddleDisplay${curr_i-1}id`;
+                    check.name = `puddleDisplay${curr_i-1}`;
+
+                    let nodes = document.getElementById(`layer${curr_i}id`)
+                    nodes.id = `layer${curr_i-1}id`;
+                    nodes.name = `layer${curr_i-1}`;
+                    nodes.ariaRoleDescription = `layer${curr_i-1}Help`;
+
+                    let color = document.getElementById(`layer${curr_i}colorid`)
+                    color.id = `layer${curr_i-1}colorid`;
+                    color.name = `colorInput${curr_i-1}`;
+
+                    let size = document.getElementById(`layer${curr_i}sizeid`)
+                    size.id = `layer${curr_i-1}sizeid`;
+                    size.name = `layer${curr_i-1}size`;
+
+                    let randomize = document.getElementById(`randomizeLayer${curr_i}id`)
+                    randomize.id = `randomizeLayer${curr_i-1}id`;
+                    randomize.name = `randomizeLayer${curr_i-1}`;
+
+                    let inner_deleteBtn = document.getElementById(`deleteBtn${curr_i}`)
+                    inner_deleteBtn.id = `deleteBtn${curr_i-1}`;
+                    inner_deleteBtn.value = curr_i-1;
+                }
+            }
+        })
+    }
+}
+
+bindDeletes();

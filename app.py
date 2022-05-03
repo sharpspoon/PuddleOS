@@ -121,7 +121,7 @@ def createjson():
     global nodecountchange
     nodecountchange = False
     layer_count = int(request.form.get("layer_count"))
-    print(layer_count)
+    
     layer_nodes_count = [int(request.form.get(f'layer{i}')) for i in range(1, layer_count + 1)]
 
     layer_colors = [request.form.get(f'colorInput{i}') for i in range(1, layer_count + 1)]
