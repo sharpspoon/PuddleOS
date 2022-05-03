@@ -41,11 +41,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/addlayer" method="post">
-                    <button type="submit" class="btn btn-primary">Add Layer</button>
-                </form>
+                
                 <form action="/createjson" method="post">
-                    <input value={{layers_count}} name="layer_count" hidden></input>
+                    <input value={{layers_count}} name="layer_count"  id="layerCount" hidden></input>
                     <table class="table">
                         <thead>
                         <tr>
@@ -59,7 +57,7 @@
                             <th scope="col">Randomize Nodes</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="layerTableBody">
                         {% if layers_count %}
                         {% for i in range(1, layers_count+1) %}
                         <tr>
@@ -126,10 +124,13 @@
                                data-bs-toggle="tooltip" data-bs-placement="top" title="Enter the value for z">
                     </div>
                     <div class="modal-footer">
-                        *Higher layer nodes should be depicted with a larger size vertices
-                        to represent their larger resource capacities.
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <p class="text-secondary">*Higher layer nodes should be depicted with a larger size vertices
+                            to represent their larger resource capacities.</p>
+                        <div>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" id="addLayerBtn" class="btn btn-primary">Add Layer</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -205,6 +206,7 @@
         crossorigin="anonymous"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="d3js"></script>
+<script src="static/layerhandle.js"></script>
 <script>
 // select the svg area
 var svg = d3.select("#my_dataviz")

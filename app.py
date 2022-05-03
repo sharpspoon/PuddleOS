@@ -104,24 +104,6 @@ def d3json():
 def graphjs():
     return send_file('d3.js')
 
-@app.route('/addlayer', methods=['POST'])
-def addlayer():
-    data = getUserData()
-    layers = data['layers']
-    layers.append({
-        "layerNumber" : len(layers)+1,
-        "name": "layer" + str(len(layers) + 1),
-        "total": 5,
-        "color": "#" + str(hex(random.randint(0, 16777215))[2:]).zfill(6),
-        "size": 25,
-        "visible": "on",
-        "puddle_visible": "on",
-        "clustering": "Agglomerative Complete Linkage Hierarchical Clustering"
-    })
-    updateUserData(data)
-    return redirect(url_for('index'))
-
-
 def buildclusteringhtml(method):
     ret = ""
     if method == "Agglomerative Complete Linkage Hierarchical Clustering":
@@ -139,6 +121,7 @@ def createjson():
     global nodecountchange
     nodecountchange = False
     layer_count = int(request.form.get("layer_count"))
+    print(layer_count)
     layer_nodes_count = [int(request.form.get(f'layer{i}')) for i in range(1, layer_count + 1)]
 
     layer_colors = [request.form.get(f'colorInput{i}') for i in range(1, layer_count + 1)]
@@ -186,7 +169,7 @@ def createjson():
         nodecountchange = True
 
     # Kinda hacky way to remake nodes if a layer was added or removed
-    if totalnodes != len(original_data['nodes']):
+    if layer_count != len(original_data['layers']):
         nodecountchange = True
     print(f"nodecountchange: {nodecountchange}")
 
