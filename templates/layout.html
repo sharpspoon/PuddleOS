@@ -41,7 +41,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                
                 <form action="/createjson" method="post">
+                    <input value={{layers_count}} name="layer_count" id="layerCount" hidden></input>
                     <table class="table">
                         <thead>
                         <tr>
@@ -51,220 +53,59 @@
                             <th scope="col">Puddles</th>
                             <th scope="col"># of Nodes</th>
                             <th scope="col">Color</th>
-                            <th scope="col">Size*</th>
+                            <th scope="col">Size</th>
                             <th scope="col">Randomize Nodes</th>
+                            <th scope="col">Delete Layer</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
+                        <tbody id="layerTableBody">
+                        {% if layers_count %}
+                        {% for i in range(1, layers_count+1) %}
+                        <tr class="saveMenuItem">
+                            <th scope="row">{{i}}</th>
                             <td>
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch"
-                                           id="nodeDisplay1id" name="nodeDisplay1" {{layer1visible}}>
+                                           id="nodeDisplay{{i}}id" name="nodeDisplay{{i}}" {{layer_displays[i-1]}}>
                                 </div>
                             </td>
                             <td>
                                 <div class="input-group mb-3">
-                                    <select class="form-select" id="layer1ClusteringMethodId"
-                                            name="layer1ClusteringMethod">
-                                        {{layer1cluteringmethod | safe}}
+                                    <select class="form-select" id="layer{{i}}ClusteringMethodId"
+                                            name="layer{{i}}ClusteringMethod">
+                                        {{layer_clusterings[i-1] | safe}}
                                     </select>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch"
-                                           id="puddleDisplay1id" name="puddleDisplay1" {{layer1puddlevisible}}>
+                                           id="puddleDisplay{{i}}id" name="puddleDisplay{{i}}" {{layer_puddle_displays[i-1]}}>
                                 </div>
                             </td>
-                            <td><input type="number" class="form-control" id="layer1id" name="layer1"
-                                       aria-describedby="layer1Help"
-                                       value={{layer1}}
+                            <td><input type="number" class="form-control" id="layer{{i}}id" name="layer{{i}}"
+                                       aria-describedby="layer{{i}}Help"
+                                       value={{layer_totals[i-1]}}
                                        data-bs-toggle="tooltip" data-bs-placement="top"
                                        title="NOTE: Changing the number of nodes will also randomize them."
                                        required></td>
-                            <td><input type="color" class="form-control form-control-color" id="layer1colorid"
-                                       name="colorInput1"
-                                       value={{layer1color}} title="Choose your color"></td>
-                            <td><input type="number" class="form-control" id="layer1sizeid" name="layer1size"
+                            <td><input type="color" class="form-control form-control-color" id="layer{{i}}colorid"
+                                       name="colorInput{{i}}"
+                                       value={{layer_colors[i-1]}} title="Choose your color"></td>
+                            <td><input type="number" class="form-control" id="layer{{i}}sizeid" name="layer{{i}}size"
                                        aria-describedby="layer1sizeHelp"
-                                       value={{layer1size}}
+                                       value={{layer_sizes[i-1]}}
                                        required></td>
                             <td>
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch"
-                                           id="randomizeLayer1id" name="randomizeLayer1">
+                                           id="randomizeLayer{{i}}id" name="randomizeLayer{{i}}">
                                 </div>
                             </td>
+                            <td><button type="button" class="btn btn-danger deleteLayerBtn" value={{i}} id="deleteBtn{{i}}">X</button></td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                           id="nodeDisplay2id" name="nodeDisplay2" {{layer2visible}}>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="input-group mb-3">
-                                    <select class="form-select" id="layer2ClusteringMethodId"
-                                            name="layer2ClusteringMethod">
-                                        {{layer2cluteringmethod | safe}}
-                                    </select>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                           id="puddleDisplay2id" name="puddleDisplay2" {{layer2puddlevisible}}>
-                                </div>
-                            </td>
-                            <td><input type="number" class="form-control" id="layer2id" name="layer2"
-                                       aria-describedby="layer2Help"
-                                       value={{layer2}}
-                                       data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="NOTE: Changing the number of nodes will also randomize them."
-                                       required></td>
-                            <td><input type="color" class="form-control form-control-color" id="layer2colorid"
-                                       name="colorInput2"
-                                       value={{layer2color}} title="Choose your color"></td>
-                            <td><input type="number" class="form-control" id="layer2sizeid" name="layer2size"
-                                       aria-describedby="layer2sizeHelp"
-                                       value={{layer2size}}
-                                       required></td>
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                           id="randomizeLayer2id" name="randomizeLayer2">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                           id="nodeDisplay3id" name="nodeDisplay3" {{layer3visible}}>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="input-group mb-3">
-                                    <select class="form-select" id="layer3ClusteringMethodId"
-                                            name="layer3ClusteringMethod">
-                                        {{layer3cluteringmethod | safe}}
-                                    </select>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                           id="puddleDisplay3id" name="puddleDisplay3" {{layer3puddlevisible}}>
-                                </div>
-                            </td>
-                            <td><input type="number" class="form-control" id="layer3id" name="layer3"
-                                       aria-describedby="layer3Help"
-                                       data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="NOTE: Changing the number of nodes will also randomize them."
-                                       value={{layer3}} required></td>
-                            <td><input type="color" class="form-control form-control-color" id="layer3colorid"
-                                       name="colorInput3"
-                                       value={{layer3color}} title="Choose your color"></td>
-                            <td><input type="number" class="form-control" id="layer3sizeid" name="layer3size"
-                                       aria-describedby="layer3sizeHelp"
-                                       value={{layer3size}}
-                                       required></td>
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                           id="randomizeLayer3id" name="randomizeLayer3">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                           id="nodeDisplay4id" name="nodeDisplay4" {{layer4visible}}>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="input-group mb-3">
-                                    <select class="form-select" id="layer4ClusteringMethodId"
-                                            name="layer4ClusteringMethod">
-                                        {{layer4cluteringmethod | safe}}
-                                    </select>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                           id="puddleDisplay4id" name="puddleDisplay4" {{layer4puddlevisible}}>
-                                </div>
-                            </td>
-                            <td><input type="number" class="form-control" id="layer4id" name="layer4"
-                                       aria-describedby="layer4Help"
-                                       value={{layer4}}
-                                       data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="NOTE: Changing the number of nodes will also randomize them."
-                                       required></td>
-                            <td><input type="color" class="form-control form-control-color" id="layer4colorid"
-                                       name="colorInput4"
-                                       value={{layer4color}} title="Choose your color"></td>
-                            <td><input type="number" class="form-control" id="layer4sizeid" name="layer4size"
-                                       aria-describedby="layer4sizeHelp"
-                                       value={{layer4size}}
-                                       required></td>
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                           id="randomizeLayer4id" name="randomizeLayer4">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                           id="nodeDisplay5id" name="nodeDisplay5" {{layer5visible}}>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="input-group mb-3">
-                                    <select class="form-select" id="layer5ClusteringMethodId"
-                                            name="layer5ClusteringMethod">
-                                        {{layer5cluteringmethod | safe}}
-                                    </select>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                           id="puddleDisplay5id" name="puddleDisplay5" {{layer5puddlevisible}}>
-                                </div>
-                            </td>
-                            <td><input type="number" class="form-control" id="layer5id" name="layer5"
-                                       aria-describedby="layer5Help"
-                                       data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="NOTE: Changing the number of nodes will also randomize them."
-                                       value={{layer5}}
-                                       required></td>
-                            <td><input type="color" class="form-control form-control-color" id="layer5colorid"
-                                       name="colorInput5"
-                                       value={{layer5color}} title="Choose your color"></td>
-                            <td><input type="number" class="form-control" id="layer5sizeid" name="layer5size"
-                                       aria-describedby="layer5sizeHelp"
-                                       value={{layer5size}}
-                                       required></td>
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                           id="randomizeLayer5id" name="randomizeLayer5">
-                                </div>
-                            </td>
-                        </tr>
+                        {% endfor %}
+                        {% endif %}
                         </tbody>
                     </table>
                     <div class="input-group">
@@ -285,10 +126,13 @@
                                data-bs-toggle="tooltip" data-bs-placement="top" title="Enter the value for z">
                     </div>
                     <div class="modal-footer">
-                        *Higher layer nodes should be depicted with a larger size vertices
-                        to represent their larger resource capacities.
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <p class="text-secondary">*Higher layer nodes should be depicted with a larger size vertices
+                            to represent their larger resource capacities.</p>
+                        <div>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" id="addLayerBtn" class="btn btn-primary">Add Layer</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -364,6 +208,7 @@
         crossorigin="anonymous"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="d3js"></script>
+<script src="static/layerhandle.js"></script>
 <script>
 // select the svg area
 var svg = d3.select("#my_dataviz")
@@ -406,6 +251,5 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         <span class="text-muted">{{year}}, Auburn University</span>
     </div>
 </footer>
-
 </body>
 </html>
